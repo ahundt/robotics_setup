@@ -20,6 +20,8 @@ echo "Go to the NVIDIA website and download CUDA + CUDNN"
 echo "https://developer.nvidia.com/cuda-toolkit"
 echo "and put it in ~/Downloads"
 
+# deep learning setup with GTX 1080
+# http://yangcha.github.io/GTX-1080/
 
 # NVIDIA CUDA
 sudo apt-get install linux-headers-$(uname -r)

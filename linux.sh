@@ -62,11 +62,17 @@ sudo modprobe 8812au
 # NVIDIA DRIVERS
 ################
 
+# deep learning setup with GTX 1080
+# http://yangcha.github.io/GTX-1080/
+
 # explanation
 # https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus
 
 # find your driver
 # http://www.nvidia.com/Download/index.aspx
+
+# ubuntu's instructions
+# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia
 
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt-get -y update
