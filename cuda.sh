@@ -1,7 +1,12 @@
 #!/bin/bash
 
+echo "########################"
+echo "# CUDA and CUDNN Setup #"
+echo "########################"
 echo ""
-echo "This script is intended to setup CUDA and CUDNN"
+echo "Manual steps are involved! you may need to update the"
+echo "install paths and download some files yourse"
+echo ""
 echo "@author Andrew Hundt <ATHundt@gmail.com>"
 echo ""
 
@@ -16,9 +21,13 @@ set -u
 set -x
 
 echo ""
+echo "###################################################"
 echo "Go to the NVIDIA website and download CUDA + CUDNN"
 echo "https://developer.nvidia.com/cuda-toolkit"
 echo "and put it in ~/Downloads"
+echo "###################################################"
+echo ""
+
 
 # deep learning setup with GTX 1080
 # http://yangcha.github.io/GTX-1080/
@@ -33,8 +42,8 @@ fi
 
 
  sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
- sudo apt-get update -y
- sudo apt-get install -y cuda
+ sudo apt update -y
+ sudo apt install -y cuda
 
 
 if [ ! -f ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga-tgz ]
