@@ -47,36 +47,52 @@ cd src
 # USB wireless adapter driver 
 # TP-Link Archer T4U dual band 802.11 ac
 # http://askubuntu.com/questions/533408/trying-to-install-wireless-archer-t4u-driver
-if [ ! -d `pwd`/rtl8812AU_8821AU_linux ] ; then
-  git clone https://github.com/abperiasamy/rtl8812AU_8821AU_linux.git
+wireless_pkg=false
+
+if [ $wireless_pkg ] ; then
+
+	# package based USB wireless adapter install instructions
+	sudo apt install rtl8812au-dkms
+
+else
+        # compile wireless driver from source
+	if [ ! -d `pwd`/rtl8812AU_8821AU_linux ] ; then
+	  git clone https://github.com/abperiasamy/rtl8812AU_8821AU_linux.git
+	fi
+
+	cd rtl8812AU_8821AU_linux/
+	git pull
+	make
+	sudo make install
+	sudo modprobe 8812au
 fi
 
-cd rtl8812AU_8821AU_linux/
-git pull
-make
-sudo make install
-sudo modprobe 8812au
 
+echo "################################"
+echo "# NVIDIA DRIVERS: Manual Setup #"
+echo "################################"
+echo ""
+echo "# caffe install instructions"
+echo "# https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide"
+echo ""
+echo "# deep learning setup with GTX 1080"
+echo "# http://yangcha.github.io/GTX-1080/"
+echo ""
+echo "# explanation"
+echo "# https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus"
+echo ""
+echo "# find your driver"
+echo "# http://www.nvidia.com/Download/index.aspx"
+echo ""
+echo "# ubuntu's instructions"
+echo "# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia"
 
-################
-# NVIDIA DRIVERS
-################
+sudo apt -y update
+sudo apt -y upgrade
 
-# deep learning setup with GTX 1080
-# http://yangcha.github.io/GTX-1080/
-
-# explanation
-# https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus
-
-# find your driver
-# http://www.nvidia.com/Download/index.aspx
-
-# ubuntu's instructions
-# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia
-
-sudo add-apt-repository -y ppa:graphics-drivers/ppa
-sudo apt-get -y update
-sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
+#sudo add-apt-repository -y ppa:graphics-drivers/ppa
+#sudo apt-get -y update
+#sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
 
 
 
