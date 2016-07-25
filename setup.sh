@@ -25,12 +25,12 @@ set -e
 set -u
 set -x
 
-sudo apt-get -y update
+sudo apt -y update
 # minimal linuxbrew requirements
-sudo apt-get install -y build-essential curl git python-setuptools ruby
+sudo apt install -y build-essential curl git python-setuptools ruby
 
 # additional useful tools that should probably be owned by the OS rather than linuxbrew
-sudo apt-get install -y zsh screen tree sudo ssh x11-apps synaptic build-essential git linux-headers-generic
+sudo apt install -y zsh screen tree sudo ssh x11-apps synaptic build-essential git linux-headers-generic cmake cmake-curses-gui
 
 cd ~
 
