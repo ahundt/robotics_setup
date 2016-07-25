@@ -37,7 +37,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
 	#export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 	#export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 	FILE=~/.zshrc
-	grep -q "/.linuxbrew/bin" "$FILE" || echo "$PATH" >> "$FILE"
+	grep -q "/.linuxbrew/bin" "$FILE" || echo "export PATH=\"\$HOME/.linuxbrew/bin:\$PATH\"" >> "$FILE"
 	#grep -q "$MANPATH" "$FILE" || echo "$MANPATH" >> "$FILE"
 	#grep -q "$INFOPATH" "$FILE" || echo "$INFOPATH" >> "$FILE"                                   
         ;;
