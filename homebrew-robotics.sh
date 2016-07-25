@@ -26,6 +26,9 @@ set -x
 # Save script's current directory
 DIR=$(pwd)
 
+
+sh python.sh
+
 #
 # Check if Homebrew is installed
 #
@@ -39,7 +42,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
         curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/linuxbrew.sh | bash /dev/stdin
         export PKG_CONFIG_PATH="/usr/bin/pkg-config:$HOME/.linuxbrew/bin/pkg-config"
         export PKG_CONFIG_LIBDIR="/usr/lib/pkgconfig:$HOME/.linuxbrew/lib/pkgconfig"
-        export PATH="$HOME/.linuxbrew/bin:$PATH"                                    
+        export PATH="$PATH:$HOME/.linuxbrew/bin"                                    
         ;;
       'FreeBSD')
         OS='FreeBSD'
