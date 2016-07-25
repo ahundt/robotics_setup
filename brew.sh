@@ -31,9 +31,15 @@ if  ! [ -x "$(command -v brew)" ] ; then
         OS='Linux'
         alias ls='ls --color=auto'
         curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/linuxbrew.sh | bash /dev/stdin
-        export PATH="$PATH:$HOME/.linuxbrew/bin"
-	export MANPATH="$MANPATH:$HOME/.linuxbrew/share/man"
-	export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"                                    
+
+	# Add brew path zshrc if it isn't already present
+	export PATH="$HOME/.linuxbrew/bin:$PATH"
+	#export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+	#export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+	FILE=~/.zshrc
+	grep -q "/.linuxbrew/bin" "$FILE" || echo "$PATH" >> "$FILE"
+	#grep -q "$MANPATH" "$FILE" || echo "$MANPATH" >> "$FILE"
+	#grep -q "$INFOPATH" "$FILE" || echo "$INFOPATH" >> "$FILE"                                   
         ;;
       'FreeBSD')
         OS='FreeBSD'
@@ -55,5 +61,8 @@ if  ! [ -x "$(command -v brew)" ] ; then
 else
     brew update
 fi
+
+
+
 
 cd $DIR
