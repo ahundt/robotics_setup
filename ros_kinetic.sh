@@ -40,3 +40,6 @@ LINE="source /opt/ros/kinetic/setup.zsh"
 FILE=~/.zshrc
 grep -q "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 
+
+cd $DIR
+
