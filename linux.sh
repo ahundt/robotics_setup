@@ -26,14 +26,14 @@ set -u
 set -x
 
 
-sudo apt-get -y update
+sudo apt -y update
 # minimal linuxbrew requirements
-sudo apt-get install -y build-essential curl git python-setuptools ruby
+sudo apt install -y build-essential curl git python-setuptools ruby
 
 # additional useful tools that should probably be owned by the OS rather than linuxbrew
-sudo apt-get install -y screen tree sudo ssh x11-apps synaptic build-essential git
+sudo apt install -y screen tree sudo ssh x11-apps synaptic build-essential git
 
-sudo apt-get install -y linux-headers-$(uname -r)
+sudo apt install -y linux-headers-$(uname -r)
 
 cd ~
 
@@ -67,32 +67,6 @@ else
 	sudo modprobe 8812au
 fi
 
-
-echo "################################"
-echo "# NVIDIA DRIVERS: Manual Setup #"
-echo "################################"
-echo ""
-echo "# caffe install instructions"
-echo "# https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide"
-echo ""
-echo "# deep learning setup with GTX 1080"
-echo "# http://yangcha.github.io/GTX-1080/"
-echo ""
-echo "# explanation"
-echo "# https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus"
-echo ""
-echo "# find your driver"
-echo "# http://www.nvidia.com/Download/index.aspx"
-echo ""
-echo "# ubuntu's instructions"
-echo "# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia"
-
-sudo apt -y update
-sudo apt -y upgrade
-
-#sudo add-apt-repository -y ppa:graphics-drivers/ppa
-#sudo apt-get -y update
-#sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
 
 
 

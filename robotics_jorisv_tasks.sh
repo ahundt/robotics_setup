@@ -45,7 +45,7 @@ cd SpaceVecAlg
 git pull
 mkdir -p build
 cd build
-cmake ..
+cmake .. -DPYTHON_DEB_LAYOUT=ON
 make -j16 && sudo make install
 
 
@@ -62,7 +62,7 @@ cd RBDyn
 git pull
 mkdir -p build
 cd build
-cmake ..
+cmake .. -DPYTHON_DEB_LAYOUT=ON
 make -j16 && sudo make install
 
 
