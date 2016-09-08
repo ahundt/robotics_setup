@@ -63,11 +63,11 @@ fi
  sudo apt update -y
  sudo apt install -y cuda
 
-
-if [ ! -f ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga-tgz ]
-then
-  curl https://developer.nvidia.com/rdp/assets/cudnn-8.0-linux-x64-v5.0-ga-tgz --output ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga.tgz
-fi
+# commented outdated file path
+# if [ ! -f ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga-tgz ]
+# then
+#   curl https://developer.nvidia.com/rdp/assets/cudnn-8.0-linux-x64-v5.0-ga-tgz --output ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga.tgz
+# fi
 
 sudo dpkg -i ~/Downloads/libcudnn5_5.1.5-1+cuda8.0_amd64.deb
 sudo dpkg -i ~/Downloads/libcudnn5-dev_5.1.5-1+cuda8.0_amd64.deb
