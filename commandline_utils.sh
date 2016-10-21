@@ -1,8 +1,17 @@
 #!/bin/bash
 
-echo "##############"
-echo "# tmux Setup #"
-echo "##############"
+# source: https://gist.github.com/phatblat/1713458
+# Save script's current directory
+DIR=$(pwd)
+
+set -e
+set -u
+set -x
+
+
+echo "############################"
+echo "# command line utils Setup #"
+echo "############################"
 echo ""
 echo "@author Andrew Hundt <ATHundt@gmail.com>"
 echo ""
@@ -16,13 +25,6 @@ sudo apt install vim ack-grep
 
 
 
-# source: https://gist.github.com/phatblat/1713458
-# Save script's current directory
-DIR=$(pwd)
-
-set -e
-set -u
-set -x
 
 echo "###############"
 echo "# tmux         "
