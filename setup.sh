@@ -8,14 +8,6 @@
 # One step setup command for robonetracker:
 # bash <(curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/robonetracker.sh)
 
-echo ""
-echo "###############################################################################################"
-echo "# Make sure you have access to https://github.com/ahundt/robonetracker                        #"
-echo "# Also, ensure you have your ssh key configured, if you don't you'll have to finish manually! #"
-echo "###############################################################################################"
-echo ""
-# partly based on https://github.com/ahundt/homebrew-robotics/blob/master/robonetracker.sh
-
 # source: https://gist.github.com/phatblat/1713458
 # Save script's current directory
 DIR=$(pwd)
@@ -38,55 +30,10 @@ if [ ! -d `pwd`/src ] ; then
     mkdir src;
 fi
 
-cd src
+sh rtl8812AU_8821AU_linux.sh
 
 
-# USB wireless adapter driver 
-# TP-Link Archer T4U dual band 802.11 ac
-# http://askubuntu.com/questions/533408/trying-to-install-wireless-archer-t4u-driver
-if [ ! -d `pwd`/rtl8812AU_8821AU_linux ] ; then
-  git clone https://github.com/abperiasamy/rtl8812AU_8821AU_linux.git
-fi
-
-cd rtl8812AU_8821AU_linux/
-git pull
-make
-sudo make install
-sudo modprobe 8812au
-
-
-################
-# NVIDIA DRIVERS
-################
-
-# explanation
-# https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus
-
-# find your driver
-# http://www.nvidia.com/Download/index.aspx
-
-sudo add-apt-repository -y ppa:graphics-drivers/ppa
-sudo apt-get -y update
-sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
-
-
-# NVIDIA CUDA
-sudo apt-get install linux-headers-$(uname -r)
-
-echo ""
-echo "Go to the NVIDIA website and download CUDA + CUDNN"
-echo "https://developer.nvidia.com/cuda-toolkit"
-echo "and put it in ~/Downloads"
-
-if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb ]
-then
-  curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64-deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
-fi
-
-
- sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
- sudo apt-get update -y
- sudo apt-get install -y cuda
+sh nvidia.sh
 
 
 if [ ! -f ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga-tgz ]

@@ -39,6 +39,7 @@ echo "sudo service lightdm stop"
 echo "###################################################"
 echo ""
 
+
 echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issues/3043#issuecomment-233480326"
 # for anyone finding this: just spent a day trying to get a gtx 1070 to run on ubuntu 16.04 w/ CUDA 8 rc and Theano. Here are some guidelines:
 
@@ -79,7 +80,7 @@ fi
 
 sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb
 sudo apt-get update
-sudo apt-get install cuda
+sudo apt-get install -y cuda
 
 
 sh cudnn.sh

@@ -28,8 +28,26 @@ echo ""
 echo "# ubuntu's instructions"
 echo "# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia"
 
+
+
+################
+# NVIDIA DRIVERS
+################
+
+# explanation
+# https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus
+
+# find your driver
+# http://www.nvidia.com/Download/index.aspx
+
+sudo add-apt-repository -y ppa:graphics-drivers/ppa
+sudo apt-get -y update
+sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
+
 sudo apt -y update
 sudo apt -y upgrade
+
+sh cuda.sh
 
 # stop the window manager 
 # you probably want to run this in ctrl + alt + f1 mode
