@@ -42,8 +42,6 @@ sudo apt upgrade bazel
 cd ~/src/
 if [ ! -d ~/src/tensorflow ]
 then
-    # TODO(ahundt) speak with people at https://github.com/jorisv/ and github.com/jrl-umi3218 to figure out where future development will really be.
-    # TODO(ahundt) see above todo, https://github.com/jrl-umi3218/Eigen3ToPython.git does not exist 
 	git clone https://github.com/tensorflow/tensorflow
 fi
 
@@ -51,15 +49,16 @@ cd tensorflow
 git pull
 git checkout r0.11
 
-echo ""
-echo "Configuring, please use all defaults, or CUDA 8.0 and cudnn 5.1:"
+echo "MANUAL STEP"
+echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, and compute capability to 5.1,6.2:"
 echo ""
 echo ""
 
 ./configure
 
 bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
-bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.11.0rc1-py2-none-any.whl
+bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.11.0rc1-py2-none-any.whl --upgrade
 
 echo "with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
 echo "sudo pip install /tmp/tensorflow_pkg/tensorflow"

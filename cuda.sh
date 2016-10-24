@@ -30,6 +30,12 @@ echo "the new .deb versions are recommended on ubuntu"
 echo "Also open /usr/local/cuda/include/host_config.h"
 echo "and comment out the following line with two backslashes //"
 echo "#error -- unsupported GNU version! gcc versions later than 5.3 are not supported!"
+echo ""
+echo "IMPORTANT:"
+echo "You may need to install the latest graphics driver first"
+echo "CUDA must be installed with no graphics running"
+echo "to disable graphics (from terminal):"
+echo "sudo service lightdm stop"
 echo "###################################################"
 echo ""
 
@@ -52,9 +58,9 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # NVIDIA CUDA
 sudo apt-get install linux-headers-$(uname -r)
 
-if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb ]
+if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb ]
 then
-  curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64-deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
+  curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
 fi
 
 # Note that if you are having problems with these steps, manually
@@ -71,24 +77,11 @@ fi
 
 # file:///var/cuda...
 
- sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
- sudo apt update -y
- sudo apt install -y cuda
+sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
 
-# commented outdated file path
-# if [ ! -f ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga-tgz ]
-# then
-#   curl https://developer.nvidia.com/rdp/assets/cudnn-8.0-linux-x64-v5.0-ga-tgz --output ~/Downloads/cudnn-8.0-linux-x64-v5.0-ga.tgz
-# fi
 
-sudo dpkg -i ~/Downloads/libcudnn5_5.1.5-1+cuda8.0_amd64.deb
-sudo dpkg -i ~/Downloads/libcudnn5-dev_5.1.5-1+cuda8.0_amd64.deb
-sudo dpkg -i ~/Downloads/libcudnn5-doc_5.1.5-1+cuda8.0_amd64.deb
-sudo apt update -y
-sudo apt install -y libcudnn5 libcudnn5-dev libcudnn5-doc
+sh cudnn.sh
 
-#https://stackoverflow.com/questions/16182620/commenting-out-lines-with-matching-string
-#https://github.com/BVLC/caffe/wiki/GeForce-GTX-1080,---CUDA-8.0,---Ubuntu-16.04,---Caffe
- #sed -i .backup "/#error -- unsupported GNU version!/s/^/\/\//g" /usr/local/cuda/include/host_config.h
- 
 cd $DIR
