@@ -51,6 +51,7 @@ echo "tool that makes life with tmux better"
 echo "see comments of this file for additional setup steps"
 echo ""
 echo "https://www.digitalocean.com/community/tutorials/how-to-install-and-use-byobu-for-terminal-management-on-ubuntu-16-04"
+ehco "https://codeyarns.com/2016/01/28/how-to-use-mouse-in-byobu/"
 
 sudo apt install -y byobu
 
@@ -64,6 +65,10 @@ echo " Put the following in your $HOME/.byobu/.tmux.conf:"
 echo ""
 echo " set -g default-shell /usr/bin/zsh"
 echo " set -g default-command /usr/bin/zsh"
+echo "set -g mouse-select-pane on"
+echo "set -g mouse-select-window on"
+echo "set -g mouse-resize-pane on"
+echo "set -g mouse-utf8 on"
 
 
 cd $DIR
