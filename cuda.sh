@@ -33,6 +33,18 @@ echo "#error -- unsupported GNU version! gcc versions later than 5.3 are not sup
 echo "###################################################"
 echo ""
 
+echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issues/3043#issuecomment-233480326"
+# for anyone finding this: just spent a day trying to get a gtx 1070 to run on ubuntu 16.04 w/ CUDA 8 rc and Theano. Here are some guidelines:
+
+# gtx 1070 and 1080 require a nvidia 367 driver. You can't currently get this from apt-get, so you need to download a runfile and execute it w/ the ubuntu gui shut down. here's a tutorial: http://www.yourownlinux.com/2016/06/how-to-install-nvidia-367-27-stable-graphics-drivers-in-linux.html
+# cuda 7.5 did not seem to want to work w/ the 367 driver. Potentially I could have fixed this. Instead I decided to install cuda 8.0 rc. However, using the deb file installation approach automatically installed the nvidia 361 drivers, which caused a conflict that was very difficult to remove. This is the source of the "could not insert 'nvidia_361_uvm'" error.
+# Also, cuda 8.0 rc requires you to reinstall nvidia drivers anyway, which I did not realize.
+# To repair:
+# sudo apt-get purge nvidia* to remove 361 and its assorted packages.
+# get to pure shell w/ ctrl+alt+f2, shut down lightdm, and use the 367 runfile w/ the --uninstall argument to uninstall the 367 drivers. i.e. sudo sh nvidia367.xx.run --uninstall
+# w/ lightdm shutdown, reinstall 367 drivers with the runfile. i.e. sudo sh nvidia367.xx.run
+# install cuda-8.0 rc w/ its runfile, which gives you the option to install the 361 drivers. When presented with it, choose no. i.e. sudo sh cuda-8.0.x.x.run
+# following this I needed to update some PATH stuff that was pointing to the cuda 7.5 folder. Also I had copied cuDNN files into 7.5 include and lib64 folders, so those files needed to be copied to the 8.0 equivalents.
 
 # deep learning setup with GTX 1080
 # http://yangcha.github.io/GTX-1080/

@@ -59,7 +59,7 @@ echo ""
 ./configure
 
 bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
-bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.11.0rc1-py2-none-any.whl
 
 echo "with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
 echo "sudo pip install /tmp/tensorflow_pkg/tensorflow"
