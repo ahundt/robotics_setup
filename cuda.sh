@@ -47,7 +47,7 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # Also, cuda 8.0 rc requires you to reinstall nvidia drivers anyway, which I did not realize.
 # To repair:
 # sudo apt-get purge nvidia* to remove 361 and its assorted packages.
-# get to pure shell w/ ctrl+alt+f2, shut down lightdm, and use the 367 runfile w/ the --uninstall argument to uninstall the 367 drivers. i.e. sudo sh nvidia367.xx.run --uninstall
+# get to pure shell w/ ctrl+alt+f2, `sudo service lightdm stop`, and use the 367 runfile w/ the --uninstall argument to uninstall the 367 drivers. i.e. sudo sh nvidia367.xx.run --uninstall
 # w/ lightdm shutdown, reinstall 367 drivers with the runfile. i.e. sudo sh nvidia367.xx.run
 # install cuda-8.0 rc w/ its runfile, which gives you the option to install the 361 drivers. When presented with it, choose no. i.e. sudo sh cuda-8.0.x.x.run
 # following this I needed to update some PATH stuff that was pointing to the cuda 7.5 folder. Also I had copied cuDNN files into 7.5 include and lib64 folders, so those files needed to be copied to the 8.0 equivalents.
