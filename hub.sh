@@ -15,5 +15,5 @@ echo "github.com/github/hub"
 echo ""
 echo "NOTE: requires golang (google go programming language)! installing that first"
 
-sh golang.sh
+./golang.sh
 go get github.com/github/hub

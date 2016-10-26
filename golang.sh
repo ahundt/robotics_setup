@@ -14,4 +14,8 @@ echo "# golang.com"
 
 sudo apt install -y golang
 
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 cd $DIR
