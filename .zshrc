@@ -22,7 +22,5 @@ export PATH="$PATH:$HOME/.linuxbrew/bin"
 # golang aka google go
 # https://golang.org/
 # https://github.com/golang/go/wiki/Ubuntu
-## export GOROOT=/usr/bin/go
 export GOPATH=$HOME/go
-#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
