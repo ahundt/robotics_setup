@@ -24,3 +24,9 @@ export PATH="$PATH:$HOME/.linuxbrew/bin"
 # https://github.com/golang/go/wiki/Ubuntu
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+
+# bash completions for https://github.com/hub
+# https://github.com/github/hub/tree/master/etc
+fpath=(~/.zsh/completions $fpath) 
+autoload -U compinit && compinit
