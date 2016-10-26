@@ -51,7 +51,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake -DPYTHON_DEB_LAYOUT=ON -DCMAKE_BUIlD_TYPE=Release ..
-make -j16 && sudo make install
+make -j44 && sudo make install
 
 
 
@@ -68,8 +68,8 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_DEB_LAYOUT=ON
-make -j16 && sudo make install
+cmake .. -DPYTHON_DEB_LAYOUT=ON -DPYTHON_BINDING=ON
+make -j44 && sudo make install
 
 
 
@@ -86,8 +86,8 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_DEB_LAYOUT=ON
-make -j16 && sudo make install
+cmake .. -DPYTHON_DEB_LAYOUT=ON  -DPYTHON_BINDING=ON
+make -j44 && sudo make install
 
 
 
@@ -111,7 +111,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake ..
-make -j16 && sudo make install
+make -j44 && sudo make install
 
 
 
@@ -129,7 +129,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake ..
-make -j16 && sudo make install
+make -j44 && sudo make install
 
 
 
@@ -146,8 +146,8 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake ..
-make -j16 && sudo make install
+cmake .. -DPYTHON_BINDING=ON
+make -j44 && sudo make install
 
 
 cd $DIR
