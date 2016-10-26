@@ -16,4 +16,9 @@ echo ""
 echo "NOTE: requires golang (google go programming language)! installing that first"
 
 ./golang.sh
+
+# export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 go get github.com/github/hub
