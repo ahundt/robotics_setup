@@ -26,7 +26,8 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 
-# bash completions for https://github.com/hub
+# shell completions for https://github.com/hub
 # https://github.com/github/hub/tree/master/etc
+eval "$(hub alias -s)"
 fpath=(~/.zsh/completions $fpath) 
 autoload -U compinit && compinit
