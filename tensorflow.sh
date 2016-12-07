@@ -47,7 +47,7 @@ fi
 
 cd tensorflow
 git pull
-git checkout r0.11
+git checkout r0.12
 
 echo "MANUAL STEP"
 echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, and compute capability to 5.1,6.2:"
@@ -58,7 +58,7 @@ echo ""
 
 bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.11.0rc1-py2-none-any.whl --upgrade
+bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.12.0rc0-py2-none-any.whl --upgrade
 
 echo "with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
 echo "sudo pip install /tmp/tensorflow_pkg/tensorflow"
