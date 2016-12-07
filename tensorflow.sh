@@ -47,7 +47,7 @@ fi
 
 cd tensorflow
 git pull
-git checkout r0.11
+git checkout r0.12
 
 echo "MANUAL STEP"
 echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, and compute capability to 5.1,6.2:"
