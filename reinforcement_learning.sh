@@ -33,8 +33,8 @@ sudo python setup.py install
 echo "############################"
 echo "# Tensorpack https://github.com/ppwwyyxx/tensorpack"
 echo "############################"
-echo ""
-echo ""
+echo "To enable python code to support import tensorpack:"
+echo "export PYTHONPATH=$PYTHONPATH:`readlink -f path/to/tensorpack`"
 
 
 # install https://github.com/ppwwyyxx/tensorpack
@@ -46,7 +46,6 @@ fi
 
 cd tensorpack
 git pull
-sudo python setup.py install
 
 
 
