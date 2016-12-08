@@ -22,7 +22,12 @@ export PATH="$PATH:$HOME/.linuxbrew/bin"
 # golang aka google go
 # https://golang.org/
 # https://github.com/golang/go/wiki/Ubuntu
-## export GOROOT=/usr/bin/go
 export GOPATH=$HOME/go
-#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
+
+
+# shell completions for https://github.com/hub
+# https://github.com/github/hub/tree/master/etc
+eval "$(hub alias -s)"
+fpath=(~/.zsh/completions $fpath) 
+autoload -U compinit && compinit

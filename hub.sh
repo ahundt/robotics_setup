@@ -17,8 +17,14 @@ echo "NOTE: requires golang (google go programming language)! installing that fi
 
 ./golang.sh
 
-# export GOROOT=/usr/local/go
+# export GOROOT=/usr/bin/go
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
 
 go get github.com/github/hub
+
+# instructions for setting up shell completions: 
+# https://github.com/github/hub/tree/master/etc
+mkdir -p ~/.zsh/completions
+curl https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion --output ~/.zsh/completions/_hub

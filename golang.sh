@@ -16,9 +16,10 @@ sudo apt install -y golang
 
 sudo mkdir -m 0700 -p /usr/local/go
 mkdir -m 7700 -p $HOME/go
-# export GOROOT=/usr/bin/go
 export GOPATH=$HOME/go
-#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
+
+# location of goroot: 
+# go env GOROOT
 
 cd $DIR

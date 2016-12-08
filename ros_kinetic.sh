@@ -21,7 +21,7 @@ sudo apt update
 sudo apt install ros-kinetic-desktop-full
 sudo apt install python-rosinstall
 
-
+sudo apt install python-catkin-tools libgflags-dev
 
 # To find available packages, use:
 #
