@@ -30,7 +30,7 @@ fi
 
 cd gym
 git pull
-pip install -e .
+pip install -e '.[all]'
 
 # install https://github.com/openai/universe
 cd ~/src/openai

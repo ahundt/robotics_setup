@@ -46,6 +46,9 @@ fi
 
 cd tensorpack
 git pull
+pip install --user -r requirements.txt
+# optional requirements
+# pip install --user -r requirements-opt.txt
 
 
 
