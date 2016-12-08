@@ -59,28 +59,14 @@ echo ""
 
 # install https://github.com/ppwwyyxx/tensorpack
 cd ~/src/
-if [ ! -d ~/src/tensorpack ]
+if [ ! -d ~/src/keras-rl ]
 then
 	git clone git@github.com:matthiasplappert/keras-rl.git
 fi
 
-cd tensorpack
+cd keras-rl
 git pull
 sudo python setup.py install
-
-
-
-# install https://github.com/ppwwyyxx/tensorpack
-cd ~/src/
-if [ ! -d ~/src/tensorpack ]
-then
-	git clone git@github.com:ppwwyyxx/tensorpack.git
-fi
-
-cd tensorpack
-git pull
-sudo python setup.py install
-
 
 
 
