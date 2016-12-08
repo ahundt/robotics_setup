@@ -125,7 +125,7 @@ echo "fork of https://github.com/muupan/async-rl"
 cd ~/src/
 if [ ! -d ~/src/async-rl ]
 then
-	git clone git@github.com:muupan/async-rl.git
+	git clone git@github.com:yuyu2172/async-rl.git
 fi
 
 cd async-rl
