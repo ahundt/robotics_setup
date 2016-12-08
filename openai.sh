@@ -53,6 +53,5 @@ fi
 
 cd universe-starter-agent
 git pull
-pip install -e .
 
 cd $DIR
