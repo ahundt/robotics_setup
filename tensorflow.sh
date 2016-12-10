@@ -51,7 +51,7 @@ git checkout r0.12
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS"
-echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, NO OPENCL and for GTX 1080 set compute capability to 5.2,6.2:"
+echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, NO OPENCL and for GTX 1080 set compute capability to 5.2,6.1:"
 echo ""
 echo ""
 echo "###########################################################################################################"
