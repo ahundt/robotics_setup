@@ -63,16 +63,12 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.12.0rc0-py2-none-any.whl --upgrade
 
 echo "###########################################################################################################"
-echo "with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
-echo "pip install /tmp/tensorflow_pkg/tensorflow"
+echo "MANUAL STEPS with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
+echo "pip install /tmp/tensorflow_pkg/tensorflow # or: pip install /tmp/tensorflow_pkg/tensorflow-*"
 echo "###########################################################################################################"
 echo ""
-echo "To test that TensorFlow installed correctly do the following:"
+echo "To test that TensorFlow installed correctly do the following with the python or python3 command depending on your version:"
 echo ""
-echo "python # or python3"
-echo "import tensorflow as tf"
-echo "print(tf.__version__)'  # print the version, check this against what you meant to install!"
-echo "sess = tf.InteractiveSession()"
-echo "sess.close()"
+echo "python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
 
 cd $DIR
