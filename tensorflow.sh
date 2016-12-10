@@ -49,10 +49,12 @@ cd tensorflow
 git pull
 git checkout r0.12
 
-echo "MANUAL STEP"
-echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, and compute capability to 5.1,6.2:"
+echo "###########################################################################################################"
+echo "MANUAL STEPS"
+echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, NO OPENCL and for GTX 1080 set compute capability to 5.2,6.2:"
 echo ""
 echo ""
+echo "###########################################################################################################"
 
 ./configure
 
@@ -60,15 +62,17 @@ bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_packag
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.12.0rc0-py2-none-any.whl --upgrade
 
+echo "###########################################################################################################"
 echo "with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
-echo "sudo pip install /tmp/tensorflow_pkg/tensorflow"
-
+echo "pip install /tmp/tensorflow_pkg/tensorflow"
+echo "###########################################################################################################"
 echo ""
 echo "To test that TensorFlow installed correctly do the following:"
 echo ""
-echo "$ python # or python3"
-echo "$ import tensorflow as tf"
-echo "$ sess = tf.InteractiveSession()"
-echo "$ sess.close()"
+echo "python # or python3"
+echo "import tensorflow as tf"
+echo "print(tf.__version__)'  # print the version, check this against what you meant to install!"
+echo "sess = tf.InteractiveSession()"
+echo "sess.close()"
 
 cd $DIR
