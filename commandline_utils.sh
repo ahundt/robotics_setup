@@ -15,13 +15,14 @@ echo "############################"
 echo ""
 echo "@author Andrew Hundt <ATHundt@gmail.com>"
 echo ""
-
+sudo apt update
+sudo apt install -y htop vim
 
 echo "#################"
 echo "# ack (ack-grep)"
 echo "#################"
 echo "http://beyondgrep.com/"
-sudo apt install vim ack-grep
+sudo apt install -y ack-grep
 
 
 
@@ -37,8 +38,6 @@ echo "Installs tmux persistent multiplexed console,"
 echo "so when you lose internet with ssh your programs keep running"
 echo ""
 echo "https://help.ubuntu.com/community/Repositories/Ubuntu"
-
-sudo apt update
 sudo apt install -y tmux
 
 
