@@ -48,7 +48,7 @@ cd tensorpack
 git pull
 pip install --user -r requirements.txt
 # optional requirements
-# pip install --user -r requirements-opt.txt
+pip install --user -r requirements-opt.txt
 
 
 
@@ -70,6 +70,25 @@ fi
 cd keras-rl
 git pull
 sudo python setup.py install
+
+echo "############################"
+echo "# https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning"
+echo "############################"
+echo ""
+echo ""
+
+
+# install https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning
+cd ~/src/
+if [ ! -d ~/src/zeta36_a3c ]
+then
+	git clone git@github.com:Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning.git zeta36_a3c
+fi
+
+cd zeta36_a3c
+git pull
+pip install pygame
+
 
 
 
