@@ -29,6 +29,32 @@ sudo python setup.py install
 
 
 
+echo "############################"
+echo "# Arcade Learning Environment arcadelearningenvironment.org"
+echo "############################"
+echo ""
+echo "The Arcade Learning Environment (ALE) -- a platform for AI research.."
+echo ""
+
+sudo apt install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake
+
+
+# install https://github.com/mgbellemare/Arcade-Learning-Environment
+cd ~/src/
+if [ ! -d ~/src/Arcade-Learning-Environment ]
+then
+	git clone git@github.com:mgbellemare/Arcade-Learning-Environment.git
+fi
+
+cd Arcade-Learning-Environment
+mkdir -p build && cd build
+cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON ..
+make -j 22 install
+cd ..
+pip install .
+
+
+
 
 echo "############################"
 echo "# Tensorpack https://github.com/ppwwyyxx/tensorpack"
@@ -70,25 +96,6 @@ fi
 cd keras-rl
 git pull
 sudo python setup.py install
-
-echo "############################"
-echo "# https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning"
-echo "############################"
-echo ""
-echo ""
-
-
-# install https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning
-cd ~/src/
-if [ ! -d ~/src/zeta36_a3c ]
-then
-	git clone git@github.com:Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning.git zeta36_a3c
-fi
-
-cd zeta36_a3c
-git pull
-pip install pygame
-
 
 
 
@@ -155,6 +162,25 @@ git pull
 sudo python setup.py install
 
 
+
+
+echo "############################"
+echo "# https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning"
+echo "############################"
+echo ""
+echo ""
+
+
+# install https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning
+cd ~/src/
+if [ ! -d ~/src/zeta36_a3c ]
+then
+	git clone git@github.com:Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning.git zeta36_a3c
+fi
+
+cd zeta36_a3c
+git pull
+pip install pygame
 
 
 
