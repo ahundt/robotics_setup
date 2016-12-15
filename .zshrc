@@ -18,6 +18,8 @@ source /opt/ros/kinetic/setup.zsh
 # linuxbrew.sh
 export PATH="$PATH:$HOME/.linuxbrew/bin"
 
+# nvidia cuda gpu compiler
+export PATH=$PATH:/usr/local/cuda/bin
 
 # golang aka google go
 # https://golang.org/
