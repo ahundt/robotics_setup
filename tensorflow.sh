@@ -50,17 +50,26 @@ git pull
 git checkout r0.12
 
 echo "###########################################################################################################"
-echo "MANUAL STEPS"
+echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
 echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, NO OPENCL and for GTX 1080 set compute capability to 5.2,6.1:"
 echo ""
 echo ""
 echo "###########################################################################################################"
+export TF_NEED_CUDA=1
+export TF_CUDA_VERSION=8.0
+export TF_CUDNN_VERSION=5
+export CUDA_TOOLKIT_PATH=/usr/local/cuda
+export TF_NEED_GCP=1
+export TF_NEED_HDFS=1
+export TF_NEED_OPENCL=0
+export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 
-./configure
+# answer yes to any config questions not covered by the above exports, run the configuration 
+yes "" | ./configure
 
 bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.12.0rc1-py2-none-any.whl --upgrade
+bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.12.*-py2-none-any.whl --upgrade
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
@@ -70,5 +79,8 @@ echo ""
 echo "To test that TensorFlow installed correctly do the following with the python or python3 command depending on your version:"
 echo ""
 echo "python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
+
+pip install /tmp/tensorflow_pkg/tensorflow-*
+python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
 
 cd $DIR
