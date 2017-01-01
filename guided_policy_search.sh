@@ -12,7 +12,7 @@ sudo apt install -y libboost-all-dev libeigen3-dev doxygen
 
 sh python.sh
 
-sudo apt install -y libprotobuf-dev libprotobuf-compiler libboost-all-dev
+sudo apt install -y libprotobuf-dev protobuf-compiler libboost-all-dev
 
 pip install protobuf
 pip install pybindgen
