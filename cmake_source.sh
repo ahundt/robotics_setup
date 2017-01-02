@@ -1,7 +1,31 @@
+# source: https://gist.github.com/phatblat/1713458
+# Save script's current directory
+DIR=$(pwd)
+
+set -e
+set -u
+set -x
 
 
-# https://cmake.org/download/
-curl -fsSL https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz  > cmake-3.6.2.tar.gz
-cd cmake-3.6.2/
+echo "############################"
+echo "# CMake - cmake.org"
+echo "############################"
+echo ""
+echo "CMake, the cross-platform, open-source build system. https://cmake.org"
+echo ""
+echo "https://github.com/Kitware/CMake/"
+
+
+cd ~/src/
+if [ ! -d ~/src/CMake ]
+then
+	git clone git@github.com:Kitware/CMake.git -b release
+fi
+
+cd CMake
+git pull
+
 ./bootstrap
-sudo make install
+make -j install
+
+cd $DIR

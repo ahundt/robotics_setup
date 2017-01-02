@@ -23,6 +23,10 @@ echo "############################"
 echo "# repo: https://github.com/cbfinn/gps "
 echo "# docs: http://rll.berkeley.edu/gps/"
 echo "# this script is based on the docs link"
+echo ""
+echo "MANUAL STEPS REQUIRED - NEED to run ros_kinetic.sh and mujoco.sh first for full installation"
+echo "                        MANUAL STEPS FOR MUJOCO LICENSE SEE http://rll.berkeley.edu/gps/"
+echo "                        with ubuntu 16.04 cmake 3.5: comment out line 64 of  /usr/share/cmake-3.5/Modules/FindPythonLibs.cmake"
 
 cd ~/src
 
@@ -51,13 +55,28 @@ sudo apt install -y build-essential python-dev swig python-pygame subversion pyt
 # Steps for mujoco setup
 sudo apt install -y openscenegraph libopenscenegraph-dev
 
-# TODO: MANUAL STEPS FOR MUJOCO LICENSE SEE http://rll.berkeley.edu/gps/
-#cd build
-#cmake ../src/3rdparty
-#make -j
+# NOTE: MANUAL STEPS FOR MUJOCO LICENSE SEE http://rll.berkeley.edu/gps/
+if [ -d ~/src/mujoco/mjpro131 ]
+then
+	cp -a  ~/src/mujoco/mjpro131 ~/src/gps/src/3rdparty/mjpro
+	cd ~/src/gps/build
+	cmake ../src/3rdparty
+	make -j
+fi
 
 
-#TODO ROS SETUP WITH CAFFE http://rll.berkeley.edu/gps/
+# ROS SETUP WITH CAFFE http://rll.berkeley.edu/gps/
+sudo apt install -y ros-kinetic-pr2-common ros-kinetic-pr2-dashboard-aggregator ros-kinetic-pr2-description ros-kinetic-pr2-machine ros-kinetic-pr2-msgs ros-kinetic-gazebo-ros-control ros-kinetic-moveit-ros-control-interface ros-kinetic-moveit-sim-controller  
+
+if [ -d /opt/ros/kinetic ]
+then
+	export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$HOME/src/gps:$HOME/src/gps/src/gps_agent_pkg
+	cd ~/src/gps/src/gps_agent_pkg/
+	cmake . -DUSE_CAFFE=1 -DUSE_CAFFE_GPU=1 -DCAFFE_INCLUDE_PATH=~/src/caffe/distribute/include -DCAFFE_LIBRARY_PATH=~/src/caffe/build/lib
+	make -j
+fi
+
+
 cd ~/src
 
 
