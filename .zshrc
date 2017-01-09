@@ -27,6 +27,14 @@ export PATH=$PATH:/usr/local/cuda/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+if [ -d ~/src/gps ]
+then
+  # load libraries for guided_policy_search.sh
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/src/gps/build/lib
+  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/src/gps/build/lib
+  export PYTHONPATH=$PYTHONPATH:$HOME/src/gps/build/lib
+fi
+
 
 # shell completions for https://github.com/hub
 # https://github.com/github/hub/tree/master/etc
