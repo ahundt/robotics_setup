@@ -12,7 +12,7 @@ sudo apt install -y libboost-all-dev libeigen3-dev doxygen
 
 sh python.sh
 
-sudo pip install pybindgen
+pip install pybindgen
 
 echo "############################"
 echo "# Tasks Library"

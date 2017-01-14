@@ -13,7 +13,7 @@ set -x
 
 sudo apt install python-setuptools python-dev build-essential
 sudo easy_install pip
-sudo pip install --upgrade virtualenv
+pip install --upgrade virtualenv
 
 
 cd $DIR

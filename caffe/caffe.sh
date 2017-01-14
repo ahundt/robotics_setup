@@ -68,7 +68,7 @@ fi
 cd caffe
 git pull
 
-sudo pip install -r python/requirements.txt
+pip install -r python/requirements.txt
 
 if [ -f ~/src/caffe/Makefile.config ]
 then
