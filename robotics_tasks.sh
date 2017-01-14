@@ -42,7 +42,7 @@ if [ ! -d ~/src/jrl-umi3218/Eigen3ToPython ]
 then
     # TODO(ahundt) speak with people at https://github.com/jorisv/ and github.com/jrl-umi3218 to figure out where future development will really be.
     # TODO(ahundt) see above todo, https://github.com/jrl-umi3218/Eigen3ToPython.git does not exist 
-	git clone --recursive https://github.com:${location}/Eigen3ToPython.git
+	git clone --recursive https://github.com/${location}/Eigen3ToPython.git
 fi
 
 cd Eigen3ToPython
@@ -60,7 +60,7 @@ make -j44 && sudo make install
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/SpaceVecAlg ]
 then
-	git clone --recursive https://github.com:${location}/SpaceVecAlg.git
+	git clone --recursive https://github.com/${location}/SpaceVecAlg.git
 fi
 
 cd SpaceVecAlg
@@ -78,7 +78,7 @@ make -j44 && sudo make install
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/RBDyn ]
 then
-	git clone --recursive https://github.com:${location}/RBDyn.git
+	git clone --recursive https://github.com/${location}/RBDyn.git
 fi
 
 cd RBDyn
@@ -96,10 +96,10 @@ make -j44 && sudo make install
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/sch-core ]
 then
-	git clone --recursive https://github.com:${location}/sch-core.git
+	git clone --recursive https://github.com/${location}/sch-core.git
 	# TODO(ahundt) Remove this hack to get the right submodule version once cmake package config is merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
 	cd sch-core/cmake
-	git remote add ${location} https://github.com:${location}/jrl-cmakemodules.git
+	git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
 	git fetch ${location}
 	git checkout ${branch}
 	cd ../..
@@ -120,7 +120,7 @@ make -j44 && sudo make install
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/eigen-qld ]
 then
-	git clone --recursive https://github.com:${location}/eigen-qld.git
+	git clone --recursive https://github.com/${location}/eigen-qld.git
 fi
 
 cd eigen-qld
@@ -138,7 +138,7 @@ make -j44 && sudo make install
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/Tasks ]
 then
-	git clone --recursive https://github.com:${location}/Tasks.git
+	git clone --recursive https://github.com/${location}/Tasks.git
 fi
 
 cd Tasks
