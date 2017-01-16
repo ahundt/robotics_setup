@@ -21,3 +21,8 @@ How to find the versions of drivers you need:
     sudo ubuntu-drivers devices
 
 There are also useful config files named `.*` that may not be immediately visible such as `.byobu/.tmux.conf`.
+
+
+If you have [python permission errors](http://stackoverflow.com/questions/21093002/error-could-not-create-usr-local-lib-python2-7-dist-packages-virtualenv-suppo):
+
+    sudo chown -R $USER /usr/local/lib/python2.7

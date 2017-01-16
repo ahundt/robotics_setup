@@ -25,13 +25,14 @@ sh cmake-basis.sh
 sh eigen3.sh
 sh ceres.sh
 sh camodocal.sh
+sh robotics_tasks.sh
 sudo apt install  libceres-dev libgoogle-glog-dev
 
 
 cd ~/src/
 if [ ! -d ~/src/robonetracker ]
 then
-	git clone git@github.com:ahundt/robonetracker.git
+	git clone https://github.com/ahundt/robonetracker.git
 fi
 
 cd robonetracker
