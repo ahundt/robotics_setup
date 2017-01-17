@@ -62,8 +62,8 @@ fi
 cd build
 
 cmake .. -DBUILD_ALL_MODULES=ON -DMODULE_grl=ON -DMODULE_robone=ON -DMODULE_roboneprivate=ON \
- -DWITH_CAMODOCAL=OFF             \
- -DWITH_Ceres=OFF                 \
+ -DWITH_CAMODOCAL=ON              \
+ -DWITH_Ceres=ON                  \
  -DWITH_CisstNetlib=OFF           \
  -DWITH_Eigen3=ON                 \
  -DWITH_FRI_Client_SDK_Cpp=OFF    \
@@ -76,8 +76,11 @@ cmake .. -DBUILD_ALL_MODULES=ON -DMODULE_grl=ON -DMODULE_robone=ON -DMODULE_robo
  -DWITH_Tasks=ON                  \
  -DWITH_Threads=ON                \
  -DWITH_cisst=OFF                 \
- -DWITH_freenect2=OFF  $EXTRA_TOOLS
-
+ -DWITH_freenect2=OFF             \
+ -DWITH_sawConstraintController=OFF\
+ -DWITH_sch-core=ON              \
+ -DWITH_spdlog=ON                \
+ -DWITH_ur_modern_driver=OFF     $EXTRA_TOOLS
 
 make -j
 

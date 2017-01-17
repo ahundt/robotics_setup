@@ -97,12 +97,14 @@ cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/sch-core ]
 then
 	git clone --recursive https://github.com/${location}/sch-core.git
+	# TODO(ahundt) replace above with below when cmake config version call is merged see https://github.com/ahundt/sch-core/tree/package commit https://github.com/ahundt/sch-core/commit/35825805e38ec98f5a9c76c9e14b701fa3a81122
+	# git clone --recursive https://github.com/${location}/sch-core.git
 	# TODO(ahundt) Remove this hack to get the right submodule version once cmake package config is merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
-	cd sch-core/cmake
-	git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
-	git fetch ${location}
-	git checkout ${branch}
-	cd ../..
+	# cd sch-core/cmake
+	# git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
+	# git fetch ${location}
+	# git checkout ${branch}
+	# cd ../..
 fi
 
 cd sch-core
