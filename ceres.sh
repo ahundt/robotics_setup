@@ -19,7 +19,7 @@ echo "https://bugs.launchpad.net/ubuntu/+source/ceres-solver/+bug/1595692"
 echo "INCLUDES HACK TO GET AROUND missing package files IN UBUNTU 16.04"
 
 sudo apt install libceres-dev
-sudo cp -a ceres/Ceres /usr/share
+sudo cp -a ceres/share/Ceres /usr/share
 sudo cp -a ceres/include/internal/config.h /usr/include/ceres/internal
 
 cd $DIR
