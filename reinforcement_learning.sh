@@ -20,7 +20,7 @@ echo "MANUAL STEPS REQUIRED - FIRST FOLLOW tensorflow.sh instructions"
 cd ~/src/
 if [ ! -d ~/src/ImageFlow ]
 then
-	git clone git@github.com:HamedMP/ImageFlow.git
+	git clone https://github.com/HamedMP/ImageFlow.git
 fi
 
 cd ImageFlow
@@ -43,7 +43,7 @@ sudo apt install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake
 cd ~/src/
 if [ ! -d ~/src/Arcade-Learning-Environment ]
 then
-	git clone git@github.com:mgbellemare/Arcade-Learning-Environment.git
+	git clone https://github.com/mgbellemare/Arcade-Learning-Environment.git
 fi
 
 cd Arcade-Learning-Environment
@@ -67,7 +67,7 @@ echo "export PYTHONPATH=$PYTHONPATH:`readlink -f path/to/tensorpack`"
 cd ~/src/
 if [ ! -d ~/src/tensorpack ]
 then
-	git clone git@github.com:ppwwyyxx/tensorpack.git
+	git clone https://github.com/ppwwyyxx/tensorpack.git
 fi
 
 cd tensorpack
@@ -90,7 +90,7 @@ echo ""
 cd ~/src/
 if [ ! -d ~/src/keras-rl ]
 then
-	git clone git@github.com:matthiasplappert/keras-rl.git
+	git clone https://github.com/matthiasplappert/keras-rl.git
 fi
 
 cd keras-rl
@@ -110,7 +110,7 @@ echo ""
 cd ~/src/
 if [ ! -d ~/src/tflearn ]
 then
-	git clone git@github.com:tflearn/tflearn.git
+	git clone https://github.com/tflearn/tflearn.git
 fi
 
 cd tflearn
@@ -133,7 +133,7 @@ echo ""
 cd ~/src/
 if [ ! -d ~/src/async_deep_reinforce ]
 then
-	git clone git@github.com:Itsukara/async_deep_reinforce.git
+	git clone https://github.com/Itsukara/async_deep_reinforce.git
 fi
 
 cd async_deep_reinforce
@@ -150,11 +150,11 @@ echo ""
 echo "fork of https://github.com/muupan/async-rl"
 
 
-# install git@github.com:muupan/async-rl.git
+# install https://github.com/muupan/async-rl.git
 cd ~/src/
 if [ ! -d ~/src/async-rl ]
 then
-	git clone git@github.com:yuyu2172/async-rl.git
+	git clone https://github.com/yuyu2172/async-rl.git
 fi
 
 cd async-rl
@@ -175,7 +175,7 @@ echo ""
 cd ~/src/
 if [ ! -d ~/src/zeta36_a3c ]
 then
-	git clone git@github.com:Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning.git zeta36_a3c
+	git clone https://github.com/Zeta36/Asynchronous-Methods-for-Deep-Reinforcement-Learning.git zeta36_a3c
 fi
 
 cd zeta36_a3c
@@ -193,11 +193,11 @@ echo ""
 echo "https://github.com/jacobandreas/psketch"
 
 
-# install git@github.com:jacobandreas/psketch.git
+# install https://github.com/jacobandreas/psketch.git
 cd ~/src/
 if [ ! -d ~/src/psketch ]
 then
-	git clone git@github.com:jacobandreas/psketch.git
+	git clone https://github.com/jacobandreas/psketch.git
 fi
 
 cd psketch

@@ -39,7 +39,7 @@ branch="master"
 # note: still putting it in jrl-umi3218 for consistency
 if [ ! -d ~/src/gps ]
 then
-	git clone --recursive git@github.com:${location}/gps.git
+	git clone --recursive https://github.com/${location}/gps.git
 fi
 
 cd gps

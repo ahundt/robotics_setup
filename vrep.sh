@@ -23,12 +23,17 @@ echo "@author Andrew Hundt <ATHundt@gmail.com>"
 echo ""
 
 
+if [ ! -f ~/Downloads/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz ]
+then
+    cd ~/Downloads
+    curl -O http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
+fi
 
-cd ~/Downloads
-curl -O http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
-
-cd ~/src
-tar -xvzf ~/Downloads/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
+if [ ! -d ~/src/V-REP_PRO_EDU_V3_3_2_64_Linux ]
+then
+    cd ~/src
+    tar -xvzf ~/Downloads/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
+fi
 
 
 cd $DIR

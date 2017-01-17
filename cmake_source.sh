@@ -19,7 +19,7 @@ echo "https://github.com/Kitware/CMake/"
 cd ~/src/
 if [ ! -d ~/src/CMake ]
 then
-	git clone git@github.com:Kitware/CMake.git -b release
+	git clone https://github.com/Kitware/CMake.git -b release
 fi
 
 cd CMake

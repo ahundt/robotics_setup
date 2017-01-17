@@ -20,7 +20,7 @@ echo "MANUAL STEPS REQUIRED - FIRST FOLLOW tensorflow.sh instructions"
 cd ~/src/
 if [ ! -d ~/src/keras ]
 then
-	git clone git@github.com:fchollet/keras.git
+	git clone https://github.com/fchollet/keras.git
 fi
 
 cd keras

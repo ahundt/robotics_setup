@@ -62,8 +62,9 @@ echo "Pull the latest changes and update submodules."
 echo ""
 echo "cd ~/.zprezto && git pull && git submodule update --init --recursive"
 
-
+if [ ! -d ~/.zprezto ] ; then
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+fi
 
 zsh -c "setopt EXTENDED_GLOB;\
     for rcfile in \"${ZDOTDIR:-$HOME}\"/.zprezto/runcoms/^README.md(.N); do\

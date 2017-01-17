@@ -25,7 +25,7 @@ mkdir -p openai
 cd ~/src/openai
 if [ ! -d ~/src/openai/gym ]
 then
-	git clone git@github.com:openai/gym.git
+	git clone https://github.com/openai/gym.git
 fi
 
 cd gym
@@ -36,7 +36,7 @@ pip install -e '.[all]'
 cd ~/src/openai
 if [ ! -d ~/src/openai/universe ]
 then
-	git clone git@github.com:openai/universe.git
+	git clone https://github.com/openai/universe.git
 fi
 
 cd universe
@@ -48,7 +48,7 @@ pip install -e .
 cd ~/src/openai
 if [ ! -d ~/src/openai/universe-starter-agent ]
 then
-	git clone git@github.com:openai/universe-starter-agent.git
+	git clone https://github.com/openai/universe-starter-agent.git
 fi
 
 cd universe-starter-agent
