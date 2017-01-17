@@ -23,6 +23,7 @@ then
 fi
 
 cd cmake-basis
+git pull
 
 
 if [ ! -d ~/src/cmake-basis/build ]
@@ -32,7 +33,7 @@ fi
 
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_PROJECT_TOOL=ON -DBUILD_APPLICATIONS=ON -DBUILD_EXAMPLE=ON
-make -j16 && sudo make install
+make -j && sudo make install
 
 
 cd $DIR

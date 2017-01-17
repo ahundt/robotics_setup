@@ -41,7 +41,7 @@ cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/Eigen3ToPython ]
 then
     # TODO(ahundt) speak with people at https://github.com/jorisv/ and github.com/jrl-umi3218 to figure out where future development will really be.
-    # TODO(ahundt) see above todo, https://github.com/jrl-umi3218/Eigen3ToPython.git does not exist 
+    # TODO(ahundt) see above todo, https://github.com/jrl-umi3218/Eigen3ToPython.git does not exist
 	git clone --recursive https://github.com/${location}/Eigen3ToPython.git
 fi
 
@@ -51,7 +51,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake -DPYTHON_DEB_LAYOUT=ON -DCMAKE_BUIlD_TYPE=Release ..
-make -j44 && sudo make install
+make -j && sudo make install
 
 
 
@@ -69,7 +69,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake .. -DPYTHON_DEB_LAYOUT=ON -DPYTHON_BINDING=ON
-make -j44 && sudo make install
+make -j && sudo make install
 
 
 
@@ -87,7 +87,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake .. -DPYTHON_DEB_LAYOUT=ON  -DPYTHON_BINDING=ON
-make -j44 && sudo make install
+make -j && sudo make install
 
 
 
@@ -111,7 +111,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake ..
-make -j44 && sudo make install
+make -j && sudo make install
 
 
 
@@ -129,7 +129,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake ..
-make -j44 && sudo make install
+make -j && sudo make install
 
 
 
@@ -147,7 +147,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake .. -DPYTHON_BINDING=ON
-make -j44 && sudo make install
+make -j && sudo make install
 
 
 cd $DIR

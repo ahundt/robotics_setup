@@ -13,18 +13,18 @@ set -x
 
 
 ###############
-# google flatbuffers install
+# spdlog - Super fast C++ logging library. 
 
 cd ~/src
-if [ ! -d ~/src/flatbuffers ]
+if [ ! -d ~/src/spdlog ]
 then
-	git clone https://github.com/google/flatbuffers.git
-	cd flatbuffers
+	git clone https://github.com/gabime/spdlog.git
+	cd spdlog
 	mkdir build
 fi
-cd ~/src/flatbuffers
+cd ~/src/spdlog
 git pull
-cd ~/src/flatbuffers/build
+cd ~/src/spdlog/build
 cmake ..
 sudo make -j install
 cd ../..

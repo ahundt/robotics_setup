@@ -33,7 +33,7 @@ fi
 
 cd build
 cmake ..
-make -j16 && sudo make install
+make -j && sudo make install
 
 
 cd $DIR

@@ -20,14 +20,30 @@ echo "##########################################################################
 echo ""
 # partly based on https://github.com/ahundt/homebrew-robotics/blob/master/robonetracker.sh
 
-sh ros_kinetic.sh
-sh cmake-basis.sh
-sh eigen3.sh
-sh ceres.sh
-sh camodocal.sh
-sh robotics_tasks.sh
-sudo apt install  libceres-dev libgoogle-glog-dev
+# source: https://github.com/ahundt/grl/blob/master/INSTALL.md
+sudo apt update
+sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui
+sudo apt install -y libboost-all-dev libeigen3-dev libgoogle-glog-dev
+sudo apt install -y libzmq3-dev libceres-dev
 
+. /etc/lsb-release # get ubuntu version number
+# only install
+if [ "$DISTRIB_RELEASE" == "16.04" ]; then
+   ./ros_kinetic.sh
+   EXTRA_TOOLS="-DWITH_ROS=ON"
+fi
+
+./cmake-basis.sh
+./eigen3.sh
+./ceres.sh
+./flatbuffers.sh
+./spdlog.sh
+./camodocal.sh
+./robotics_tasks.sh
+./trtk.sh
+./vrep.sh
+
+SCRIPT_DIR=$(pwd)
 
 cd ~/src/
 if [ ! -d ~/src/robonetracker ]
@@ -36,9 +52,35 @@ then
 fi
 
 cd robonetracker
-git pull
-mkdir build
+#git pull
+
+if [ ! -d ~/src/robonetracker/build ]
+then
+    mkdir build
+fi
+
 cd build
-cmake .. && make -j16
+
+cmake .. -DBUILD_ALL_MODULES=ON -DMODULE_grl=ON -DMODULE_robone=ON -DMODULE_roboneprivate=ON \
+ -DWITH_CAMODOCAL=OFF             \
+ -DWITH_Ceres=OFF                 \
+ -DWITH_CisstNetlib=OFF           \
+ -DWITH_Eigen3=ON                 \
+ -DWITH_FRI_Client_SDK_Cpp=OFF    \
+ -DWITH_Nanopb=OFF                \
+ -DWITH_OpenCV=OFF                \
+ -DWITH_PCL=OFF                   \
+ -DWITH_RBDyn=ON                  \
+ -DWITH_SpaceVecAlg=ON            \
+ -DWITH_TRTK=ON                   \
+ -DWITH_Tasks=ON                  \
+ -DWITH_Threads=ON                \
+ -DWITH_cisst=OFF                 \
+ -DWITH_freenect2=OFF  $EXTRA_TOOLS
+
+
+make -j
+
+./robonetracker_symlinks.sh
 
 cd $DIR
