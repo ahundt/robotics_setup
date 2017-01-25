@@ -24,9 +24,8 @@ do
 done
 
 # Link all relevant non-library files
-for arg in "$TRACKERDIR/modules/grl/src/lua/grl.lua" "$TRACKERDIR/modules/grl/src/lua/grl.lua" "$TRACKERDIR/modules/roboneprivate/data/RoboneSimulation_private.ttt" "$TRACKERDIR/modules/robone/data/RoboneSimulation.ttt"
+for FILETOLINK in "$TRACKERDIR/modules/grl/src/lua/grl.lua" "$TRACKERDIR/modules/grl/src/lua/robone.lua" "$TRACKERDIR/modules/roboneprivate/data/RoboneSimulation_private.ttt" "$TRACKERDIR/modules/robone/data/RoboneSimulation.ttt"
 do
-    FILETOLINK=$arg
     echo "ln -s $FILETOLINK $VREPDIR"
     if [ -f $FILETOLINK ]
     then
