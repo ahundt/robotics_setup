@@ -29,7 +29,7 @@ sudo apt install -y libzmq3-dev libceres-dev
 . /etc/lsb-release # get ubuntu version number
 # only install
 if [ "$DISTRIB_RELEASE" == "16.04" ]; then
-   ./ros_kinetic.sh
+   ./ros.sh
    EXTRA_TOOLS="-DWITH_ROS=ON"
 fi
 
@@ -61,7 +61,10 @@ fi
 
 cd build
 
-cmake .. -DBUILD_ALL_MODULES=ON -DMODULE_grl=ON -DMODULE_robone=ON -DMODULE_roboneprivate=ON \
+cmake .. -DBUILD_ALL_MODULES=ON -DBUILD_DOCUMENTATION=ON -DBUILD_EXAMPLE=ON \
+ -DMODULE_grl=ON                  \
+ -DMODULE_robone=ON               \
+ -DMODULE_roboneprivate=ON        \
  -DWITH_CAMODOCAL=ON              \
  -DWITH_Ceres=ON                  \
  -DWITH_CisstNetlib=OFF           \
