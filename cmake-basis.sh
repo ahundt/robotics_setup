@@ -19,11 +19,12 @@ cd ~/src
 if [ ! -d ~/src/cmake-basis ]
 then
     mkdir -p ~/src/cmake-basis
-    # workarond for:
+    # workaround for:
     # https://github.com/cmake-basis/BASIS/pull/609
     # https://github.com/cmake-basis/BASIS/issues/608
+    # https://github.com/cmake-basis/BASIS/issues/612
     # switch to commented version after changes are merged
-    git clone --depth=1 https://github.com/cmake-basis/BASIS.git cmake-basis --branch fix-608-tokenize-dependency
+    git clone --depth=1 https://github.com/ahundt/BASIS.git cmake-basis --branch grl
     #git clone --depth=1 https://github.com/cmake-basis/BASIS.git cmake-basis
 fi
 
