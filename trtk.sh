@@ -12,6 +12,9 @@ echo "###############################################"
 
 echo "https://github.com/RWTHmediTEC/TRTK"
 
+./eigen3.sh
+
+sudo apt install -y libflann-dev
 
 # install https://github.com/jrl-umi3218/SpaceVecAlg
 cd ~/src/
