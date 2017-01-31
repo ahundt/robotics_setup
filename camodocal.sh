@@ -20,11 +20,13 @@ cd ~/src
 
 if [ ! -d ~/src/camodocal ]
 then
-    git clone https://github.com/hengli/camodocal.git
+    git clone https://github.com/hengli/camodocal.git -b v1.0.1
 fi
 
 cd ~/src/camodocal
-git pull
+
+# uncomment to pull bleeding edge version of the cloned branch
+# git pull
 
 if [ ! -d build ]
 then

@@ -39,9 +39,13 @@ if [ "$DISTRIB_RELEASE" == "14.04" ]; then
         cd ceres-solver
         mkdir build
     fi
-    cd ~/src/ceres-solver
-    git pull
+
+    # uncomment to pull bleeding edge version of the cloned branch
+    # cd ~/src/ceres-solver
+    # git pull
+
     cd ~/src/ceres-solver/build
+
     cmake ..
     sudo make -j install
     cd ../..
