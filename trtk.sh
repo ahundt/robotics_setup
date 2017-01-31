@@ -12,20 +12,23 @@ echo "###############################################"
 
 echo "https://github.com/RWTHmediTEC/TRTK"
 
+./eigen3.sh
+
+sudo apt install -y libflann-dev
 
 # install https://github.com/jrl-umi3218/SpaceVecAlg
 cd ~/src/
 if [ ! -d ~/src/TRTK ]
 then
-	git clone --recursive git@github.com:ahundt/TRTK.git # git@github.com:RWTHmediTEC/TRTK.git
+	git clone --recursive https://github.com/ahundt/TRTK.git # https://github.com/RWTHmediTEC/TRTK.git
 fi
 
 cd TRTK
 git pull
 mkdir -p build
 cd build
-cmake .. 
-make -j44 && sudo make install
+cmake ..
+make -j && sudo make install
 
 
 cd $DIR

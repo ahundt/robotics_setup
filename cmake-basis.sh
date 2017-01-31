@@ -19,10 +19,17 @@ cd ~/src
 if [ ! -d ~/src/cmake-basis ]
 then
     mkdir -p ~/src/cmake-basis
-    git clone --depth=1 https://github.com/cmake-basis/BASIS.git cmake-basis
+    # workaround for:
+    # https://github.com/cmake-basis/BASIS/pull/609
+    # https://github.com/cmake-basis/BASIS/issues/608
+    # https://github.com/cmake-basis/BASIS/issues/612
+    # switch to commented version after changes are merged
+    git clone --depth=1 https://github.com/ahundt/BASIS.git cmake-basis --branch grl
+    #git clone --depth=1 https://github.com/cmake-basis/BASIS.git cmake-basis
 fi
 
 cd cmake-basis
+git pull
 
 
 if [ ! -d ~/src/cmake-basis/build ]
@@ -32,7 +39,7 @@ fi
 
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_PROJECT_TOOL=ON -DBUILD_APPLICATIONS=ON -DBUILD_EXAMPLE=ON
-make -j16 && sudo make install
+make -j && sudo make install
 
 
 cd $DIR

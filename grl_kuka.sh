@@ -17,60 +17,29 @@ sudo apt install -y libtool pkg-config build-essential autoconf automake cmake c
 sudo apt install -y libboost-all-dev libeigen3-dev
 sudo apt install -y libzmq3-dev libceres-dev
 
-
-###############
-# google flatbuffers install
-
-cd ~/src
-if [ ! -d ~/src/flatbuffers ]
-then
-	git clone https://github.com/google/flatbuffers.git
-	cd flatbuffers
-	mkdir build
-fi
-cd ~/src/flatbuffers
-git pull
-cd ~/src/flatbuffers/build
-cmake ..
-sudo make install
-cd ../..
-
-###########
-# CMake-BASIS install
-cd ~/src
-
-if [ ! -d ~/src/BASIS ]
-then
-	git clone --depth=1 https://github.com/cmake-basis/BASIS.git
-	cd BASIS
-	mkdir build
-fi
-
-cd ~/src/BASIS
-git pull
-cd ~/src/BASIS/build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
-sudo make install
-cd ../..
+./flatbuffers.sh
 
 
+./cmake-basis.sh
 
-###############
-# azmq install
 
-cd ~/src
-if [ ! -d ~/src/azmq ]
-then
-	git clone https://github.com/zeromq/azmq.git
-	cd azmq
-	mkdir build
-fi
-cd ~/src/azmq
-git pull
-cd ~/src/azmq/build
-cmake ..
-sudo make install
-cd ../..
+# deprecated
+# ###############
+# # azmq install
+
+# cd ~/src
+# if [ ! -d ~/src/azmq ]
+# then
+# 	git clone https://github.com/zeromq/azmq.git
+# 	cd azmq
+# 	mkdir build
+# fi
+# cd ~/src/azmq
+# git pull
+# cd ~/src/azmq/build
+# cmake ..
+# sudo make install
+# cd ../..
 
 
 ###############

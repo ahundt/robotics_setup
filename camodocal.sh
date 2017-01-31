@@ -11,15 +11,22 @@ sudo apt install -y libgoogle-glog-dev
 
 echo "HACK TO GET AROUND CMAKE BUILD ERROR IN UBUNTU 16.04:"
 echo "sudo ln -s /usr/lib/x86_64-linux-gnu/libglog.so /usr/local/lib/"
-sudo ln -s /usr/lib/x86_64-linux-gnu/libglog.so /usr/local/lib/
+if [ ! -f /usr/local/lib/libglog.so ]
+then
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libglog.so /usr/local/lib/
+fi
+
+cd ~/src
 
 if [ ! -d ~/src/camodocal ]
 then
-    git clone git@github.com:hengli/camodocal.git
+    git clone https://github.com/hengli/camodocal.git -b v1.0.1
 fi
 
 cd ~/src/camodocal
-git pull
+
+# uncomment to pull bleeding edge version of the cloned branch
+# git pull
 
 if [ ! -d build ]
 then
@@ -28,7 +35,7 @@ fi
 
 cd build
 cmake ..
-make -j16 && sudo make install
+make -j && sudo make install
 
 
 cd $DIR

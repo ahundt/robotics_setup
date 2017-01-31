@@ -37,9 +37,11 @@ echo "####################"
 echo "# Visual Studio Code"
 echo "####################"
 echo ""
-echo "# https://wiki.ubuntu.com/ubuntu-make"
+echo "# code.visualtudio.com"
+echo "# Installs to ~/.local/share/umake/ide/visual-studio-code"
 echo ""
 
 umake ide visual-studio-code
+
 
 cd $DIR
