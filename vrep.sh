@@ -36,7 +36,7 @@ fi
 if [ ! -d ~/src/V-REP_PRO_EDU_V3_3_2_64_Linux ]
 then
     cd ~/src
-    tar -xvzf ~/Downloads/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
+    tar -xvzf ~/src/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
 fi
 
 
