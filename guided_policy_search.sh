@@ -24,7 +24,7 @@ echo "# repo: https://github.com/cbfinn/gps "
 echo "# docs: http://rll.berkeley.edu/gps/"
 echo "# this script is based on the docs link"
 echo ""
-echo "MANUAL STEPS REQUIRED - NEED to run ros_kinetic.sh and mujoco.sh first for full installation"
+echo "MANUAL STEPS REQUIRED - NEED to run ros.sh and mujoco.sh first for full installation"
 echo "                        MANUAL STEPS FOR MUJOCO LICENSE SEE http://rll.berkeley.edu/gps/"
 echo "                        with ubuntu 16.04 cmake 3.5: comment out line 64 of  /usr/share/cmake-3.5/Modules/FindPythonLibs.cmake"
 
