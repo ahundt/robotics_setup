@@ -68,7 +68,9 @@ export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 # answer yes to any config questions not covered by the above exports, run the configuration 
 yes "" | ./configure
 
-bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+# To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
+
+bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-1.0.0-py2-none-any.whl --upgrade
 
