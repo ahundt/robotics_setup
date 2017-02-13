@@ -21,13 +21,14 @@ echo "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local
 echo "export CUDA_HOME=/usr/local/cuda"
 echo ""
 echo "Install Steps From:"
+echo "https://www.tensorflow.org/get_started/os_setup#installing_from_sources"
 echo "https://alliseesolutions.wordpress.com/2016/09/08/install-gpu-tensorflow-from-sources-w-ubuntu-16-04-and-cuda-8-0-rc/"
 echo "Additional possible source:"
 echo "https://www.nvidia.com/object/gpu-accelerated-applications-tensorflow-installation.html"
 
 sudo apt update
 
-sudo apt install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev
+sudo apt install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev libcupti-dev
 
 
 echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
@@ -47,7 +48,7 @@ fi
 
 cd tensorflow
 git pull
-git checkout r0.12
+git checkout r1.0
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
@@ -67,20 +68,25 @@ export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 # answer yes to any config questions not covered by the above exports, run the configuration 
 yes "" | ./configure
 
-bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+# To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
+
+bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-0.12.*-py2-none-any.whl --upgrade
+bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-1.0.0-py2-none-any.whl --upgrade
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
 echo "pip install /tmp/tensorflow_pkg/tensorflow # or: pip install /tmp/tensorflow_pkg/tensorflow-*"
 echo "###########################################################################################################"
 echo ""
-echo "To test that TensorFlow installed correctly do the following with the python or python3 command depending on your version:"
+echo "To test that TensorFlow installed correctly do the following with the python or python3 command depending on your version"
+echo "but only from a directory that doesn't have the tensorflow source in it because those files might be picked up accidentally:'"
 echo ""
 echo "python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
 
 pip install /tmp/tensorflow_pkg/tensorflow-*
+
+cd ~/
 python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
 
 cd $DIR

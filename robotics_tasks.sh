@@ -10,9 +10,17 @@ sudo apt update
 sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
 sudo apt install -y libboost-all-dev libeigen3-dev doxygen
 
-sh python.sh
+# set to "ON" to build python bindings and "OFF" to disable them
+# Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
+PYTHON_BINDING="OFF"
 
-pip install pybindgen
+if [ $PYTHON_BINDING -eq "ON" ]
+then
+	sh python.sh
+	pip install pybindgen
+fi
+
+
 
 echo "############################"
 echo "# Tasks Library"
@@ -68,7 +76,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_DEB_LAYOUT=ON -DPYTHON_BINDING=ON
+cmake .. -DPYTHON_DEB_LAYOUT=ON -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
@@ -86,7 +94,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_DEB_LAYOUT=ON  -DPYTHON_BINDING=ON
+cmake .. -DPYTHON_DEB_LAYOUT=ON  -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
@@ -148,7 +156,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_BINDING=ON
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
