@@ -11,7 +11,7 @@ set -u
 set -x
 
 
-sudo apt-get -y install python-setuptools python-dev build-essential
+sudo apt install -y python-setuptools python-dev build-essential
 sudo easy_install pip
 pip install --upgrade virtualenv
 

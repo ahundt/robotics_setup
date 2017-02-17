@@ -24,7 +24,7 @@ echo "INCLUDES HACK TO GET AROUND missing package files IN UBUNTU 16.04"
 
 # only install
 if [ "$DISTRIB_RELEASE" == "16.04" ]; then
-    sudo apt-get -y install libceres-dev
+    sudo apt install -y libceres-dev
     sudo cp -a ceres/share/Ceres /usr/share
     sudo cp -a ceres/include/internal/config.h /usr/include/ceres/internal
 fi

@@ -39,7 +39,7 @@ if [ -d `pwd`/.linuxbrew ] ; then
 fi
 
 if [ ! -d `pwd`/.linuxbrew ] ; then
-  sudo apt-get -y install zsh
+  sudo apt install -y zsh
 fi
 
 if [ ! -f `pwd`/.zshrc ] ; then

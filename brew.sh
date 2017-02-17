@@ -16,9 +16,9 @@ set -u
 set -x
 
 
-sudo apt-get -y update
+sudo apt -y update
 # minimal linuxbrew requirements
-sudo apt-get install -y build-essential curl git python-setuptools ruby
+sudo apt install -y build-essential curl git python-setuptools ruby
 
 #
 # Check if Homebrew is installed
