@@ -1,4 +1,4 @@
 
 
 
-sudo apt install libeigen3-dev
+sudo apt-get -y install libeigen3-dev
