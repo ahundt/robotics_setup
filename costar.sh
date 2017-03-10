@@ -38,7 +38,7 @@ branch="master"
 if [ "$DISTRIB_RELEASE" = "16.04" ]; then
     ROSVERSION="kinetic"
 	# TODO: How to install fcl? should soem be installed? soem
-	sudo apt-get install -y ros-kinetic-moveit #  ros-indigo-fcl
+	sudo apt-get install -y ros-kinetic-moveit ros-kinetic-universal-robot ros-kinetic-ur-msgs #  ros-indigo-fcl
 
 	source /opt/ros/kinetic/setup.bash
 fi
