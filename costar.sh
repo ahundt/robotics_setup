@@ -65,15 +65,16 @@ if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	git clone https://github.com/SalvoVirga/iiwa_stack.git  
 	git clone https://github.com/ros-industrial/robotiq.git  
 	git clone https://github.com/jbohren/rqt_dot.git  
-	git clone https://github.com/sniekum/ar_track_alvar.git  
+	git clone https://github.com/sniekum/ar_track_alvar.git  -b ${ROSVERSION}-devel
 	git clone https://github.com/sniekum/ar_track_alvar_msgs.git  
 	git clone https://github.com/gt-ros-pkg/hrl-kdl.git  
 	git clone https://github.com/cpaxton/xdot.git  
 	git clone https://github.com/ThomasTimm/ur_modern_driver.git
 fi
 
-#TODO: Re-enable source line below
-#source ../devel/setup.bash
+if [ -e ../devel/setup.bash ]; then
+    source ../devel/setup.bash
+fi
 echo "Ignore COSTAR_PERCEPTION until you have installed its dependencies."
 touch costar_stack/costar_perception/CATKIN_IGNORE
 catkin build --continue
