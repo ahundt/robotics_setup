@@ -25,6 +25,7 @@ echo "https://www.tensorflow.org/get_started/os_setup#installing_from_sources"
 echo "https://alliseesolutions.wordpress.com/2016/09/08/install-gpu-tensorflow-from-sources-w-ubuntu-16-04-and-cuda-8-0-rc/"
 echo "Additional possible source:"
 echo "https://www.nvidia.com/object/gpu-accelerated-applications-tensorflow-installation.html"
+echo "https://github.com/tensorflow/tensorflow/issues/7449#issuecomment-282855210"
 
 sudo apt update
 
