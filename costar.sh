@@ -37,8 +37,9 @@ branch="master"
 
 if [ "$DISTRIB_RELEASE" = "16.04" ]; then
     ROSVERSION="kinetic"
-	# TODO: How to install fcl? should soem be installed? soem
-	sudo apt-get install -y ros-kinetic-moveit ros-kinetic-universal-robot ros-kinetic-ur-msgs #  ros-indigo-fcl
+	# TODO(ahundt) How to install fcl? should "soem" be installed? 
+	# TODO(ahundt) Are there univeral robot ros-industrial kinetic binaries?
+	sudo apt-get install -y ros-kinetic-moveit # ros-kinetic-universal-robot ros-kinetic-ur-msgs #  ros-indigo-fcl
 
 	source /opt/ros/kinetic/setup.bash
 fi
@@ -63,17 +64,25 @@ cd costar_ws
 catkin init
 cd src
 
-# TODO: add better recovery and update utilities, and use specific release versions
+# TODO(ahundt) add better recovery and update utilities, and use specific release versions
 if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	git clone https://github.com/${location}/costar_stack.git  
-	git clone https://github.com/SalvoVirga/iiwa_stack.git  
-	git clone https://github.com/ros-industrial/robotiq.git  
+	git clone https://github.com/SalvoVirga/iiwa_stack.git  	
+	#git clone https://github.com/ros-industrial/robotiq.git # This is the upstream location 
+	git clone https://github.com/jhu-lcsr/robotiq.git -b ${ROSVERSION}-devel
 	git clone https://github.com/jbohren/rqt_dot.git  
-	git clone https://github.com/sniekum/ar_track_alvar.git  -b ${ROSVERSION}-devel
+	git clone https://github.com/sniekum/ar_track_alvar.git -b ${ROSVERSION}-devel
 	git clone https://github.com/sniekum/ar_track_alvar_msgs.git  
 	git clone https://github.com/gt-ros-pkg/hrl-kdl.git  
 	git clone https://github.com/cpaxton/xdot.git  
-	git clone https://github.com/ThomasTimm/ur_modern_driver.git
+	#git clone https://github.com/ThomasTimm/ur_modern_driver.git # This is the upstream location 
+	git clone https://github.com/ahundt/ur_modern_driver.git -b ${ROSVERSION}-devel
+	# note: there are also binary versions on 14.04
+	git clone https://github.com/ros-industrial/universal_robot.git -b ${ROSVERSION}-devel
+
+	if [ "$DISTRIB_RELEASE" = "16.04" ]; then
+		git clone git@github.com:UTNuclearRoboticsPublic/soem.git
+	fi
 fi
 
 if [ -e ../devel/setup.bash ]; then
