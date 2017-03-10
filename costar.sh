@@ -53,6 +53,10 @@ fi
 
 sudo apt-get install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
  
+if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
+	source /opt/ros/${ROSVERSION}/setup.bash
+fi
+ 
 cd $HOME/src
 mkdir -p costar_ws/src
 cd costar_ws
