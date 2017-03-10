@@ -72,7 +72,6 @@ yes "" | ./configure
 
 bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow-1.0.0-py2-none-any.whl --upgrade
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
@@ -84,7 +83,7 @@ echo "but only from a directory that doesn't have the tensorflow source in it be
 echo ""
 echo "python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
 
-pip install /tmp/tensorflow_pkg/tensorflow-*
+pip install --upgrade /tmp/tensorflow_pkg/tensorflow-*
 
 cd ~/
 python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
