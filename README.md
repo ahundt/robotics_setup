@@ -8,7 +8,7 @@ These scripts are written for:
 - x86_64 Ubuntu Linux 16.04 
 - GeForce GTX 1080 GPU.
 
-
+Typically the source code for libraries will be put in `~/src`, and binaries in `/usr/local`, but this rule is not hard and fast.
 
 ## Additional helpful tips:
 
