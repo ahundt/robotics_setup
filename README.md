@@ -1,11 +1,11 @@
-# Ubuntu Linux 16.04 Setup Scripts for Robotics applications
+# Ubuntu Setup Scripts for Robotics & Machine Learning applications
 
 
 This contains a set of linux setup scripts. 
 Some manual steps are still involved but many are automated.
 
 These scripts are written for:
-- x86_64 Ubuntu Linux 16.04 
+- x86_64 Ubuntu Linux 14.04 and 16.04 
 - GeForce GTX 1080 GPU.
 
 Typically the source code for libraries will be put in `~/src`, and binaries in `/usr/local`, but this rule is not hard and fast.
