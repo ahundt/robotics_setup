@@ -3,6 +3,7 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Andrew Hundt <ATHundt@gmail.com>
 #
 
 # Source Prezto.
@@ -13,7 +14,14 @@ fi
 # Customize to your needs...
 
 # ROS.org Robot Operating System 
+if [ -d /opt/ros/kinetic ]; then
 source /opt/ros/kinetic/setup.zsh
+fi
+
+# costar_ws github.com/cpaxton/costar_stack
+if [ -d ~/src/costar_ws ]; then
+  source ~/src/costar_ws/devel/setup.zsh
+fi
 
 # linuxbrew.sh
 export PATH="$PATH:$HOME/.linuxbrew/bin"
