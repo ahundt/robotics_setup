@@ -1,4 +1,4 @@
-# Ubuntu Setup Scripts for Robotics & Machine Learning applications
+# Ubuntu Setup Scripts for Robotics & Machine Learning
 
 
 This contains a set of linux setup scripts. 
