@@ -55,6 +55,9 @@ fi
 # openni2 and friends is optional
 sudo apt install -y libopenni2-0 libopenni2-dev openni2-doc openni2-utils ros-${ROSVERSION}-openni2-camera ros-${ROSVERSION}-openni2-launch
 
+# instructor python dependencies
+sudo apt install -y qt4-designer qt4-dev-tools python-qt4 python-qt4-dev python-wxversion wx-common python-wxgtk3.0
+
 # many of these are required, ${ROSVERSION} will be indigo, kinetic as appropriate
 sudo apt install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
  
