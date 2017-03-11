@@ -52,7 +52,11 @@ if [ "$DISTRIB_RELEASE" = "14.04" ]; then
 	source /opt/ros/indigo/setup.bash
 fi
 
-sudo apt-get install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
+# openni2 and friends is optional
+sudo apt install -y libopenni2-0 libopenni2-dev openni2-doc openni2-utils ros-${ROSVERSION}-openni2-camera ros-${ROSVERSION}-openni2-launch
+
+# many of these are required, ${ROSVERSION} will be indigo, kinetic as appropriate
+sudo apt install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
  
 if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
 	source /opt/ros/${ROSVERSION}/setup.bash
@@ -83,13 +87,29 @@ if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	if [ "$DISTRIB_RELEASE" = "16.04" ]; then
 		git clone git@github.com:UTNuclearRoboticsPublic/soem.git
 	fi
+	
+	# Optional for vision utilities
+	git clone git@github.com:ahundt/ObjRecRANSAC.git objrecransac
 fi
 
 if [ -e ../devel/setup.bash ]; then
     source ../devel/setup.bash
 fi
-echo "Ignore COSTAR_PERCEPTION until you have installed its dependencies."
-touch costar_stack/costar_perception/CATKIN_IGNORE
+
+# TODO(ahundt) FIX HACK: build objrecransac with standard cmake build, otherwise the headers won't be found. Is this on both kinetic and indigo?
+cd objrecransac
+mkdir -p build
+cd build
+cmake ..
+make -j install
+cd ../..
+
+#echo "Ignore COSTAR_PERCEPTION until you have installed its dependencies."
+#touch costar_stack/costar_perception/CATKIN_IGNORE
+
+# There is a strange quirk where sp_segmenter optionally depends on ObjRecRANSAC
+# Building that package first helps resolve the dependency.
+catkin build objrecransac
 catkin build --continue
 
 
