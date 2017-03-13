@@ -17,5 +17,5 @@ echo "# to see list of possible modules run:"
 echo "# module avail"
 
 # see marcc-install.sh for the list of saved modules
-restore robotics_setup_modules
+module restore robotics_setup_modules
 

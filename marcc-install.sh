@@ -26,7 +26,7 @@ echo "# module avail"
 module load git zsh tmux boost cmake cuda/8.0 cudnn/5.0 python tensorflow parallel_studio_xe_2015 intel-mpi readline ruby
 
 # save the set of modules to enable reloading in the future
-save robotics_setup_modules
+module save robotics_setup_modules
 
 mkdir -p $HOME/src
 mkdir -p $HOME/bin
