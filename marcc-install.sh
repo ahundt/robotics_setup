@@ -1,4 +1,10 @@
+# source: https://gist.github.com/phatblat/1713458
+# Save script's current directory
+DIR=$(pwd)
 
+set -e
+set -u
+set -x
 
 
 echo "###############################################"
@@ -38,6 +44,7 @@ cd robotics_setup
 ./tensorpack.sh
 ./tensorlayer.sh
 ./tf-image-segmentation.sh
+./keras.sh
 #./textmate.sh
 
 mkdir -p $HOME/scratch/datasets
@@ -47,3 +54,5 @@ ln -s $HOME/scratch/datasets $HOME/datasets
 
 # byobu terminal session manager: http://byobu.co/about.html
 #https://launchpad.net/byobu/trunk/5.115/+download/byobu_5.115.orig.tar.gz
+
+cd $DIR
