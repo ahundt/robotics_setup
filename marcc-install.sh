@@ -48,7 +48,10 @@ cd robotics_setup
 #./textmate.sh
 
 mkdir -p $HOME/scratch/datasets
+
+if [ ! -d ~/datasets ]; then
 ln -s $HOME/scratch/datasets $HOME/datasets
+fi
 
 ./zsh.sh
 
