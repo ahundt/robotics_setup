@@ -37,7 +37,7 @@ branch="master"
 
 if [ "$DISTRIB_RELEASE" = "16.04" ]; then
     ROSVERSION="kinetic"
-	# TODO(ahundt) How to install fcl? should "soem" be installed? 
+	# TODO(ahundt) How to install fcl? should "soem" be installed?
 	# TODO(ahundt) Are there univeral robot ros-industrial kinetic binaries?
 	sudo apt-get install -y ros-kinetic-moveit # ros-kinetic-universal-robot ros-kinetic-ur-msgs #  ros-indigo-fcl
 
@@ -60,11 +60,11 @@ sudo apt install -y qt4-designer qt4-dev-tools python-qt4 python-qt4-dev python-
 
 # many of these are required, ${ROSVERSION} will be indigo, kinetic as appropriate
 sudo apt install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
- 
+
 if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
 	source /opt/ros/${ROSVERSION}/setup.bash
 fi
- 
+
 cd $HOME/src
 mkdir -p costar_ws/src
 cd costar_ws
@@ -73,27 +73,27 @@ cd src
 
 # TODO(ahundt) add better recovery and update utilities, and use specific release versions
 if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
-	git clone https://github.com/${location}/costar_stack.git  
-	git clone https://github.com/SalvoVirga/iiwa_stack.git  	
-	#git clone https://github.com/ros-industrial/robotiq.git # This is the upstream location 
+	git clone https://github.com/${location}/costar_stack.git
+	git clone https://github.com/SalvoVirga/iiwa_stack.git
+	#git clone https://github.com/ros-industrial/robotiq.git # This is the upstream location
 	git clone https://github.com/jhu-lcsr/robotiq.git -b ${ROSVERSION}-devel
-	git clone https://github.com/jbohren/rqt_dot.git  
+	git clone https://github.com/jbohren/rqt_dot.git
 	git clone https://github.com/sniekum/ar_track_alvar.git -b ${ROSVERSION}-devel
-	git clone https://github.com/sniekum/ar_track_alvar_msgs.git  
-	git clone https://github.com/gt-ros-pkg/hrl-kdl.git  
-	git clone https://github.com/cpaxton/xdot.git  
-	#git clone https://github.com/ThomasTimm/ur_modern_driver.git # This is the upstream location 
+	git clone https://github.com/sniekum/ar_track_alvar_msgs.git
+	git clone https://github.com/gt-ros-pkg/hrl-kdl.git
+	git clone https://github.com/cpaxton/xdot.git
+	#git clone https://github.com/ThomasTimm/ur_modern_driver.git # This is the upstream location
 	git clone https://github.com/ahundt/ur_modern_driver.git -b ${ROSVERSION}-devel
 	# note: there are also binary versions on 14.04
 	git clone https://github.com/ros-industrial/universal_robot.git -b ${ROSVERSION}-devel
 
 	if [ "$DISTRIB_RELEASE" = "16.04" ]; then
-		git clone git@github.com:UTNuclearRoboticsPublic/soem.git
+		git clone https://github.com/UTNuclearRoboticsPublic/soem.git
 	fi
-	
+
 	# Optional for vision utilities
-	git clone git@github.com:ahundt/ObjRecRANSAC.git objrecransac
-	# git clone git@github.com:tum-mvp/ObjRecRANSAC.git objrecransac # This is the upstream location
+	git clone https://github.com/ahundt/ObjRecRANSAC.git objrecransac
+	# git clone https://github.com/tum-mvp/ObjRecRANSAC.git objrecransac # This is the upstream location
 fi
 
 if [ -e ../devel/setup.bash ]; then
