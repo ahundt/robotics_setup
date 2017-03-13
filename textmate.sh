@@ -14,6 +14,8 @@ echo ""
 echo "TextMate: https://github.com/textmate/textmate"
 echo "rmate: https://github.com/textmate/rmate"
 
+# TODO(ahundt) install in user directories?
+# http://www.binarytides.com/quick-tip-installing-ruby-gems-in-the-users-home-directory/
 sudo gem install rmate
 sudo gem update rmate
 

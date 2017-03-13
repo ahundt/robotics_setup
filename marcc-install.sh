@@ -17,7 +17,7 @@ echo "# to see list of possible modules run:"
 echo "# module avail"
 
 #module load git/2.6.4 boost/1.60.0 cmake/3.5.0 cuda/8.0 cudnn/5.0 python/2.7.12 tensorflow/r1.0 parallel_studio_xe_2015/17.0.1 intel-tbb-oss/intel64/43_20150424oss intel-mpi/2017.1.132
-module load git zsh tmux boost cmake cuda/8.0 cudnn/5.0 python tensorflow parallel_studio_xe_2015 intel-tbb-oss intel-mpi readline glog
+module load git zsh tmux boost cmake cuda/8.0 cudnn/5.0 python tensorflow parallel_studio_xe_2015 intel-tbb-oss intel-mpi readline glog ruby
 
 # save the set of modules to enable reloading in the future
 save robotics_setup_modules
@@ -38,7 +38,7 @@ cd robotics_setup
 ./tensorpack.sh
 ./tensorlayer.sh
 ./tf-image-segmentation.sh
-./textmate.sh
+#./textmate.sh
 
 mkdir -p $HOME/scratch/datasets
 ln -s $HOME/scratch/datasets $HOME/datasets
