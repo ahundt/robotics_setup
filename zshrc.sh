@@ -3,7 +3,8 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+#   Andrew Hundt <ATHundt@gmail.com
+
 
 # https://github.com/sorin-ionescu/prezto
 #
@@ -16,7 +17,7 @@ fi
 
 export PATH="$PATH:$HOME/.linuxbrew/bin"
 export MANPATH="$MANPATH:$HOME/.linuxbrew/share/man"
-export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"   
+export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"
 
 # oh-my zsh theme
 #ZSH_THEME="dstufft"

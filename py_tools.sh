@@ -11,7 +11,7 @@ set -u
 set -x
 
 
-pip install jupyter
+pip install jupyter --user
 
 
 cd $DIR

@@ -4,7 +4,7 @@
 # with dependencies on homebrew or linuxbrew depending on the OS being used
 # @author Andrew Hundt <ATHundt@gmail.com>
 #
-# 
+#
 # One step setup command for robonetracker:
 # bash <(curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/robonetracker.sh)
 
@@ -39,7 +39,9 @@ if [ -d `pwd`/.linuxbrew ] ; then
 fi
 
 if [ ! -d `pwd`/.linuxbrew ] ; then
-  sudo apt install -y zsh
+  if [ -x "$(command -v apt)" ]; then
+    sudo apt install -y zsh
+  fi
 fi
 
 if [ ! -f `pwd`/.zshrc ] ; then
