@@ -12,7 +12,7 @@ echo "#"
 echo "# github.com/jhollowayj/tensorflow_slurm_manager"
 echo "#"
 echo "# MANUAL STEPS: either install robotics_setup/.zshrc via zshrc.sh or run:"
-echo "# $ echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc""
+echo "# $ echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc"
 
 if [ ! -d ~/.autoenv ]
 then
