@@ -33,6 +33,8 @@ fi
 # linuxbrew.sh
 if [ -d $HOME/.linuxbrew ]; then
   export PATH="$PATH:$HOME/.linuxbrew/bin"
+  export MANPATH="$MANPATH:$HOME/.linuxbrew/share/man"
+  export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"
 fi
 
 # nvidia cuda gpu compiler
@@ -85,3 +87,22 @@ if [ -d ~/src/hub ]; then
   fpath=(~/.zsh/completions $fpath)
   autoload -U compinit && compinit
 fi
+
+
+# Enable timing.app to track what directories are in use and make terminal titles more useful
+function update_terminal_title() {
+    print -Pn "\e]0;%n :: %~/ \a"
+}
+
+
+# from
+# http://sourabhbajaj.com/mac-setup/iTerm/zsh.html
+# Add env.sh
+if [ -f ~/Projects/config/env.sh ]; then
+    source ~/Projects/config/env.sh
+fi
+
+
+# oh-my zsh theme
+#ZSH_THEME="dstufft"
+# similar theme on prezto: giddie
