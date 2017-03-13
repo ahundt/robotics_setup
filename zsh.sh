@@ -46,7 +46,7 @@ if [ ! -f `pwd`/.zshrc ] ; then
 
   # sometimes you can't run chsh...
   if [ -x "$(command -v ypchsh)" ]; then
-    sudo apt install -y zsh
+    ypchsh -s $(which zsh)
   else
     chsh -s $(which zsh)
   fi
