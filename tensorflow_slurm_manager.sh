@@ -13,7 +13,7 @@ echo "# github.com/jhollowayj/tensorflow_slurm_manager"
 cd ~/src/
 if [ ! -d ~/src/tensorflow_slurm_manager ]
 then
-	 git clone git@github.com:jhollowayj/tensorflow_slurm_manager.git
+	 git clone https://github.com/jhollowayj/tensorflow_slurm_manager.git
 fi
 
 # TODO(ahundt): install or add to path config
