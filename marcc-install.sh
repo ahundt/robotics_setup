@@ -99,7 +99,8 @@ ln -s $HOME/scratch/datasets $HOME/datasets
 fi
 
 ./zsh.sh
-./byobu-source.sh
+# byoubu-source.sh installation bug on MARCC: https://bugs.launchpad.net/byobu/+bug/1673232
+#./byobu-source.sh
 
 # byobu terminal session manager: http://byobu.co/about.html
 #https://launchpad.net/byobu/trunk/5.115/+download/byobu_5.115.orig.tar.gz

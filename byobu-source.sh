@@ -15,9 +15,10 @@ echo "# byobu makes it so you can access multiple remote shell sessions"
 echo "# via a single remote ssh session, and keep things from being terminated"
 echo "# if you get disconnected accidentally"
 echo ""
-echo "http://byobu.org"
 echo "Based on instructions in:"
-echo "http://bazaar.launchpad.net/~kirkland/byobu/trunk/view/head:/README"
+echo "    http://bazaar.launchpad.net/~kirkland/byobu/trunk/view/head:/README"
+echo "Installation bug on MARCC:"
+echo "    https://bugs.launchpad.net/byobu/+bug/1673232"
 
 mkdir -p ~/src
 cd ~/src
