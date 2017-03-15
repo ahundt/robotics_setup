@@ -42,10 +42,10 @@ fi
 
 if [ ! -f `pwd`/.zshrc ] ; then
   cp $DIR/.zshrc ~/.zshrc
-
   # sometimes you can't run chsh...
   if [ -x "$(command -v ypchsh)" ]; then
-    ypchsh -s $(which zsh)
+    #TODO(ahundt) fixme... doesn't work right now
+    #ypchsh -s $(which zsh)
   else
     chsh -s $(which zsh)
   fi
