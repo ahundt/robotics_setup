@@ -67,7 +67,7 @@ fi
 
 
 # Check if we are running on a SLURM supercomputer cluster
-if [ -x "$(command -v module)" ] ; then
+if [ -x "$(command -v srun)" ] ; then
   # based on http://stackoverflow.com/a/26759734/99379
   source ~/src/robotics_setup/marcc-config.sh
 fi
