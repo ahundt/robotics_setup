@@ -28,7 +28,7 @@ fi
 
 cd byobu
 git pull
-
+autoconf
 ./configure --prefix="$HOME/byobu"
 # original configure command:
 #./configure --prefix="$HOME/byobu"
