@@ -54,7 +54,7 @@ if [ -d $HOME/lib ] ; then
   export PYTHONPATH=$PYTHONPATH:$HOME/lib
 fi
 
-if [ -d $HOME/bin ]
+if [ -d $HOME/bin ] ; then
   export PATH=$PATH:$HOME/bin
 fi
 
