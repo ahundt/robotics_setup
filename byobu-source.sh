@@ -6,10 +6,14 @@ set -e
 set -u
 set -x
 
-echo "#######################################################"
-echo "# byobu shell session manager installation from source"
-echo "#######################################################"
-echo "YOU PROBABLY REALLY WANT TO RUN commandline_utils.sh"
+echo "#########################################################################"
+echo "# byobu shell session manager http://byobu.org installation from source"
+echo "#########################################################################"
+echo "# ON UBUNTU YOU PROBABLY REALLY WANT TO RUN commandline_utils.sh"
+echo "#"
+echo "# byobu makes it so you can access multiple remote shell sessions"
+echo "# via a single remote ssh session, and keep things from being terminated"
+echo "# if you get disconnected accidentally"
 echo ""
 echo "http://byobu.org"
 echo "Based on instructions in:"
