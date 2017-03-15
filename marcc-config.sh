@@ -20,3 +20,4 @@ module load zsh/5.0.7 gcc slurm git zsh tmux boost cmake cuda/8.0 cudnn/5.0 pyth
 # see marcc-install.sh for the list of saved modules
 # module restore robotics_setup_modules
 
+export PATH=$PATH:$HOME/bin
