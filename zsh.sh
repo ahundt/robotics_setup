@@ -9,7 +9,6 @@ echo "##########################################################################
 echo "# ZSH setup/config scripts"
 echo "###############################################################################################"
 echo ""
-# partly based on https://github.com/ahundt/homebrew-robotics/blob/master/robonetracker.sh
 
 # source: https://gist.github.com/phatblat/1713458
 # Save script's current directory
@@ -23,7 +22,7 @@ set -x
 cd ~
 
 # prezto tools to make zsh life easier
-# https://github.com/sorin-ionescu/prezto\
+# https://github.com/sorin-ionescu/prezto
 
 # found via os x setup guide
 # http://sourabhbajaj.com/mac-setup/iTerm/zsh.html
@@ -53,11 +52,16 @@ if [ ! -f `pwd`/.zshrc ] ; then
 fi
 
 if [ ! -f $HOME/.zpreztorc ] ; then
-  cp $DIR/zpreztorc.sh ~/.zpreztorc
+  ln -s $DIR/.zpreztorc ~/.zpreztorc
 fi
 
 if [ ! -f $HOME/.zshrc ] ; then
-  cp $DIR/.zshrc ~/.zpreztorc
+  ln -s $DIR/.zshrc ~/.zshrc
+fi
+
+# symlink so robotics_setup config is always up to date
+if [ ! -f $HOME/.robotics_setup ] ; then
+  ln -s $DIR/.robotics_setup $HOME/.robotics_setup
 fi
 
 echo "https://github.com/sorin-ionescu/prezto"
