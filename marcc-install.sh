@@ -52,6 +52,14 @@ echo "# "
 echo "# Nice SLURM python class:"
 echo "# https://github.com/jhollowayj/tensorflow_slurm_manager"
 
+# MARCC WITH ZSH: put this in your .bashrc
+# module load zsh
+# #source ~/.robotics_setup
+# export SHELL=`which zsh`
+# [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
+
+
+
 # module load git/2.6.4 boost/1.60.0 cmake/3.5.0 cuda/8.0 cudnn/5.0 python/2.7.12 tensorflow/r1.0 parallel_studio_xe_2015/17.0.1 intel-tbb-oss/intel64/43_20150424oss intel-mpi/2017.1.132
 # module load gcc slurm git zsh tmux boost cmake cuda/8.0 cudnn/5.0 python tensorflow parallel_studio_xe_2015 intel-mpi readline ruby
 source $DIR/marcc-config.sh
