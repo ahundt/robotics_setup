@@ -19,5 +19,3 @@ echo "# module avail"
 module load zsh/5.0.7 gcc slurm git zsh tmux cmake autoconf/gcc automake/gcc boost cuda/8.0 cudnn/5.0 python tensorflow parallel_studio_xe_2015 intel-mpi readline ruby
 # see marcc-install.sh for the list of saved modules
 # module restore robotics_setup_modules
-
-export PATH=$PATH:$HOME/bin
