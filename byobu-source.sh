@@ -30,11 +30,13 @@ fi
 cd byobu
 git pull
 automake --add-missing
-autoconf
+
 
 if [ ! -f ~/src/byobu/ChangeLog ] ; then
-    touch ChangeLog
+    touch ~/src/byobu/ChangeLog
 fi
+
+autoconf
 
 ./configure --prefix="$HOME/byobu"
 # original configure command:
