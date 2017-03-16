@@ -25,7 +25,8 @@ fi
 
 cd ImageFlow
 git pull
-sudo python setup.py install
+# sudo python setup.py install
+python setup.py install --user
 
 
 
@@ -51,7 +52,7 @@ mkdir -p build && cd build
 cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON ..
 make -j 22 install
 cd ..
-pip install .
+pip install --user
 
 
 
@@ -95,7 +96,8 @@ fi
 
 cd keras-rl
 git pull
-sudo python setup.py install
+# sudo python setup.py install
+python setup.py install --user
 
 
 

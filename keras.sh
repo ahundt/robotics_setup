@@ -25,16 +25,18 @@ fi
 
 cd keras
 git pull
-sudo python setup.py install
+# sudo python setup.py install
+python setup.py install --user
 
 cd ~/src/
 if [ ! -d ~/src/keras-contrib ]
 then
-	git clone git@github.com:farizrahman4u/keras-contrib.git
+	git clone https://github.com/farizrahman4u/keras-contrib.git
 fi
 
 cd keras-contrib
 git pull
-sudo python setup.py install
+#sudo python setup.py install
+python setup.py install --user
 
 cd $DIR

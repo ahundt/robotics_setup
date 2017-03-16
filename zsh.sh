@@ -3,18 +3,12 @@
 # This script is intended to setup a fresh desktop with ROS and
 # with dependencies on homebrew or linuxbrew depending on the OS being used
 # @author Andrew Hundt <ATHundt@gmail.com>
-#
-# 
-# One step setup command for robonetracker:
-# bash <(curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/robonetracker.sh)
 
 echo ""
 echo "###############################################################################################"
-echo "# Make sure you have access to https://github.com/ahundt/robonetracker                        #"
-echo "# Also, ensure you have your ssh key configured, if you don't you'll have to finish manually! #"
+echo "# ZSH setup/config scripts"
 echo "###############################################################################################"
 echo ""
-# partly based on https://github.com/ahundt/homebrew-robotics/blob/master/robonetracker.sh
 
 # source: https://gist.github.com/phatblat/1713458
 # Save script's current directory
@@ -28,7 +22,7 @@ set -x
 cd ~
 
 # prezto tools to make zsh life easier
-# https://github.com/sorin-ionescu/prezto\
+# https://github.com/sorin-ionescu/prezto
 
 # found via os x setup guide
 # http://sourabhbajaj.com/mac-setup/iTerm/zsh.html
@@ -39,21 +33,35 @@ if [ -d `pwd`/.linuxbrew ] ; then
 fi
 
 if [ ! -d `pwd`/.linuxbrew ] ; then
-  sudo apt install -y zsh
+  if [ -x "$(command -v apt)" ]; then
+    sudo apt install -y zsh
+  fi
 fi
+
+
 
 if [ ! -f `pwd`/.zshrc ] ; then
-  cp $DIR/zshrc.sh ~/.zshrc
-  chsh -s $(which zsh)
+  cp $DIR/.zshrc ~/.zshrc
+  # sometimes you can't run chsh...
+  if [ -x "$(command -v ypchsh)" ] ; then
+    echo "TODO(ahundt) fix chsh... doesn't work on this platform right now... see README.md"
+    #ypchsh -s $(which zsh)
+  else
+    chsh -s $(which zsh)
+  fi
 fi
 
-
-if [ ! -f ~/.zpreztorc ] ; then
-  cp $DIR/zpreztorc.sh ~/.zpreztorc
+if [ ! -f $HOME/.zpreztorc ] ; then
+  ln -s $DIR/.zpreztorc ~/.zpreztorc
 fi
 
-if [ ! -f ~/.zshrc ] ; then
-  cp $DIR/zshrc.sh ~/.zpreztorc
+if [ ! -f $HOME/.zshrc ] ; then
+  ln -s $DIR/.zshrc ~/.zshrc
+fi
+
+# symlink so robotics_setup config is always up to date
+if [ ! -f $HOME/.robotics_setup ] ; then
+  ln -s $DIR/.robotics_setup $HOME/.robotics_setup
 fi
 
 echo "https://github.com/sorin-ionescu/prezto"
@@ -66,8 +74,9 @@ if [ ! -d ~/.zprezto ] ; then
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
 
-zsh -c "setopt EXTENDED_GLOB;\
-    for rcfile in \"${ZDOTDIR:-$HOME}\"/.zprezto/runcoms/^README.md(.N); do\
-      ln -s \"$rcfile\" \"${ZDOTDIR:-$HOME}/.${rcfile:t}\";\
-    done"
+# todo: is this needed? from https://github.com/sorin-ionescu/prezto
+# zsh -c "setopt EXTENDED_GLOB;\
+#     for rcfile in \"${ZDOTDIR:-$HOME}\"/.zprezto/runcoms/^README.md(.N); do\
+#       ln -s \"$rcfile\" \"${ZDOTDIR:-$HOME}/.${rcfile:t}\";\
+#     done"
 
