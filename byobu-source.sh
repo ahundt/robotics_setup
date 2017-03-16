@@ -29,6 +29,7 @@ fi
 
 cd byobu
 git pull
+automake --add-missing
 autoconf
 ./configure --prefix="$HOME/byobu"
 # original configure command:
