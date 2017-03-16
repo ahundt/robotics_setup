@@ -24,13 +24,18 @@ mkdir -p ~/src
 cd ~/src
 
 if [ ! -d ~/src/byobu ] ; then
-  git clone git://github.com/dustinkirkland/byobu.git byobu
+    git clone git://github.com/dustinkirkland/byobu.git byobu
 fi
 
 cd byobu
 git pull
 automake --add-missing
 autoconf
+
+if [ ! -f ~/src/byobu/ChangeLog ] ; then
+    touch ChangeLog
+fi
+
 ./configure --prefix="$HOME/byobu"
 # original configure command:
 #./configure --prefix="$HOME/byobu"
