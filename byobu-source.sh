@@ -29,12 +29,12 @@ fi
 
 cd byobu
 git pull
-automake --add-missing
-
 
 if [ ! -f ~/src/byobu/ChangeLog ] ; then
     touch ~/src/byobu/ChangeLog
 fi
+
+automake --add-missing
 
 autoconf
 
