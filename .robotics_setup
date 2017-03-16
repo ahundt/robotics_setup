@@ -14,6 +14,13 @@ if [ -d /opt/ros/indigo ] ; then
   source /opt/ros/indigo/setup.zsh
 fi
 
+
+# byobu shell session manager installed from source
+# see byobu-source.sh
+if [ -d $HOME/byobu/bin ] ; then
+  export PATH=$HOME/byobu/bin:$PATH
+fi
+
 # costar_ws github.com/cpaxton/costar_stack
 if [ -d ~/src/costar_ws ] ; then
   source ~/src/costar_ws/devel/setup.zsh
