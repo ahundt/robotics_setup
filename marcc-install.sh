@@ -64,6 +64,9 @@ echo "# https://github.com/jhollowayj/tensorflow_slurm_manager"
 # export SHELL=`which zsh`
 # [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
 
+##################################
+# Command Line Environment Config
+##################################
 
 
 # module load git/2.6.4 boost/1.60.0 cmake/3.5.0 cuda/8.0 cudnn/5.0 python/2.7.12 tensorflow/r1.0 parallel_studio_xe_2015/17.0.1 intel-tbb-oss/intel64/43_20150424oss intel-mpi/2017.1.132
@@ -85,11 +88,6 @@ fi
 cd robotics_setup
 
 ./autoenv.sh
-./tensorflow_slurm_manager.sh
-./tensorpack.sh
-./tensorlayer.sh
-./tf-image-segmentation.sh
-./keras.sh
 #./textmate.sh
 
 mkdir -p $HOME/scratch/datasets
@@ -105,7 +103,17 @@ fi
 # byobu terminal session manager: http://byobu.co/about.html
 #https://launchpad.net/byobu/trunk/5.115/+download/byobu_5.115.orig.tar.gz
 
+##################################
+# Python and tensorflow utilities
+##################################
 
+./py_tools.sh
+./tensorflow_slurm_manager.sh
+./tensorpack.sh
+./tensorlayer.sh
+./sacred.sh
+./tf-image-segmentation.sh
+./keras.sh
 
 
 
