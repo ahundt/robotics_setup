@@ -90,10 +90,10 @@ cd robotics_setup
 ./autoenv.sh
 #./textmate.sh
 
-mkdir -p $HOME/scratch/datasets
+mkdir -p $HOME/work/datasets
 
 if [ ! -d ~/datasets ]; then
-ln -s $HOME/scratch/datasets $HOME/datasets
+ln -s $HOME/work/datasets $HOME/datasets
 fi
 
 ./zsh.sh
