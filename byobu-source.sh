@@ -34,6 +34,7 @@ if [ ! -f ~/src/byobu/ChangeLog ] ; then
     touch ~/src/byobu/ChangeLog
 fi
 
+aclocal
 automake --add-missing
 
 autoconf
