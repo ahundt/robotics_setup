@@ -10,24 +10,43 @@ set -e
 set -u
 set -x
 
+
+
+echo "############################"
+echo "# Install Microsoft coco dataset python code"
+echo "############################"
+echo " This installs python software that supports the coco dataset"
+echo " http://mscoco.org/"
+echo " https://github.com/pdollar/coco"
+echo " To download the dataset run robotics_setup/datasets/coco.sh"
+
+
 mkdir -p ~/datasets
 cd ~/datasets
 
-# Note that by running this download you agree to microsoft's terms and conditions
-# http://mscoco.org/dataset/#download
-curl -O http://msvocds.blob.core.windows.net/coco2014/train2014.zip http://msvocds.blob.core.windows.net/coco2014/val2014.zip http://msvocds.blob.core.windows.net/coco2014/test2014.zip http://msvocds.blob.core.windows.net/coco2015/test2015.zip http://msvocds.blob.core.windows.net/annotations-1-0-3/instances_train-val2014.zip http://msvocds.blob.core.windows.net/annotations-1-0-3/person_keypoints_trainval2014.zip http://msvocds.blob.core.windows.net/annotations-1-0-3/captions_train-val2014.zip http://msvocds.blob.core.windows.net/annotations-1-0-4/image_info_test2014.zip http://msvocds.blob.core.windows.net/annotations-1-0-4/image_info_test2015.zip
 
-
-# install coco python repository https://github.com/pdollar/coco.git
-cd ~/src
+# install https://github.com/pdollar/coco
+cd ~/src/
 if [ ! -d ~/src/coco ]
 then
 	git clone https://github.com/pdollar/coco.git
 fi
 
-cd ~/src/coco
+cd coco
 git pull
-cd PythonAPI
-make install
+# sudo python setup.py install
+python setup.py install --user
+
+# # install coco python repository https://github.com/pdollar/coco.git
+# cd ~/src
+# if [ ! -d ~/src/coco ]
+# then
+# 	git clone https://github.com/pdollar/coco.git
+# fi
+
+# cd ~/src/coco
+# git pull
+# cd PythonAPI
+# make install
 
 cd $DIR
