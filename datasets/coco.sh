@@ -8,32 +8,22 @@ set -x
 
 
 echo "############################"
-echo "# Microsoft coco dataset"
+echo "# Download Microsoft coco dataset"
 echo "############################"
 echo " http://mscoco.org/"
-echo " "
-echo ""
+echo " https://github.com/pdollar/coco"
+echo " To install supporting software run robotics_setup/coco.sh"
 
 
-# install https://github.com/pdollar/coco
-cd ~/src/
-if [ ! -d ~/src/coco ]
-then
-	git clone https://github.com/pdollar/coco.git
-fi
-
-cd coco
-git pull
-# sudo python setup.py install
-python setup.py install --user
 
 if [ ! -d $HOME/datasets ]
-  mkdir
+  mkdir -p $HOME/datasets
 fi
 
-mkdir datasets
 cd $HOME/datasets
 
+# Note that by running this download you agree to microsoft's terms and conditions
+# http://mscoco.org/dataset/#download
 if [ ! -f $HOME/datasets/train2014.zip ] ; then
   curl -O http://msvocds.blob.core.windows.net/coco2014/train2014.zip
   curl -O http://msvocds.blob.core.windows.net/coco2014/val2014.zip
