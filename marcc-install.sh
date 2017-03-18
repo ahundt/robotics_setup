@@ -92,12 +92,16 @@ cd robotics_setup
 
 mkdir -p $HOME/work/datasets
 
-if [ ! -d ~/datasets ]; then
-ln -s $HOME/work/datasets $HOME/datasets
+if [ ! -d $HOME/datasets ]; then
+  ln -s $HOME/work/datasets $HOME/datasets
+fi
+
+if [ ! -f $HOME/src/.env ]; then
+  ln -s .autoenv $HOME/src/.env
 fi
 
 ./zsh.sh
-# byoubu-source.sh installation bug on MARCC: https://bugs.launchpad.net/byobu/+bug/1673232
+# byobu now loaded as a module
 #./byobu-source.sh
 
 # byobu terminal session manager: http://byobu.co/about.html

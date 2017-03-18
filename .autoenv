@@ -1,0 +1,19 @@
+
+# To use this file first install autenv.sh
+# Then copy this file from robotics_setup/.autoenv
+# to ~/src/.env
+#
+# This is the .env file that belongs in ~/src
+# which loads environment variables for the utilities
+# provided in github.com/ahundt/robotics_setup
+# once in the right location it will be loaded
+# by the autoenv app whenever you cd into the
+# ~/src directory.
+
+if [ -d $HOME/src/tf-image-segmentation ]; then
+  export PYTHONPATH=$PYTHONPATH:$HOME/src/tf-image-segmentation
+fi
+
+if [ -d $HOME/src/tensorflow_slurm_manager ]; then
+  export PYTHONPATH=$PYTHONPATH:$HOME/src/tensorflow_slurm_manager
+fi
