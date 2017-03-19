@@ -34,6 +34,7 @@ fi
 
 cd coco
 git pull
+cd PythonAPI
 # sudo python setup.py install
 python setup.py install --user
 
