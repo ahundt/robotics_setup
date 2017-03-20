@@ -9,6 +9,8 @@
 #
 # Each line of the listing.txt file should contain the path from the
 # bucket root to a file.
+#
+# Source: https://sites.google.com/site/brainrobotdata/home/push-dataset
 
 ARGC="$#"
 LISTING_FILE=push_listing.txt
