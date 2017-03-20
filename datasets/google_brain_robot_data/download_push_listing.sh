@@ -15,14 +15,14 @@ LISTING_FILE=push_listing.txt
 if [ "${ARGC}" -ge 1 ]; then
   LISTING_FILE=$1
 fi
-OUTPUT_DIR="./datasets"
+OUTPUT_DIR="$HOME/datasets/google_brain_robot_data/push"
 if [ "${ARGC}" -ge 2 ]; then
   OUTPUT_DIR=$2
 fi
 
 echo "OUTPUT_DIR=$OUTPUT_DIR"
 
-mkdir "${OUTPUT_DIR}"
+mkdir -p "${OUTPUT_DIR}"
 
 function download_file {
   FILE=$1
