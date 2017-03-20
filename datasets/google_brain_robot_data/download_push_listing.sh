@@ -17,7 +17,8 @@ LISTING_FILE=push_listing.txt
 if [ "${ARGC}" -ge 1 ]; then
   LISTING_FILE=$1
 fi
-OUTPUT_DIR="$HOME/datasets/google_brain_robot_data/push"
+# will actually go to $HOME/datasets/google_brain_robot_data/push/*
+OUTPUT_DIR="$HOME/datasets/google_brain_robot_data/"
 if [ "${ARGC}" -ge 2 ]; then
   OUTPUT_DIR=$2
 fi

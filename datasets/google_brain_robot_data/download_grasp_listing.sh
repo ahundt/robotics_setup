@@ -9,13 +9,16 @@
 #
 # Each line of the listing.txt file should contain the path from the
 # bucket root to a file.
+#
+# Source: https://sites.google.com/site/brainrobotdata/home/grasping-dataset
 
 ARGC="$#"
 LISTING_FILE=grasp_listing.txt
 if [ "${ARGC}" -ge 1 ]; then
   LISTING_FILE=$1
 fi
-OUTPUT_DIR="$HOME/datasets/google_brain_robot_data/grasp"
+# will actually go to $HOME/datasets/google_brain_robot_data/grasping/*
+OUTPUT_DIR="$HOME/datasets/google_brain_robot_data/"
 if [ "${ARGC}" -ge 2 ]; then
   OUTPUT_DIR=$2
 fi
