@@ -97,10 +97,6 @@ if [ ! -f $HOME/src/.env ]; then
   ln -s .autoenv $HOME/src/.env
 fi
 
-if [ ! -f $HOME/.zshrc ]; then
-  ln -s .zshrc $HOME/.zshrc
-fi
-
 ./zsh.sh
 # byobu now loaded as a module
 #./byobu-source.sh
