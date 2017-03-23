@@ -1,2 +1,2 @@
 
-source .robotics_setup
+source $HOME/.robotics_setup

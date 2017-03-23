@@ -13,7 +13,7 @@ fi
 
 # Customize to your needs...
 
-source .robotics_setup
+source $HOME/.robotics_setup
 
 # Enable timing.app to track what directories are in use and make terminal titles more useful
 function update_terminal_title() {
