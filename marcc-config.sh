@@ -27,6 +27,6 @@ echo "#"
 echo "# to see list of possible modules run:"
 echo "#     module avail"
 
-module load zsh/5.0.7 gcc slurm sed git zsh tmux byobu cmake autoconf/gcc automake/gcc boost cuda/8.0 cudnn/5.0 python tensorflow parallel_studio_xe_2015 intel-mpi readline ruby
+module load zsh/5.0.7 gcc slurm sed git tmux byobu cmake autoconf/gcc automake/gcc boost cuda/8.0 cudnn/5.1 python tensorflow/cuda-8.0/r1.0 parallel_studio_xe_2015 intel-mpi readline ruby
 # see marcc-install.sh for the list of saved modules
 # module restore robotics_setup_modules
