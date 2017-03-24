@@ -31,3 +31,14 @@ if [ ! -f $HOME/datasets/coco/ILSVRC2014.zip ] ; then
 fi
 
 
+if [ ! -d $HOME/datasets/ILSVRC12 ]
+  mkdir -p $HOME/datasets/ILSVRC12
+fi
+
+cd $HOME/datasets/ILSVRC12
+
+if [ ! -f $HOME/datasets/ILSVRC12 ] ; then
+  curl -O http://dl.caffe.berkeleyvision.org/caffe_ilsvrc12.tar.gz
+fi
+
+
