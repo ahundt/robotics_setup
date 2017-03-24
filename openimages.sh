@@ -13,9 +13,9 @@ set -x
 
 
 
-echo "############################"
-echo "# Google OpenImages Dataset"
-echo "############################"
+echo "#################################"
+echo "# Google OpenImages Dataset Repo"
+echo "#################################"
 echo " https://github.com/openimages/dataset.git"
 
 
@@ -26,7 +26,7 @@ cd ~/datasets
 cd ~/src/
 if [ ! -d ~/src/openimages ]
 then
-	git clone https://github.com/openimages/dataset.git
+	git clone https://github.com/openimages/dataset.git openimages
 fi
 
 cd openimages
