@@ -12,6 +12,6 @@ set -x
 
 
 pip install jupyter --user --upgrade
-
+pip install pillow --user --upgrade
 
 cd $DIR
