@@ -18,7 +18,7 @@ echo " To install supporting software run robotics_setup/coco.sh"
 
 
 
-if [ ! -d $HOME/datasets ]
+if [ ! -d $HOME/datasets ] ; then
   mkdir -p $HOME/datasets/coco
 fi
 
@@ -31,7 +31,7 @@ if [ ! -f $HOME/datasets/coco/ILSVRC2014.zip ] ; then
 fi
 
 
-if [ ! -d $HOME/datasets/ILSVRC12 ]
+if [ ! -d $HOME/datasets/ILSVRC12 ] ; then
   mkdir -p $HOME/datasets/ILSVRC12
 fi
 
