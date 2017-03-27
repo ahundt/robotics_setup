@@ -13,5 +13,6 @@ set -x
 
 pip install jupyter --user --upgrade
 pip install pillow --user --upgrade
+pip install sklearn --user --upgrade
 
 cd $DIR
