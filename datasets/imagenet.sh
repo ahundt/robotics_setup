@@ -28,6 +28,7 @@ cd $HOME/datasets/coco
 # http://mscoco.org/dataset/#download
 if [ ! -f $HOME/datasets/coco/ILSVRC2014.zip ] ; then
   curl -O http://mscoco.org/static/annotations/ILSVRC2014.zip
+  unzip ILSVRC2014.zip
 fi
 
 
@@ -39,6 +40,7 @@ cd $HOME/datasets/ILSVRC12
 
 if [ ! -f $HOME/datasets/ILSVRC12 ] ; then
   curl -O http://dl.caffe.berkeleyvision.org/caffe_ilsvrc12.tar.gz
+  tar -xvzf caffe_ilsvrc12.tar.gz
 fi
 
 
