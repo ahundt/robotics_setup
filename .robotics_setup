@@ -94,3 +94,10 @@ fi
 if [ -f ~/Projects/config/env.sh ] ; then
     source ~/Projects/config/env.sh
 fi
+
+# load linuxbrew http://linuxbrew.sh/
+if [ -d $HOME/.linuxbrew ]; then
+  export PATH="/home-1/ahundt1@jhu.edu/.linuxbrew/bin:$PATH"
+  export MANPATH="/home-1/ahundt1@jhu.edu/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="/home-1/ahundt1@jhu.edu/.linuxbrew/share/info:$INFOPATH"
+fi
