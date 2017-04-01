@@ -97,7 +97,8 @@ fi
 
 # load linuxbrew http://linuxbrew.sh/
 if [ -d $HOME/.linuxbrew ]; then
-  export PATH="/home-1/ahundt1@jhu.edu/.linuxbrew/bin:$PATH"
-  export MANPATH="/home-1/ahundt1@jhu.edu/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="/home-1/ahundt1@jhu.edu/.linuxbrew/share/info:$INFOPATH"
+  export PATH="$HOME/.linuxbrew/bin:$PATH"
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  export PATH="$HOME/.linuxbrew/sbin:$PATH
 fi
