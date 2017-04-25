@@ -3,6 +3,14 @@ set -e
 set -x
 set -u
 
+# DOCKER
+# Manual Steps:
+# https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo
+# add the current user to the docker group
+#    sudo gpasswd -a ${USER} docker
+#    sudo service docker restart
+
+
 if [ -x "$(command -v docker)" ] ; then
     echo "docker seems to already be installed, so we will just run the update steps, if there is a problem run steps manually to avoid cluttering your apt repositories"
 
