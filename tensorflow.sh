@@ -49,7 +49,7 @@ fi
 
 cd tensorflow
 git pull
-git checkout r1.0
+git checkout r1.1
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
@@ -66,7 +66,7 @@ export TF_NEED_HDFS=1
 export TF_NEED_OPENCL=0
 export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 
-# answer yes to any config questions not covered by the above exports, run the configuration 
+# answer yes to any config questions not covered by the above exports, run the configuration
 yes "" | ./configure
 
 # To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
