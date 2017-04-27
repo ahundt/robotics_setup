@@ -26,6 +26,11 @@ echo "https://alliseesolutions.wordpress.com/2016/09/08/install-gpu-tensorflow-f
 echo "Additional possible source:"
 echo "https://www.nvidia.com/object/gpu-accelerated-applications-tensorflow-installation.html"
 echo "https://github.com/tensorflow/tensorflow/issues/7449#issuecomment-282855210"
+echo ""
+echo "Getting a permission denied error? Try this:"
+echo "    sudo chmod o+r /usr/local/lib/python2.7/dist-packages/"
+echo "Another backup last step until I find a better workaround (you shouldn't use sudo pip):"
+echo "    sudo pip install --upgrade /tmp/tensorflow_pkg/tensorflow-*"
 
 sudo apt update
 
