@@ -12,8 +12,17 @@ set -u
 set -x
 
 
-###############
-# bullet install
+
+echo "###############################################"
+echo "# Bullet Physics and Robot Simulator"
+echo "###############################################"
+echo "# https://github.com/bulletphysics/bullet3"
+echo "# http://pybullet.org/"
+echo "#"
+echo "# pybullet users may just want to install manually with pip:"
+echo "# pip install pybullet"
+
+sudo apt-get install libglew-dev
 
 cd ~/src
 if [ ! -d ~/src/bullet ]
