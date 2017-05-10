@@ -1,5 +1,6 @@
 # Ubuntu Setup Scripts for Robotics & Machine Learning
 
+![Robotics Automated Setup](https://upload.wikimedia.org/wikipedia/commons/5/5d/Advanced_Automation_for_Space_Missions_figure_5-29.gif)
 
 This contains a set of linux setup scripts.
 Some manual steps are still involved but many are automated.
