@@ -6,6 +6,16 @@ set -e
 set -u
 set -x
 
+
+echo "###############################################"
+echo "# CamOdoCal - Calibration Algorithms"
+echo "###############################################"
+echo "#"
+echo "# https://github.com/hengli/camodocal"
+echo "# also see: https://github.com/jhu-lcsr/handeye_calib_camodocal"
+echo "#"
+echo "# Extra steps: this runs ceres.sh first!"
+
 sh ceres.sh
 sudo apt install -y libgoogle-glog-dev
 
