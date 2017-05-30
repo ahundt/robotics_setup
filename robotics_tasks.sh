@@ -35,13 +35,12 @@ echo "# formerly github.com/jorisv/tasks"
 cd ~/src
 mkdir -p jrl-umi3218
 
-location="ahundt" # github.com/ahundt/Tasks # I have some patches here
-#location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
-#location="jorisv" # github.com/jorisv/Tasks # original repository location
+location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
+#location="ahundt" # github.com/ahundt/Tasks # I have some patches here
+#location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
 
-# TODO(ahundt) switch back to master once standardized cmake changes are merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
-# branch="master"
-branch="package" # this branch adds standard cmake package configuration
+# modify if using a different branch
+branch="master"
 
 # install https://github.com/jorisv/Eigen3ToPython
 # note: still putting it in jrl-umi3218 for consistency
