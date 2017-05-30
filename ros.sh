@@ -15,7 +15,11 @@ set -x
 ##########################
 # To find available packages, use:
 #
-# apt-cache search ros-kinetic
+#     apt-cache search ros-kinetic
+#
+# On mac see:
+#
+#     https://github.com/mikepurvis/ros-install-osx/
 
 . /etc/lsb-release # get ubuntu version number
 
@@ -53,7 +57,7 @@ if [ "$DISTRIB_RELEASE" == "14.04" ]; then
     sudo rosdep init
     rosdep update
     sudo apt install python-catkin-tools libgflags-dev
-    
+
 
     # If using bash:
     #

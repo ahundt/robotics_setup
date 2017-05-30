@@ -6,9 +6,20 @@ set -e
 set -u
 set -x
 
-sudo apt update
-sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
-sudo apt install -y libboost-all-dev libeigen3-dev doxygen
+# os specific setup
+OS=`uname`
+case $OS in
+	'Linux')
+		sh python.sh
+		sudo apt update
+		sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
+		sudo apt install -y libboost-all-dev libeigen3-dev doxygen
+	;;
+	*) ;;
+	'Darwin')
+		OS='Mac'
+	;;
+esac
 
 # set to "ON" to build python bindings and "OFF" to disable them
 # Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
