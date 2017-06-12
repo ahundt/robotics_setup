@@ -2,7 +2,7 @@
 # Qt Libraries http://qt.io
 
 cd ~/Downloads
-curl -O http://download.qt.io/official_releases/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run
+wget http://download.qt.io/official_releases/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run
 chmod +x qt-opensource-linux-x64-5.8.0.run
 ./qt-opensource-linux-x64-5.8.0.run
 
