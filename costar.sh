@@ -61,6 +61,10 @@ sudo apt install -y qt4-designer qt4-dev-tools python-qt4 python-qt4-dev python-
 # many of these are required, ${ROSVERSION} will be indigo, kinetic as appropriate
 sudo apt install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
 
+# ceres solver is needed for handeye_calib_camodocal
+# which performs hand eye calibration
+./ceres.sh
+
 if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
 	source /opt/ros/${ROSVERSION}/setup.bash
 fi
@@ -79,9 +83,11 @@ if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	git clone https://github.com/jhu-lcsr/robotiq.git -b ${ROSVERSION}-devel
 	git clone https://github.com/jbohren/rqt_dot.git
 	git clone https://github.com/sniekum/ar_track_alvar.git -b ${ROSVERSION}-devel
-	git clone https://github.com/sniekum/ar_track_alvar_msgs.git
+	# ar_track_alvar_msgs is directly in ar_track_alvar, but is here for reference
+	# git clone https://github.com/sniekum/ar_track_alvar_msgs.git
 	git clone https://github.com/gt-ros-pkg/hrl-kdl.git
-	git clone https://github.com/cpaxton/xdot.git
+	# xdot has been moved directly into costar_stack, but is here for reference
+	#git clone https://github.com/cpaxton/xdot.git
 	#git clone https://github.com/ThomasTimm/ur_modern_driver.git # This is the upstream location
 	git clone https://github.com/ahundt/ur_modern_driver.git -b ${ROSVERSION}-devel
 	# note: there are also binary versions on 14.04
@@ -94,6 +100,9 @@ if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	# Optional for vision utilities
 	git clone https://github.com/ahundt/ObjRecRANSAC.git objrecransac
 	# git clone https://github.com/tum-mvp/ObjRecRANSAC.git objrecransac # This is the upstream location
+
+	# https://github.com/jhu-lcsr/handeye_calib_camodocal
+	git clone git@github.com:jhu-lcsr/handeye_calib_camodocal.git
 fi
 
 if [ -e ../devel/setup.bash ]; then
@@ -110,11 +119,7 @@ cd ../rqt_dot
 git pull
 cd ../ar_track_alvar
 git pull
-cd ../ar_track_alvar_msgs
-git pull
 cd ../hrl-kdl
-git pull
-cd ../xdot
 git pull
 cd ../ur_modern_driver
 git pull
@@ -127,6 +132,8 @@ if [ "$DISTRIB_RELEASE" = "16.04" ]; then
 fi
 
 cd ../objrecransac
+git pull
+cd ../handeye_calib_camodocal
 git pull
 cd ..
 
