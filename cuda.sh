@@ -59,9 +59,9 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # NVIDIA CUDA
 sudo apt install -y linux-headers-$(uname -r)
 
-if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb ]
+if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb ]
 then
-  curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
+  curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 fi
 
 # Note that if you are having problems with these steps, manually
@@ -78,7 +78,7 @@ fi
 
 # file:///var/cuda...
 
-sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64.deb
+sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 sudo apt update
 sudo apt install -y cuda
 

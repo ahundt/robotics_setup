@@ -54,7 +54,7 @@ fi
 
 cd tensorflow
 git pull
-git checkout r1.1
+git checkout r1.2
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
@@ -64,7 +64,7 @@ echo ""
 echo "###########################################################################################################"
 export TF_NEED_CUDA=1
 export TF_CUDA_VERSION=8.0
-export TF_CUDNN_VERSION=5
+export TF_CUDNN_VERSION=6
 export CUDA_TOOLKIT_PATH=/usr/local/cuda
 export TF_NEED_GCP=1
 export TF_NEED_HDFS=1
