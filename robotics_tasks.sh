@@ -2,6 +2,17 @@
 # Save script's current directory
 DIR=$(pwd)
 
+
+echo "###############################################"
+echo "# Robotics Tasks Library https://github.com/jrl-umi3218/tasks"
+echo "###############################################"
+echo "# Tasks is library for real time control of robots and kinematic"
+echo "# trees using constrained optimization. It has been used extensively"
+echo "# to control humanoid robots such as HOAP-3, HRP-2, HRP-4 and Atlas."
+echo "#"
+echo "# Make sure eigen3 is installed before running this script"
+
+
 set -e
 set -u
 set -x
