@@ -32,7 +32,7 @@ fi
 if [ ! -f ~/src/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz ]
 then
     cd ~/src
-    curl -O http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz
+    wget http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz
 fi
 
 if [ ! -d ~/src/V-REP_PRO_EDU_V3_4_0_Linux ]
