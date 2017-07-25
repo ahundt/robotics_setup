@@ -21,7 +21,6 @@ sudo apt-get install -y \
     cmake \
     g++ \
     git \
-    google-mock \
     libboost-all-dev \
     libcairo2-dev \
     libeigen3-dev \
@@ -34,6 +33,8 @@ sudo apt-get install -y \
     protobuf-compiler \
     python-sphinx
 
+# install googletest from source
+./googletest.sh
 # Install ROS
 ./ros.sh
 
