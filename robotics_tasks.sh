@@ -2,6 +2,17 @@
 # Save script's current directory
 DIR=$(pwd)
 
+
+echo "###############################################"
+echo "# Robotics Tasks Library https://github.com/jrl-umi3218/tasks"
+echo "###############################################"
+echo "# Tasks is library for real time control of robots and kinematic"
+echo "# trees using constrained optimization. It has been used extensively"
+echo "# to control humanoid robots such as HOAP-3, HRP-2, HRP-4 and Atlas."
+echo "#"
+echo "# Make sure eigen3 is installed before running this script"
+
+
 set -e
 set -u
 set -x
@@ -27,21 +38,8 @@ PYTHON_BINDING="OFF"
 
 if [ $PYTHON_BINDING -eq "ON" ]
 then
-	sh python.sh
-	pip install pybindgen
+	pip install cython
 fi
-
-
-
-echo "############################"
-echo "# Tasks Library"
-echo "############################"
-echo "# Robot Constrained Optimization"
-echo "# for real-time control "
-echo "# of kinematics trees"
-echo ""
-echo "# github.com/jrl-umi3218/tasks"
-echo "# formerly github.com/jorisv/tasks"
 
 cd ~/src
 mkdir -p jrl-umi3218
@@ -63,14 +61,19 @@ then
 	git clone --recursive https://github.com/${location}/Eigen3ToPython.git
 fi
 
-cd Eigen3ToPython
-git pull
-git checkout ${branch}
-mkdir -p build
-cd build
-cmake -DPYTHON_DEB_LAYOUT=ON -DCMAKE_BUIlD_TYPE=Release ..
-make -j && sudo make install
 
+
+
+if [ $PYTHON_BINDING -eq "ON" ]
+then
+    cd Eigen3ToPython
+    git pull
+    git checkout ${branch}
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUIlD_TYPE=Release ..
+    make -j && sudo make install
+fi
 
 
 
@@ -86,7 +89,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_DEB_LAYOUT=ON -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
@@ -104,7 +107,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_DEB_LAYOUT=ON  -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake ..  -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
@@ -148,7 +151,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake ..
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
