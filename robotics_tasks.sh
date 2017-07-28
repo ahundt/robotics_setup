@@ -64,18 +64,13 @@ then
 	git clone --recursive https://github.com/${location}/Eigen3ToPython.git
 fi
 
-
-
-
 if [ $PYTHON_BINDING == "ON" ]
 then
     cd Eigen3ToPython
     git pull
     git checkout ${branch}
-    mkdir -p build
-    cd build
-    cmake -DCMAKE_BUIlD_TYPE=Release ..
-    make -j && sudo make install
+    pip install -r requirements.txt
+    pip install .
 fi
 
 
