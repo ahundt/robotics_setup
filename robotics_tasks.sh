@@ -98,24 +98,6 @@ make -j && sudo make install
 
 
 
-# install https://github.com/jrl-umi3218/mc_rbdyn_urdf
-cd ~/src/jrl-umi3218
-if [ ! -d ~/src/jrl-umi3218/mc_rbdyn_urdf ]
-then
-	git clone --recursive https://github.com/${location}/mc_rbdyn_urdf.git
-fi
-
-cd mc_rbdyn_urdf
-git pull
-git checkout ${branch}
-mkdir -p build
-cd build
-cmake ..  -DPYTHON_BINDING=${PYTHON_BINDING}
-make -j && sudo make install
-
-
-
-
 # install https://github.com/jrl-umi3218/RBDyn
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/RBDyn ]
@@ -192,6 +174,24 @@ git checkout ${branch}
 mkdir -p build
 cd build
 cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
+make -j && sudo make install
+
+
+
+
+# install https://github.com/jrl-umi3218/mc_rbdyn_urdf
+cd ~/src/jrl-umi3218
+if [ ! -d ~/src/jrl-umi3218/mc_rbdyn_urdf ]
+then
+	git clone --recursive https://github.com/${location}/mc_rbdyn_urdf.git
+fi
+
+cd mc_rbdyn_urdf
+git pull
+git checkout ${branch}
+mkdir -p build
+cd build
+cmake ..  -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
