@@ -37,8 +37,8 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 # sudo dpkg -i ~/Downloads/libcudnn5_5.1.5-1+cuda8.0_amd64.deb
 # sudo dpkg -i ~/Downloads/libcudnn5-dev_5.1.5-1+cuda8.0_amd64.deb
 # sudo dpkg -i ~/Downloads/libcudnn5-doc_5.1.5-1+cuda8.0_amd64.deb
-# sudo apt update -y
-# sudo apt install -y libcudnn5 libcudnn5-dev libcudnn5-doc
+# sudo apt-get update -y
+# sudo apt-get install -y libcudnn5 libcudnn5-dev libcudnn5-doc
 
 #https://stackoverflow.com/questions/16182620/commenting-out-lines-with-matching-string
 #https://github.com/BVLC/caffe/wiki/GeForce-GTX-1080,---CUDA-8.0,---Ubuntu-16.04,---Caffe

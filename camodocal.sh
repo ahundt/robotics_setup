@@ -17,7 +17,7 @@ echo "#"
 echo "# Extra steps: this runs ceres.sh first!"
 
 sh ceres.sh
-sudo apt install -y libgoogle-glog-dev
+sudo apt-get install -y libgoogle-glog-dev
 
 echo "HACK TO GET AROUND CMAKE BUILD ERROR IN UBUNTU 16.04:"
 echo "sudo ln -s /usr/lib/x86_64-linux-gnu/libglog.so /usr/local/lib/"

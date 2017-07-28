@@ -31,16 +31,16 @@ echo "#"
 # branch="2.4.13.2" # install opencv 2.x from source
 branch="ppa" # install from nonsecure ppa (default)
 
-sudo apt install -y build-essential
-sudo apt install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
-sudo apt install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+sudo apt-get install -y build-essential
+sudo apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
 
 
 
 if [ $branch = "ppa"]; then
-	
+
 	sudo add-apt-repository --yes ppa:xqms/opencv-nonfree
-	sudo apt-get update 
+	sudo apt-get update
 	sudo apt-get install libopencv-nonfree-dev
 else
 	# TODO(ahundt) finish writing compilation from source and test

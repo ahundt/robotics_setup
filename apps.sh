@@ -36,7 +36,7 @@ then
   curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb --output ~/Downloads/google-chrome-stable_current_amd64.deb
 fi
 
-sudo apt install -y libxss1 libgconf2-4 libappindicator1 libindicator7 libpango1.0-0 libpangox-1.0-0
+sudo apt-get install -y libxss1 libgconf2-4 libappindicator1 libindicator7 libpango1.0-0 libpangox-1.0-0
 sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
 
 cd $DIR

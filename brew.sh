@@ -16,9 +16,9 @@ set -u
 set -x
 
 
-sudo apt -y update
+sudo apt-get -y update
 # minimal linuxbrew requirements
-sudo apt install -y build-essential curl git python-setuptools ruby
+sudo apt-get install -y build-essential curl git python-setuptools ruby
 
 #
 # Check if Homebrew is installed
@@ -39,7 +39,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
 	FILE=~/.zshrc
 	grep -q "/.linuxbrew/bin" "$FILE" || echo "export PATH=\"\$HOME/.linuxbrew/bin:\$PATH\"" >> "$FILE"
 	#grep -q "$MANPATH" "$FILE" || echo "$MANPATH" >> "$FILE"
-	#grep -q "$INFOPATH" "$FILE" || echo "$INFOPATH" >> "$FILE"                                   
+	#grep -q "$INFOPATH" "$FILE" || echo "$INFOPATH" >> "$FILE"
         ;;
       'FreeBSD')
         OS='FreeBSD'
@@ -48,7 +48,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
       'WindowsNT')
         OS='Windows'
         ;;
-      'Darwin') 
+      'Darwin')
         OS='Mac'
         /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
         ;;
@@ -57,7 +57,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
         ;;
       'AIX') ;;
       *) ;;
-    esac    
+    esac
 else
     brew update
 fi

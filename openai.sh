@@ -13,10 +13,10 @@ echo "############################"
 echo ""
 echo "OpenAI  https://github.com/openai."
 
-sudo apt update
+sudo apt-get update
 pip install numpy
-sudo apt install -y golang libjpeg-turbo8-dev make
-sudo apt install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+sudo apt-get install -y golang libjpeg-turbo8-dev make
+sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
 
 cd ~/src
 mkdir -p openai

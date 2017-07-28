@@ -43,15 +43,15 @@ echo "# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia"
 # http://www.nvidia.com/Download/index.aspx
 
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
-sudo apt -y update
-sudo apt install -y nvidia-367 mesa-common-dev freeglut3-dev
+sudo apt-get -y update
+sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
 
-sudo apt -y update
-sudo apt -y upgrade
+sudo apt-get -y update
+sudo apt-get -y upgrade
 
 sh cuda.sh
 
-# stop the window manager 
+# stop the window manager
 # you probably want to run this in ctrl + alt + f1 mode
 # sudo service lightdm stop
 
@@ -61,8 +61,8 @@ sh cuda.sh
 
 # alternative older instructions
 #sudo add-apt-repository -y ppa:graphics-drivers/ppa
-#sudo apt -y update
-#sudo apt install -y nvidia-367 mesa-common-dev freeglut3-dev
+#sudo apt-get -y update
+#sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
 
 
 cd $DIR

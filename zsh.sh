@@ -34,7 +34,7 @@ fi
 
 if [ ! -d `pwd`/.linuxbrew ] ; then
   if [ -x "$(command -v apt)" ]; then
-    sudo apt install -y zsh
+    sudo apt-get install -y zsh
   fi
 fi
 

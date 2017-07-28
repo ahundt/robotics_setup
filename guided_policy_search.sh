@@ -6,13 +6,13 @@ set -e
 set -u
 set -x
 
-sudo apt update
-sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
-sudo apt install -y libboost-all-dev libeigen3-dev doxygen
+sudo apt-get update
+sudo apt-get install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
+sudo apt-get install -y libboost-all-dev libeigen3-dev doxygen
 
 sh python.sh
 
-sudo apt install -y libprotobuf-dev protobuf-compiler libboost-all-dev
+sudo apt-get install -y libprotobuf-dev protobuf-compiler libboost-all-dev
 
 pip install protobuf
 pip install pybindgen
@@ -50,10 +50,10 @@ git checkout ${branch}
 
 # Here are the instructions for setting up Pybox2D.
 # https://github.com/pybox2d/pybox2d
-sudo apt install -y build-essential python-dev swig python-pygame subversion python-box2d
+sudo apt-get install -y build-essential python-dev swig python-pygame subversion python-box2d
 
 # Steps for mujoco setup
-sudo apt install -y openscenegraph libopenscenegraph-dev
+sudo apt-get install -y openscenegraph libopenscenegraph-dev
 
 # NOTE: MANUAL STEPS FOR MUJOCO LICENSE SEE http://rll.berkeley.edu/gps/
 if [ -d ~/src/mujoco/mjpro131 ]
@@ -66,7 +66,7 @@ fi
 
 
 # ROS SETUP WITH CAFFE http://rll.berkeley.edu/gps/
-sudo apt install -y ros-kinetic-pr2-common ros-kinetic-pr2-dashboard-aggregator ros-kinetic-pr2-description ros-kinetic-pr2-machine ros-kinetic-pr2-msgs ros-kinetic-gazebo-ros-control ros-kinetic-moveit-ros-control-interface ros-kinetic-moveit-sim-controller  
+sudo apt-get install -y ros-kinetic-pr2-common ros-kinetic-pr2-dashboard-aggregator ros-kinetic-pr2-description ros-kinetic-pr2-machine ros-kinetic-pr2-msgs ros-kinetic-gazebo-ros-control ros-kinetic-moveit-ros-control-interface ros-kinetic-moveit-sim-controller
 
 if [ -d /opt/ros/kinetic ]
 then

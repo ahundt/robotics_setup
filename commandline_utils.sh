@@ -15,14 +15,14 @@ echo "############################"
 echo ""
 echo "@author Andrew Hundt <ATHundt@gmail.com>"
 echo ""
-sudo apt update
-sudo apt install -y htop vim
+sudo apt-get update
+sudo apt-get install -y htop vim
 
 echo "#################"
 echo "# ack (ack-grep)"
 echo "#################"
 echo "http://beyondgrep.com/"
-sudo apt install -y ack-grep
+sudo apt-get install -y ack-grep
 
 
 
@@ -38,7 +38,7 @@ echo "Installs tmux persistent multiplexed console,"
 echo "so when you lose internet with ssh your programs keep running"
 echo ""
 echo "https://help.ubuntu.com/community/Repositories/Ubuntu"
-sudo apt install -y tmux
+sudo apt-get install -y tmux
 
 
 
@@ -46,13 +46,13 @@ echo "###############"
 echo "# byobu        "
 echo "###############"
 echo ""
-echo "tool that makes life with tmux better" 
+echo "tool that makes life with tmux better"
 echo "see comments of this file for additional setup steps"
 echo ""
 echo "https://www.digitalocean.com/community/tutorials/how-to-install-and-use-byobu-for-terminal-management-on-ubuntu-16-04"
 echo "https://codeyarns.com/2016/01/28/how-to-use-mouse-in-byobu/"
 
-sudo apt install -y byobu
+sudo apt-get install -y byobu
 
 echo ""
 echo "Additional byobu manual setup steps:"
@@ -61,7 +61,7 @@ echo " byobu-enable"
 echo " byobu-select-backend"
 echo ""
 echo "# also set default shell to zsh: https://askubuntu.com/questions/296377/how-do-i-change-the-default-shell-used-in-byobu-tmux"
-echo "cp -a robotics-setup/.byobu ~/.byobu folder" 
+echo "cp -a robotics-setup/.byobu ~/.byobu folder"
 echo ""
 echo "# OR Put the following in your $HOME/.byobu/.tmux.conf:"
 echo ""

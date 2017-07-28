@@ -1,4 +1,4 @@
 
 
 # vlc media player
-sudo apt install vlc
+sudo apt-get install vlc

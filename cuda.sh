@@ -47,7 +47,7 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # cuda 7.5 did not seem to want to work w/ the 367 driver. Potentially I could have fixed this. Instead I decided to install cuda 8.0 rc. However, using the deb file installation approach automatically installed the nvidia 361 drivers, which caused a conflict that was very difficult to remove. This is the source of the "could not insert 'nvidia_361_uvm'" error.
 # Also, cuda 8.0 rc requires you to reinstall nvidia drivers anyway, which I did not realize.
 # To repair:
-# sudo apt purge nvidia* to remove 361 and its assorted packages.
+# sudo apt-get purge nvidia* to remove 361 and its assorted packages.
 # get to pure shell w/ ctrl+alt+f2, `sudo service lightdm stop`, and use the 367 runfile w/ the --uninstall argument to uninstall the 367 drivers. i.e. sudo sh nvidia367.xx.run --uninstall
 # w/ lightdm shutdown, reinstall 367 drivers with the runfile. i.e. sudo sh nvidia367.xx.run
 # install cuda-8.0 rc w/ its runfile, which gives you the option to install the 361 drivers. When presented with it, choose no. i.e. sudo sh cuda-8.0.x.x.run
@@ -57,7 +57,7 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # http://yangcha.github.io/GTX-1080/
 
 # NVIDIA CUDA
-sudo apt install -y linux-headers-$(uname -r)
+sudo apt-get install -y linux-headers-$(uname -r)
 
 if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb ]
 then
@@ -79,8 +79,8 @@ fi
 # file:///var/cuda...
 
 sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
-sudo apt update
-sudo apt install -y cuda
+sudo apt-get update
+sudo apt-get install -y cuda
 
 
 sh cudnn.sh

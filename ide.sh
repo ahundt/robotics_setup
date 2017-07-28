@@ -29,8 +29,8 @@ echo "# https://wiki.ubuntu.com/ubuntu-make"
 echo ""
 
 sudo add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make
-sudo apt update
-sudo apt install -y ubuntu-make
+sudo apt-get update
+sudo apt-get install -y ubuntu-make
 
 
 echo "####################"

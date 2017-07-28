@@ -1,6 +1,6 @@
 # /bin/bash
 
-sudo apt install -y git kdiff3
+sudo apt-get install -y git kdiff3
 
 # https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
 git config --global user.name "Andrew Hundt"

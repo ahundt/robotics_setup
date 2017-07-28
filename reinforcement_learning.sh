@@ -37,7 +37,7 @@ echo ""
 echo "The Arcade Learning Environment (ALE) -- a platform for AI research.."
 echo ""
 
-sudo apt install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake
+sudo apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake
 
 
 # install https://github.com/mgbellemare/Arcade-Learning-Environment

@@ -15,10 +15,10 @@ set -x
 
 
 # source: https://github.com/ahundt/grl/blob/master/INSTALL.md
-sudo apt update
-sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui
-sudo apt install -y libboost-all-dev libeigen3-dev libgoogle-glog-dev
-sudo apt install -y doxygen libceres-dev
+sudo apt-get update
+sudo apt-get install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui
+sudo apt-get install -y libboost-all-dev libeigen3-dev libgoogle-glog-dev
+sudo apt-get install -y doxygen libceres-dev
 
 . /etc/lsb-release # get ubuntu version number
 # only install

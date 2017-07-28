@@ -32,16 +32,16 @@ echo "    sudo chmod o+r /usr/local/lib/python2.7/dist-packages/"
 echo "Another backup last step until I find a better workaround (you shouldn't use sudo pip):"
 echo "    sudo pip install --upgrade /tmp/tensorflow_pkg/tensorflow-*"
 
-sudo apt update
+sudo apt-get update
 
-sudo apt install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev libcupti-dev
+sudo apt-get install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev libcupti-dev
 
 
 echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
 curl https://storage.googleapis.com/bazel-apt/doc/apt-key.pub.gpg | sudo apt-key add -
-sudo apt update
-sudo apt install -y bazel
-sudo apt upgrade bazel
+sudo apt-get update
+sudo apt-get install -y bazel
+sudo apt-get upgrade bazel
 
 
 

@@ -28,11 +28,11 @@ if [ "$DISTRIB_RELEASE" == "16.04" ]; then
     # source: http://wiki.ros.org/kinetic/Installation/Ubuntu
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
     sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116
-    sudo apt update
-    sudo apt install ros-kinetic-desktop-full
-    sudo apt install python-rosinstall
+    sudo apt-get update
+    sudo apt-get install ros-kinetic-desktop-full
+    sudo apt-get install python-rosinstall
 
-    sudo apt install python-catkin-tools libgflags-dev
+    sudo apt-get install python-catkin-tools libgflags-dev
 
     # If using bash:
     #
@@ -51,12 +51,12 @@ if [ "$DISTRIB_RELEASE" == "14.04" ]; then
     # source: http://wiki.ros.org/kinetic/Installation/Ubuntu
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
     sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-    sudo apt update
-    sudo apt install ros-indigo-desktop-full
-    sudo apt install python-rosinstall
+    sudo apt-get update
+    sudo apt-get install ros-indigo-desktop-full
+    sudo apt-get install python-rosinstall
     sudo rosdep init
     rosdep update
-    sudo apt install python-catkin-tools libgflags-dev
+    sudo apt-get install python-catkin-tools libgflags-dev
 
 
     # If using bash:

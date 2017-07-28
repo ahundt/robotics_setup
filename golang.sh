@@ -12,14 +12,14 @@ echo "############################"
 echo "#"
 echo "# golang.com"
 
-sudo apt install -y golang
+sudo apt-get install -y golang
 
 sudo mkdir -m 0700 -p /usr/local/go
 mkdir -m 7700 -p $HOME/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# location of goroot: 
+# location of goroot:
 # go env GOROOT
 
 cd $DIR

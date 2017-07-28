@@ -21,14 +21,14 @@ set -u
 set -x
 
 
-sudo apt -y update
+sudo apt-get -y update
 # minimal linuxbrew requirements
-sudo apt install -y build-essential curl git python-setuptools ruby
+sudo apt-get install -y build-essential curl git python-setuptools ruby
 
 # additional useful tools that should probably be owned by the OS rather than linuxbrew
-sudo apt install -y screen tree sudo ssh x11-apps synaptic build-essential git
+sudo apt-get install -y screen tree sudo ssh x11-apps synaptic build-essential git
 
-sudo apt install -y linux-headers-$(uname -r)
+sudo apt-get install -y linux-headers-$(uname -r)
 
 cd ~
 
@@ -47,7 +47,7 @@ wireless_pkg=false
 if [ $wireless_pkg ] ; then
 
 	# package based USB wireless adapter install instructions
-	sudo apt install rtl8812au-dkms
+	sudo apt-get install rtl8812au-dkms
 
 else
         # compile wireless driver from source

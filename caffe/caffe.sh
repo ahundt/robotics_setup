@@ -17,7 +17,7 @@ set -x
 # 16.04 official caffe instructions: https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide
 # adapted from: https://hub.docker.com/r/tleyden5iwx/caffe-gpu-master/~/dockerfile/
 
-sudo apt update && sudo apt install -y \
+sudo apt-get update && sudo apt-get install -y \
   bc \
   cmake \
   curl \

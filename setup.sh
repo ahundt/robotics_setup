@@ -4,7 +4,7 @@
 # with dependencies on homebrew or linuxbrew depending on the OS being used
 # @author Andrew Hundt <ATHundt@gmail.com>
 #
-# 
+#
 # One step setup command for robonetracker:
 # bash <(curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/robonetracker.sh)
 
@@ -17,12 +17,12 @@ set -e
 set -u
 set -x
 
-sudo apt -y update
+sudo apt-get -y update
 # minimal linuxbrew requirements
-sudo apt install -y build-essential curl git python-setuptools ruby
+sudo apt-get install -y build-essential curl git python-setuptools ruby
 
 # additional useful tools that should probably be owned by the OS rather than linuxbrew
-sudo apt install -y zsh screen tree sudo ssh x11-apps synaptic build-essential git linux-headers-generic cmake cmake-curses-gui
+sudo apt-get install -y zsh screen tree sudo ssh x11-apps synaptic build-essential git linux-headers-generic cmake cmake-curses-gui
 
 cd ~
 
@@ -54,7 +54,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
         curl -fsSL https://raw.githubusercontent.com/ahundt/homebrew-robotics/master/linuxbrew.sh | bash /dev/stdin
         export PATH="$PATH:$HOME/.linuxbrew/bin"
 	export MANPATH="$MANPATH:$HOME/.linuxbrew/share/man"
-	export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"                                    
+	export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"
         ;;
       'FreeBSD')
         OS='FreeBSD'
@@ -63,7 +63,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
       'WindowsNT')
         OS='Windows'
         ;;
-      'Darwin') 
+      'Darwin')
         OS='Mac'
         /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
         ;;
@@ -72,7 +72,7 @@ if  ! [ -x "$(command -v brew)" ] ; then
         ;;
       'AIX') ;;
       *) ;;
-    esac    
+    esac
 else
     brew update
 fi
