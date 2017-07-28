@@ -32,7 +32,6 @@ fi
 ./ceres.sh
 ./flatbuffers.sh
 ./spdlog.sh
-./camodocal.sh
 ./robotics_tasks.sh
 ./trtk.sh
 ./vrep.sh
@@ -59,7 +58,6 @@ cmake .. -DBUILD_ALL_MODULES=ON -DBUILD_DOCUMENTATION=ON -DBUILD_EXAMPLE=ON \
  -DMODULE_grl=ON                  \
  -DMODULE_robone=ON               \
  -DMODULE_roboneprivate=ON        \
- -DWITH_CAMODOCAL=ON              \
  -DWITH_Ceres=ON                  \
  -DWITH_CisstNetlib=OFF           \
  -DWITH_Eigen3=ON                 \
