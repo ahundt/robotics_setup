@@ -22,13 +22,16 @@ OS=`uname`
 case $OS in
 	'Linux')
 		sh python.sh
-		sudo apt update
-		sudo apt install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
-		sudo apt install -y libboost-all-dev libeigen3-dev doxygen
+		sudo apt-get update
+		sudo apt-get install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
+		sudo apt-get install -y libboost-all-dev libeigen3-dev doxygen
+		# last dependency is for mc_rbdyn_urdf urdf robot definition format reading only
+		sudo apt-get install -y libtinyxml2-dev
 	;;
 	*) ;;
 	'Darwin')
 		OS='Mac'
+		brew install tinyxml2
 	;;
 esac
 
