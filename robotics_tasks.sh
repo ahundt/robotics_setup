@@ -39,7 +39,7 @@ esac
 # Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
 PYTHON_BINDING="ON"
 
-if [ $PYTHON_BINDING -eq "ON" ]
+if [ $PYTHON_BINDING == "ON" ]
 then
 	pip install cython
 fi
@@ -67,7 +67,7 @@ fi
 
 
 
-if [ $PYTHON_BINDING -eq "ON" ]
+if [ $PYTHON_BINDING == "ON" ]
 then
     cd Eigen3ToPython
     git pull
@@ -98,7 +98,7 @@ make -j && sudo make install
 
 
 
-# install https://github.com/jrl-umi3218/RBDyn
+# install https://github.com/jrl-umi3218/mc_rbdyn_urdf
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/mc_rbdyn_urdf ]
 then
