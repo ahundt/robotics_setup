@@ -62,7 +62,7 @@ cd kalibr_ws
 catkin init
 cd src
 
-if [ ! -d ~/src/kalibr_ws/src/kalibr_ws ]; then
+if [ ! -d ~/src/kalibr_ws/src/kalibr ]; then
 	git clone https://github.com/${location}/kalibr.git
 fi
 
