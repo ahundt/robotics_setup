@@ -54,7 +54,7 @@ if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
 	source /opt/ros/${ROSVERSION}/setup.bash
 fi
 
-sudo apt-get install -y install v4l-utils
+sudo apt-get install -y v4l-utils
 
 cd $HOME/src
 mkdir -p kalibr_ws/src
