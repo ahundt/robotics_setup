@@ -60,7 +60,6 @@ cd $HOME/src
 mkdir -p kalibr_ws/src
 cd kalibr_ws
 catkin init
-wstool init
 cd src
 
 if [ ! -d ~/src/kalibr_ws/src/kalibr_ws ]; then
