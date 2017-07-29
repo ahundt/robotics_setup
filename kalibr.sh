@@ -13,6 +13,8 @@ echo "############################"
 echo "# calibration library"
 echo ""
 echo "# https://github.com/ethz-asl/kalibr"
+echo ""
+echo "Manual steps: installing libopencv-dev ros-${ROSVERSION}-vision-opencv "
 
 # location="ethz-asl"
 location="ahundt"
@@ -54,7 +56,11 @@ if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
 	source /opt/ros/${ROSVERSION}/setup.bash
 fi
 
-sudo apt-get install -y v4l-utils
+sudo apt-get install -y python-setuptools python-rosinstall ipython libeigen3-dev libboost-all-dev doxygen ros-${ROSVERSION}-image-transport-plugins ros-${ROSVERSION}-cmake-modules python-software-properties software-properties-common libpoco-dev python-matplotlib python-scipy python-git python-pip ipython libtbb-dev libblas-dev liblapack-dev python-catkin-tools libv4l-dev
+# opencv can be a bit tricky, maybe do that on your own
+# sudo apt-get install -y libopencv-dev ros-${ROSVERSION}-vision-opencv
+
+sudo pip install python-igraph --upgrade
 
 cd $HOME/src
 mkdir -p kalibr_ws/src
