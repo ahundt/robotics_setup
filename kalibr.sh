@@ -21,6 +21,35 @@ location="ahundt"
 #branch="master"
 branch="robone"
 
+
+# ROS must be installed first, assuming it is in default /opt/ros location
+if [ ! -d /opt/ros ]; then
+    ./ros.sh
+fi
+
+cd ~/src
+
+
+. /etc/lsb-release # get ubuntu version number
+
+
+if [ "$DISTRIB_RELEASE" = "16.04" ]; then
+    ROSVERSION="kinetic"
+	# TODO(ahundt) How to install fcl? should "soem" be installed?
+	# TODO(ahundt) Are there univeral robot ros-industrial kinetic binaries?
+	sudo apt-get install -y ros-kinetic-moveit # ros-kinetic-universal-robot ros-kinetic-ur-msgs #  ros-indigo-fcl
+
+	source /opt/ros/kinetic/setup.bash
+fi
+
+
+if [ "$DISTRIB_RELEASE" = "14.04" ]; then
+    ROSVERSION="indigo"
+	sudo apt-get install -y ros-indigo-moveit-full ros-indigo-fcl ros-indigo-soem
+
+	source /opt/ros/indigo/setup.bash
+fi
+
 if [ -e "/opt/ros/${ROSVERSION}/setup.bash"]; then
 	source /opt/ros/${ROSVERSION}/setup.bash
 fi
