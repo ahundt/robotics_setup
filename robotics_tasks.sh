@@ -39,7 +39,7 @@ esac
 # Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
 PYTHON_BINDING="ON"
 
-if [ $PYTHON_BINDING == "ON" ]
+if [ "${PYTHON_BINDING}" = "ON" ]
 then
 	pip install cython
 fi
@@ -54,7 +54,7 @@ location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happ
 # modify if using a different branch
 branch="master"
 
-# install https://github.com/jorisv/Eigen3ToPython
+# install https://github.com/jrl-umi3218/Eigen3ToPython
 # note: still putting it in jrl-umi3218 for consistency
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/Eigen3ToPython ]
@@ -64,7 +64,7 @@ then
 	git clone --recursive https://github.com/${location}/Eigen3ToPython.git
 fi
 
-if [ $PYTHON_BINDING == "ON" ]
+if [ "${PYTHON_BINDING}" = "ON" ]
 then
     cd Eigen3ToPython
     git pull
@@ -105,7 +105,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake ..  -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
 make -j && sudo make install
 
 
@@ -117,8 +117,6 @@ cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/sch-core ]
 then
 	git clone --recursive https://github.com/${location}/sch-core.git
-	# TODO(ahundt) replace above with below when cmake config version call is merged see https://github.com/ahundt/sch-core/tree/package commit https://github.com/ahundt/sch-core/commit/35825805e38ec98f5a9c76c9e14b701fa3a81122
-	# git clone --recursive https://github.com/${location}/sch-core.git
 	# TODO(ahundt) Remove this hack to get the right submodule version once cmake package config is merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
 	# cd sch-core/cmake
 	# git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
@@ -132,8 +130,34 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
+# no python bindings for this library
 cmake ..
 make -j && sudo make install
+
+
+
+
+
+# install https://github.com/jrl-umi3218/sch-core-python
+cd ~/src/jrl-umi3218
+if [ ! -d ~/src/jrl-umi3218/sch-core-python ]
+then
+	git clone --recursive https://github.com/${location}/sch-core-python.git
+	# TODO(ahundt) Remove this hack to get the right submodule version once cmake package config is merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
+	# cd sch-core/cmake
+	# git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
+	# git fetch ${location}
+	# git checkout ${branch}
+	# cd ../..
+fi
+
+if [ "${PYTHON_BINDING}" = "ON" ]
+then
+    cd sch-core-python
+    git pull
+    git checkout ${branch}
+    pip install .
+fi
 
 
 
