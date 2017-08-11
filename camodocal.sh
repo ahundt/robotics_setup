@@ -26,6 +26,7 @@ then
     sudo ln -s /usr/lib/x86_64-linux-gnu/libglog.so /usr/local/lib/
 fi
 
+mkdir -p ~/src
 cd ~/src
 
 if [ ! -d ~/src/camodocal ]
