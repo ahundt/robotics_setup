@@ -2,6 +2,10 @@
 # Save script's current directory
 DIR=$(pwd)
 
+set -e
+set -u
+set -x
+
 
 echo "###############################################"
 echo "# Robotics Tasks Library https://github.com/jrl-umi3218/tasks"
@@ -11,11 +15,21 @@ echo "# trees using constrained optimization. It has been used extensively"
 echo "# to control humanoid robots such as HOAP-3, HRP-2, HRP-4 and Atlas."
 echo "#"
 echo "# Make sure eigen3 is installed before running this script"
+echo "#"
+echo "# Usage with python bindings (default):"
+echo "#    sh robotics_tasks.sh"
+echo "#"
+echo "# Usage without python bindings:"
+echo "#    sh robotics_tasks.sh -p OFF"
+echo "#"
+echo "# Options:"
+echo "#"
+echo "#   -p Enable/disable python bindings, options are ON, OFF"
+echo "#   -b git branch to check out, such as master"
+echo "#   -l git location to use, -b jrl-umi3218 means github.com/jrl-umi3218/Tasks,"
+echo "#      while ahundt means github.com/ahundt/Tasks"
 
 
-set -e
-set -u
-set -x
 
 # os specific setup
 OS=`uname`
@@ -35,9 +49,30 @@ case $OS in
 	;;
 esac
 
+# Enable python bindings via cython by default
 # set to "ON" to build python bindings and "OFF" to disable them
 # Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
 PYTHON_BINDING="ON"
+
+
+location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
+#location="ahundt" # github.com/ahundt/Tasks # I have some patches here
+#location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
+
+# modify if using a different branch
+branch="master"
+
+# Check if the user specified any command line options
+# other than teh default and set the variable appropriately.
+while getopts u:d:p:f: option
+do
+ case "${option}"
+ in
+ p) PYTHON_BINDING="${OPTARG}";;
+ l) location="${OPTARG}";;
+ b) branch="${OPTARG}";;
+ esac
+done
 
 if [ "${PYTHON_BINDING}" = "ON" ]
 then
@@ -46,13 +81,6 @@ fi
 
 cd ~/src
 mkdir -p jrl-umi3218
-
-location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
-#location="ahundt" # github.com/ahundt/Tasks # I have some patches here
-#location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
-
-# modify if using a different branch
-branch="master"
 
 # install https://github.com/jrl-umi3218/Eigen3ToPython
 # note: still putting it in jrl-umi3218 for consistency
