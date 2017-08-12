@@ -101,7 +101,8 @@ if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 
 	# https://github.com/jhu-lcsr/handeye_calib_camodocal
 	git clone git@github.com:jhu-lcsr/handeye_calib_camodocal.git
-	git clone https://github.com/cpaxton/dmp.git
+	# works on both indigo and kinetic
+	git clone https://github.com/cpaxton/dmp.git -b indigo
 fi
 
 if [ -e ../devel/setup.bash ]; then
