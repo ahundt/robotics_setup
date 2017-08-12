@@ -21,8 +21,6 @@ if [ ! -d /opt/ros ]; then
     ./ros.sh
 fi
 
-cd ~/src
-
 location="cpaxton" # github.com/ahundt/Tasks # I have some patches here
 #location="lcsr" # github.com/jrl-umi3218/Tasks # ongoing development happens here
 #location="jorisv" # github.com/jorisv/Tasks # original repository location
