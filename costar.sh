@@ -103,6 +103,7 @@ if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 
 	# https://github.com/jhu-lcsr/handeye_calib_camodocal
 	git clone git@github.com:jhu-lcsr/handeye_calib_camodocal.git
+	git clone https://github.com/cpaxton/dmp.git
 fi
 
 if [ -e ../devel/setup.bash ]; then
@@ -134,6 +135,8 @@ fi
 cd ../objrecransac
 git pull
 cd ../handeye_calib_camodocal
+git pull
+cd ../dmp
 git pull
 cd ..
 
