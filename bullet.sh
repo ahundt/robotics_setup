@@ -75,8 +75,6 @@ make -j
 cd ..
 
 # disable if you actually need the local version
-pip3 install pybullet --user
-
-cd ../..
+pip3 install pybullet baselines gym --upgrade --user
 
 cd $DIR
