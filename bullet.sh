@@ -34,6 +34,14 @@ fi
 cd ~/src/bullet
 git pull
 cd ~/src/bullet/build
+
+# get the path to the python exeuctable such as /usr/bin/python3
+PYTHON_EXECUTABLE=`which python3`
+# get the python version string such as "3.6.2"
+PYTHON_VERSION=`${PYTHON_EXECUTABLE} -c "import sys; print('%s' % '.'.join(map(lambda x:str(x), sys.version_info[0:3])))"`
+PYTHON_INCLUDE_DIR=`${PYTHON_EXECUTABLE} -c "import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())"`
+PYTHON_LIB_DIR=`${PYTHON_EXECUTABLE} -c "import distutils.sysconfig; print(distutils.sysconfig.get_python_lib(plat_specific=1))"`
+
 cmake .. \
 -DCMAKE_C_FLAGS_RELEASE=-DNDEBUG \
 -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG \
@@ -53,7 +61,14 @@ cmake .. \
 -DBUILD_PYBULLET_ENET=ON \
 -DBUILD_ENET=ON \
 -DBUILD_CLSOCKET=ON \
--DBUILD_SHARED_LIBS=ON
+-DBUILD_SHARED_LIBS=ON \
+-DPYTHON_VERSION_PYBULLET=${PYTHON_VERSION} \
+-DEXACT_PYTHON_VERSION=ON
+
+# just use the cmake script to find the exact
+# version, disabling other items below
+# -DPYTHON_INCLUDE_DIR=${PYTHON_INCLUDE_DIR} \
+# -DPYTHON_LIBRARY=${PYTHON_LIB_DIR}
 
 make -j
 cd ../..
