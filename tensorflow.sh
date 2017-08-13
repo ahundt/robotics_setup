@@ -55,6 +55,10 @@ fi
 cd tensorflow
 git fetch --all
 git checkout r1.2
+# uncomment r1.3 and remove 1.2 once the
+# bazel build issue below has been fixed
+# https://github.com/tensorflow/tensorflow/pull/11949
+# git checkout r1.3
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
@@ -70,6 +74,7 @@ export TF_NEED_GCP=1
 export TF_NEED_HDFS=1
 export TF_NEED_OPENCL=0
 export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
+export PYTHON_BIN_PATH=`which python`
 
 # answer yes to any config questions not covered by the above exports, run the configuration
 yes "" | ./configure
@@ -89,9 +94,26 @@ echo "but only from a directory that doesn't have the tensorflow source in it be
 echo ""
 echo "python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
 
-pip install --upgrade /tmp/tensorflow_pkg/tensorflow-*
 
 cd ~/
+echo "python 2 install:"
+python -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
 python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
+
+if [ -x "$(command -v pip3)" ] ; then
+
+	echo "python3 install:"
+	cd -
+	export PYTHON_BIN_PATH=`which python3`
+
+	# answer yes to any config questions not covered by the above exports, run the configuration
+	yes "" | ./configure
+
+    bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+	cd ~/
+	python3 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p3*
+	python3 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
+fi
 
 cd $DIR
