@@ -74,11 +74,6 @@ do
  esac
 done
 
-if [ "${PYTHON_BINDING}" = "ON" ]
-then
-	pip install cython
-fi
-
 cd ~/src
 mkdir -p jrl-umi3218
 
@@ -97,8 +92,15 @@ then
     cd Eigen3ToPython
     git pull
     git checkout ${branch}
-    pip install -r requirements.txt
-    pip install .
+	# Requirements.txt includes:
+	# cython>=0.25
+    # coverage>=4.0
+    # nose
+    # numpy
+    pip install -r requirements.txt --upgrade
+    pip install . --upgrade
+    pip3 install -r requirements.txt --upgrade
+    pip3 install . --upgrade
 fi
 
 
