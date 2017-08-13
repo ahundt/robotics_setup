@@ -25,8 +25,7 @@ case $OS in
             pip install --upgrade virtualenv
 
             # python 3
-            sudo easy_install pip3
-            pip install --upgrade virtualenv3
+            pip3 install --upgrade virtualenv3
         fi
     ;;
   'FreeBSD')
