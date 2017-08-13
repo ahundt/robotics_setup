@@ -84,8 +84,8 @@ fi
 
 cd robotics_setup
 
-./autoenv.sh
-#./textmate.sh
+# ./autoenv.sh
+# ./textmate.sh
 
 mkdir -p $HOME/work/datasets
 
@@ -93,9 +93,9 @@ if [ ! -d $HOME/datasets ]; then
   ln -s $HOME/work/datasets $HOME/datasets
 fi
 
-if [ ! -f $HOME/src/.env ]; then
-  ln -s .autoenv $HOME/src/.env
-fi
+# if [ ! -f $HOME/src/.env ]; then
+#   ln -s .autoenv $HOME/src/.env
+# fi
 
 ./zsh.sh
 # byobu now loaded as a module
