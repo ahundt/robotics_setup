@@ -97,10 +97,11 @@ then
     # coverage>=4.0
     # nose
     # numpy
-    pip install -r requirements.txt --upgrade
-    pip install . --upgrade
-    pip3 install -r requirements.txt --upgrade
-    pip3 install . --upgrade
+	# TODO(ahundt) consider if user install is appropriate on all platforms
+    pip install -r requirements.txt --upgrade --user
+    pip install . --upgrade --user
+    pip3 install -r requirements.txt --upgrade --user
+    pip3 install . --upgrade --user
 fi
 
 
