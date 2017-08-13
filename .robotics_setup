@@ -46,6 +46,7 @@ if [ -d $HOME/go ] ; then
   export PATH=$PATH:$GOPATH/bin
 fi
 
+# github.com/cfinn/gps
 if [ -d ~/src/gps ] ; then
   # load libraries for guided_policy_search.sh
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/src/gps/build/lib
@@ -53,7 +54,7 @@ if [ -d ~/src/gps ] ; then
   export PYTHONPATH=$PYTHONPATH:$HOME/src/gps/build/lib
 fi
 
-
+# locally installed libraries
 if [ -d $HOME/lib ] ; then
   # load libraries and programs installed locally
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
@@ -61,20 +62,24 @@ if [ -d $HOME/lib ] ; then
   export PYTHONPATH=$PYTHONPATH:$HOME/lib
 fi
 
+# locally installed binaries
 if [ -d $HOME/bin ] ; then
   export PATH=$PATH:$HOME/bin
 fi
 
-if [ -d $HOME/bin ] ; then
-  export PATH=$PATH:$HOME/.local/bin
-fi
+# python sometimes installs packages here
+# if [ -d $HOME/bin ] ; then
+#   export PATH=$PATH:$HOME/.local/bin
+# fi
 
 # autoenv for automatic environment variable loading
 # on a per project basis (overrides cd)
 #
-if [ -d ~/.autoenv ] ; then
-  source ~/.autoenv/activate.sh
-fi
+# DEPRECATED
+#
+# if [ -d ~/.autoenv ] ; then
+#   source ~/.autoenv/activate.sh
+# fi
 
 
 # Check if we are running on a SLURM supercomputer cluster

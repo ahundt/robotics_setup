@@ -77,7 +77,7 @@ cd ~
 
 ############################
 # Install
-
+./python.sh
 pip3 install gnureadline pygments prompt_toolkit ply psutil ipykernel matplotlib xonsh xonsh-vox-tabcomplete xontrib-z xontrib-fzf-widgets --upgrade
 
 
