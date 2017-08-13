@@ -24,7 +24,6 @@ set -e
 set -u
 set -x
 
-cd ~
 
 # note don't install xonsh with homebrew/linuxbrew
 # because it will be in a a virtualenv that can't
@@ -75,9 +74,12 @@ cd ~
 # http://xon.sh/tutorial_hist.html
 
 
-############################
-# Install
+###########################
+# Python Install
 ./python.sh
+
+############################
+# Xonsh Install
 pip3 install gnureadline pygments prompt_toolkit ply psutil ipykernel matplotlib xonsh xonsh-vox-tabcomplete xontrib-z xontrib-fzf-widgets --upgrade
 
 
@@ -86,7 +88,7 @@ pip3 install gnureadline pygments prompt_toolkit ply psutil ipykernel matplotlib
 # Install
 
 if [ ! -f $HOME/.xonshrc ] ; then
-  ln -s $DIR/.xonshrc ~/.xonshrc
+  ln -s $DIR/.xonshrc $HOME/.xonshrc
   # sometimes you can't run chsh...
   if [ -x "$(command -v ypchsh)" ] ; then
     echo "TODO(ahundt) fix chsh... doesn't work on this platform right now... see robotics_setup/README.md"
