@@ -1,4 +1,6 @@
 
+# WARNING: OUTDATED, USE https://github.com/direnv/direnv
+
 # To use this file first install autenv.sh
 # Then copy this file from robotics_setup/.autoenv
 # to ~/src/.env

@@ -6,7 +6,7 @@ set -u
 set -x
 
 echo "###############################################"
-echo "# Tensorflow SLURM manager python class"
+echo "# AUTOENV IS DEPRECATED, USE DIRENV https://github.com/direnv/direnv"
 echo "###############################################"
 echo "#"
 echo "# github.com/jhollowayj/tensorflow_slurm_manager"
