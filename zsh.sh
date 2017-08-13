@@ -44,7 +44,7 @@ if [ ! -f `pwd`/.zshrc ] ; then
   cp $DIR/.zshrc ~/.zshrc
   # sometimes you can't run chsh...
   if [ -x "$(command -v ypchsh)" ] ; then
-    echo "TODO(ahundt) fix chsh... doesn't work on this platform right now... see README.md"
+    echo "TODO(ahundt) fix chsh... doesn't work on this platform right now... see robotics_setup/README.md"
     #ypchsh -s $(which zsh)
   else
     chsh -s $(which zsh)
