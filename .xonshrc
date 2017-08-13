@@ -7,6 +7,7 @@ $PROJECT_DIRS = ['~/src']
 
 # add local bin dir to path
 $PATH.append($HOME + '/bin')
+$PATH.append($HOME + '.local/bin')
 
 #$LD_LIBRARY_PATH = ['/home/scopatz/.local/lib', '/home/scopatz/miniconda3/lib', '']
 #
