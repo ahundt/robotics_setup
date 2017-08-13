@@ -1,0 +1,17 @@
+{"env": {
+//   "EDITOR": "xo",
+//   "PAGER": "more" // ex more, less command line commands
+    "SHELL_TYPE": "prompt_toolkit",
+    "AUTO_SUGGEST": true,
+    "PROMPT": "{env_name:{} }{INTENSE_PURPLE}{user}{NO_COLOR}@{DARK_YELLOW}{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}\n{prompt_end}{NO_COLOR} ",
+    "XONSHRC": ["/etc/xonshrc", "~/.xonshrc"]
+  },
+ "xontribs": ["mpl", "fzf-widgets", "prompt_ret_code"],
+ "foreign_shells": [
+  {"shell": "bash",
+    "login": true
+//    "extra_args": ["--rcfile", "/path/to/rcfile"]
+   },
+  {"shell": "zsh"}
+  ]
+}

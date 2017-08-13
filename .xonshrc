@@ -1,0 +1,30 @@
+## adjust some paths
+
+$PROMPT = "{env_name:{} }{INTENSE_PURPLE}{user}{NO_COLOR}@{INTENSE_YELLOW}{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch: {}}{NO_COLOR} {BOLD_BLUE}\n{prompt_end}{NO_COLOR} "
+
+# Set the home directory for your projects
+$PROJECT_DIRS = ['~/src']
+
+# add local bin dir to path
+$PATH.append($HOME + '/bin')
+
+#$LD_LIBRARY_PATH = ['/home/scopatz/.local/lib', '/home/scopatz/miniconda3/lib', '']
+#
+## alias to quit AwesomeWM from the terminal
+#def _quit_awesome(args, stdin=None):
+#    lines = $(ps ux | grep "gnome-session --session=awesome").splitlines()
+#    pids = [l.split()[1] for l in lines]
+#    for pid in pids:
+#        kill @(pid)
+#
+#aliases['qa'] = _quit_awesome
+#
+## some customization options
+#$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
+#$XONSH_SHOW_TRACEBACK = True
+#$XONSH_STORE_STDOUT = True
+
+#@events.on_chdir
+#def add_to_file(olddir, newdir, **kw):
+#    with open(g`~/.dirhist`[0], 'a') as dh:
+#        print(newdir, file=dh)
