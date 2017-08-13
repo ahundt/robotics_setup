@@ -71,6 +71,12 @@ cmake .. \
 # -DPYTHON_LIBRARY=${PYTHON_LIB_DIR}
 
 make -j
+
+cd ..
+
+# disable if you actually need the local version
+pip3 install pybullet --user
+
 cd ../..
 
 cd $DIR
