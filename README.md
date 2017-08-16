@@ -45,3 +45,8 @@ If you have [python permission errors](http://stackoverflow.com/questions/210930
 export SHELL=`which zsh`
 [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
 ```
+
+
+**Xonsh shell**
+
+[xon.sh](https://xon.sh) is a terminal shell like bash and zsh that is like a superset of python and bash. It is very useful for robotics if you want to do some math on robot data in your shell and run applications in a single terminal. You can install it with the `xonsh.sh` instructions and then [enable it as the default shell](http://xon.sh/customization.html#set-xonsh-as-my-default-shell).
