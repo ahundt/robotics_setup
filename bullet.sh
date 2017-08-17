@@ -71,6 +71,10 @@ cmake .. \
 # -DPYTHON_LIBRARY=${PYTHON_LIB_DIR}
 
 make -j
-cd ../..
+
+cd ..
+
+# disable if you actually need the local version
+pip3 install pybullet baselines gym --upgrade --user
 
 cd $DIR
