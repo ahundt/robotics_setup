@@ -31,11 +31,39 @@ echo "#      while ahundt means github.com/ahundt/Tasks"
 
 
 
+# Enable python bindings via cython by default
+# set to "ON" to build python bindings and "OFF" to disable them
+# Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
+PYTHON_BINDING="ON"
+location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
+#location="ahundt" # github.com/ahundt/Tasks # I have some patches here
+#location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
+
+# modify if using a different branch
+branch="master"
+
+# Check if the user specified any command line options
+# other than teh default and set the variable appropriately.
+while getopts p:l:b: option
+do
+ case "${option}"
+ in
+ p) PYTHON_BINDING="${OPTARG}";;
+ l) location="${OPTARG}";;
+ b) branch="${OPTARG}";;
+ esac
+done
+
+
 # os specific setup
 OS=`uname`
 case $OS in
 	'Linux')
-		sh python.sh
+
+		if [ "${PYTHON_BINDING}" = "ON" ]
+		then
+			sh python.sh
+		fi
 		sudo apt-get update
 		sudo apt-get install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
 		sudo apt-get install -y libboost-all-dev libeigen3-dev doxygen
@@ -49,30 +77,6 @@ case $OS in
 	;;
 esac
 
-# Enable python bindings via cython by default
-# set to "ON" to build python bindings and "OFF" to disable them
-# Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
-PYTHON_BINDING="ON"
-
-
-location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
-#location="ahundt" # github.com/ahundt/Tasks # I have some patches here
-#location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
-
-# modify if using a different branch
-branch="master"
-
-# Check if the user specified any command line options
-# other than teh default and set the variable appropriately.
-while getopts u:d:p:f: option
-do
- case "${option}"
- in
- p) PYTHON_BINDING="${OPTARG}";;
- l) location="${OPTARG}";;
- b) branch="${OPTARG}";;
- esac
-done
 
 cd ~/src
 mkdir -p jrl-umi3218
