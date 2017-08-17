@@ -31,6 +31,8 @@ echo "Getting a permission denied error? Try this:"
 echo "    sudo chmod o+r /usr/local/lib/python2.7/dist-packages/"
 echo "Another backup last step until I find a better workaround (you shouldn't use sudo pip):"
 echo "    sudo pip install --upgrade /tmp/tensorflow_pkg/tensorflow-*"
+echo ""
+echo "Can't run? Make sure the right tensorflow package is on your PATH both in your shell and in python's path."
 
 sudo apt-get update
 
@@ -54,11 +56,7 @@ fi
 
 cd tensorflow
 git fetch --all
-git checkout r1.2
-# uncomment r1.3 and remove 1.2 once the
-# bazel build issue below has been fixed
-# https://github.com/tensorflow/tensorflow/pull/11949
-# git checkout r1.3
+git checkout r1.3
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
@@ -76,30 +74,22 @@ export TF_NEED_OPENCL=0
 export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 export PYTHON_BIN_PATH=`which python`
 
-# answer yes to any config questions not covered by the above exports, run the configuration
-yes "" | ./configure
+# default python install, requires pip
+if [ -x "$(command -v pip)" ] ; then
 
-# To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
+	# answer yes to any config questions not covered by the above exports, run the configuration
+	yes "" | ./configure
 
-bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
-bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+	# To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
+	bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+	cd ~/
+	echo "python 2 install:"
+	python -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
+	python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
+fi
 
-echo "###########################################################################################################"
-echo "MANUAL STEPS with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
-echo "pip install /tmp/tensorflow_pkg/tensorflow # or: pip install /tmp/tensorflow_pkg/tensorflow-*"
-echo "###########################################################################################################"
-echo ""
-echo "To test that TensorFlow installed correctly do the following with the python or python3 command depending on your version"
-echo "but only from a directory that doesn't have the tensorflow source in it because those files might be picked up accidentally:'"
-echo ""
-echo "python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
-
-
-cd ~/
-echo "python 2 install:"
-python -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
-python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
-
+# Python 3 install, requires pip3
 if [ -x "$(command -v pip3)" ] ; then
 
 	echo "python3 install:"
@@ -116,4 +106,17 @@ if [ -x "$(command -v pip3)" ] ; then
 	python3 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
 fi
 
+echo "###########################################################################################################"
+echo "MANUAL STEPS with no spaces after tensorflow hit tab before hitting enter to fill in blanks with the following MANUAL line:"
+echo "pip install /tmp/tensorflow_pkg/tensorflow # or: pip install /tmp/tensorflow_pkg/tensorflow-*"
+echo "###########################################################################################################"
+echo ""
+echo "To test that TensorFlow installed correctly do the following with the python or python3 command depending on your version"
+echo "but only from a directory that doesn't have the tensorflow source in it because those files might be picked up accidentally:'"
+echo ""
+echo "python2:"
+echo "python2 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
+echo ""
+echo "python3:"
+echo "python3 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'"
 cd $DIR
