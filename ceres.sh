@@ -23,14 +23,14 @@ echo "INCLUDES HACK TO GET AROUND missing package files IN UBUNTU 16.04"
 . /etc/lsb-release # get ubuntu version number
 
 # only install
-if [ "$DISTRIB_RELEASE" == "16.04" ]; then
+if [ "$DISTRIB_RELEASE" = "16.04" ]; then
     sudo apt-get install -y libceres-dev
     sudo cp -a ceres/share/Ceres /usr/share
     sudo cp -a ceres/include/internal/config.h /usr/include/ceres/internal
 fi
 
 # only install
-if [ "$DISTRIB_RELEASE" == "14.04" ]; then
+if [ "$DISTRIB_RELEASE" = "14.04" ]; then
     # Special steps for Ubuntu 14.04 documented at:
     # http://ceres-solver.org/installation.html#linux
 

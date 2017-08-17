@@ -22,7 +22,7 @@ sudo apt-get install -y doxygen libceres-dev
 
 . /etc/lsb-release # get ubuntu version number
 # only install
-if [ "$DISTRIB_RELEASE" == "16.04" ] || [ "$DISTRIB_RELEASE" == "14.04" ]; then
+if [ "$DISTRIB_RELEASE" = "16.04" ] || [ "$DISTRIB_RELEASE" = "14.04" ]; then
    ./ros.sh
    EXTRA_TOOLS="-DWITH_ROS=ON"
 fi

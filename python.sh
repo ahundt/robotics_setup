@@ -17,7 +17,7 @@ case $OS in
     OS='Linux'
         . /etc/lsb-release # get ubuntu version number
         # only install
-        if [ "$DISTRIB_ID" == "Ubuntu" ]; then
+        if [ "${DISTRIB_ID}" = "Ubuntu" ]; then
             # install ubuntu python package
             sudo apt-get install -y python-setuptools python-dev build-essential
 
