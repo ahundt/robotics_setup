@@ -54,7 +54,7 @@ then
 	git clone https://github.com/tensorflow/tensorflow
 fi
 
-cd tensorflow
+cd ~/src/tensorflow
 git fetch --all
 git checkout r1.3
 
@@ -72,10 +72,15 @@ export TF_NEED_GCP=1
 export TF_NEED_HDFS=1
 export TF_NEED_OPENCL=0
 export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
-export PYTHON_BIN_PATH=`which python`
 
-# default python install, requires pip
-if [ -x "$(command -v pip)" ] ; then
+# Note python3, python2, pip3 and pip2 are used explicily
+# because that ensures tensorflow is installed for both versions
+# of python, and there is no accidental install of the same version twice.
+
+# Python2 install, requires pip2
+if [ -x "$(command -v pip2)" ] ; then
+	echo "python 2 install:"
+    export PYTHON_BIN_PATH=`which python2`
 
 	# answer yes to any config questions not covered by the above exports, run the configuration
 	yes "" | ./configure
@@ -84,16 +89,15 @@ if [ -x "$(command -v pip)" ] ; then
 	bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 	cd ~/
-	echo "python 2 install:"
-	python -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
-	python -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
+	python2 -m pip2 install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
+	python2 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
 fi
 
 # Python 3 install, requires pip3
 if [ -x "$(command -v pip3)" ] ; then
 
 	echo "python3 install:"
-	cd -
+	cd ~/src/tensorflow
 	export PYTHON_BIN_PATH=`which python3`
 
 	# answer yes to any config questions not covered by the above exports, run the configuration
