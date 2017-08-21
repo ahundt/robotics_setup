@@ -50,3 +50,12 @@ export SHELL=`which zsh`
 **Xonsh shell**
 
 [xon.sh](https://xon.sh) is a terminal shell like bash and zsh that is like a superset of python and bash. It is very useful for robotics if you want to do some math on robot data in your shell and run applications in a single terminal. You can install it with the `xonsh.sh` instructions and then [enable it as the default shell](http://xon.sh/customization.html#set-xonsh-as-my-default-shell).
+
+[byobu](http://byobu.co), lets you have multiple terminals running over a single connection that are persistent across dropped connections. If you want to use it with xonsh, make sure to update your `~/.byobu/.tmux.conf` to specify xonsh instead of zsh:
+
+```
+# set -g default-shell /usr/bin/zsh
+# set -g default-command /usr/bin/zsh
+set -g default-shell ~/.local/bin/xonsh
+set -g default-command ~/.local/bin/xonsh
+```
