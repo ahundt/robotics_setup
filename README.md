@@ -11,11 +11,15 @@ These scripts are written for:
 
 There is also some support for:
 - [slurm compute clusters](https://slurm.schedmd.com/)
+- MacOS when used in combination with the [homebrew-robotics](https://github.com/ahundt/homebrew-robotics) homebrew install script repository.
 
 Typically the source code for libraries will be put in `~/src`, and binaries in `/usr/local`, but this rule is not hard and fast because some tools like nvidia's cuda must go elsewhere.
 
+## Open the shell scripts
 
-## Additional helpful tips:
+Be sure to open the install scripts before you run them. There are often manual steps, more details, and links to the reference documentation and blogs used to write these scripts.
+
+## Additional helpful tips
 
 We recommend putting this repository in `~/src` as well, but that's not required.
 To make your shell utilize the tools you've installed via `robotics_setup`:
@@ -50,3 +54,12 @@ export SHELL=`which zsh`
 **Xonsh shell**
 
 [xon.sh](https://xon.sh) is a terminal shell like bash and zsh that is like a superset of python and bash. It is very useful for robotics if you want to do some math on robot data in your shell and run applications in a single terminal. You can install it with the `xonsh.sh` instructions and then [enable it as the default shell](http://xon.sh/customization.html#set-xonsh-as-my-default-shell).
+
+[byobu](http://byobu.co), lets you have multiple terminals running over a single connection that are persistent across dropped connections. If you want to use it with xonsh, make sure to update your `~/.byobu/.tmux.conf` to specify xonsh instead of zsh:
+
+```
+# set -g default-shell /usr/bin/zsh
+# set -g default-command /usr/bin/zsh
+set -g default-shell ~/.local/bin/xonsh
+set -g default-command ~/.local/bin/xonsh
+```
