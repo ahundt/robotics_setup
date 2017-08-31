@@ -82,10 +82,6 @@ mkdir -p $HOME/.local
 
 mkdir -p $HOME/.keras
 
-# make keras datasets dir
-if [ ! -d $HOME/.keras/datasets ]; then
-  ln -s $HOME/work/datasets $HOME/.keras/datasets
-fi
 
 cd ~/src/
 if [ ! -d ~/src/robotics_setup ]; then
@@ -97,10 +93,28 @@ cd robotics_setup
 # ./autoenv.sh
 # ./textmate.sh
 
+# datasets folders
+
 mkdir -p $HOME/work/datasets
 
 if [ ! -d $HOME/datasets ]; then
   ln -s $HOME/work/datasets $HOME/datasets
+fi
+
+if [ ! -d $HOME/.keras/datasets ]; then
+  ln -s $HOME/work/datasets $HOME/.keras/datasets
+fi
+
+# models folders
+
+mkdir -p $HOME/work/models
+
+if [ ! -d $HOME/.keras/models ]; then
+  ln -s $HOME/work/models $HOME/.keras/models
+fi
+
+if [ ! -d $HOME/models ]; then
+  ln -s $HOME/work/models $HOME/models
 fi
 
 # if [ ! -f $HOME/src/.env ]; then
