@@ -80,6 +80,13 @@ mkdir -p $HOME/lib
 # for python user installs
 mkdir -p $HOME/.local
 
+mkdir -p $HOME/.keras
+
+# make keras datasets dir
+if [ ! -d $HOME/.keras/datasets ]; then
+  ln -s $HOME/work/datasets $HOME/.keras/datasets
+fi
+
 cd ~/src/
 if [ ! -d ~/src/robotics_setup ]; then
 	git clone --recursive https://github.com/ahundt/robotics_setup.git
