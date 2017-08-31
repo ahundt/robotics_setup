@@ -73,9 +73,12 @@ source $DIR/marcc-config.sh
 # save the set of modules to enable reloading in the future
 module save robotics_setup_modules
 
+# for local source code, libraries, and binaries
 mkdir -p $HOME/src
 mkdir -p $HOME/bin
 mkdir -p $HOME/lib
+# for python user installs
+mkdir -p $HOME/.local
 
 cd ~/src/
 if [ ! -d ~/src/robotics_setup ]; then
