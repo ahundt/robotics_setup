@@ -77,10 +77,11 @@ fi
 # adapted from https://github.com/sorin-ionescu/prezto
 # creates symlinks to all prezto files not provided by robotics_setup
 # see https://github.com/sorin-ionescu/prezto/tree/master/runcoms for details
-zsh -c "setopt EXTENDED_GLOB;\
-    for rcfile in \"${ZDOTDIR:-$HOME}\"/.zprezto/runcoms/^README.md(.N); do\
-      if [ ! -f \"$rcfile\" ] ; then
-        ln -s \"$rcfile\" \"${ZDOTDIR:-$HOME}/.${rcfile:t}\";\
-      fi\
-    done"
-
+if [ -x "$(command -v zsh)" ] ; then
+  zsh -c "setopt EXTENDED_GLOB;\
+      for rcfile in \"${ZDOTDIR:-$HOME}\"/.zprezto/runcoms/^README.md(.N); do\
+        if [ ! -f \"$rcfile\" ] ; then
+          ln -s \"$rcfile\" \"${ZDOTDIR:-$HOME}/.${rcfile:t}\";\
+        fi\
+      done"
+fi
