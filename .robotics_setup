@@ -70,7 +70,7 @@ fi
 # pip installs user packages here, for example:
 # pip3 install numpy --upgrade --user
 if [ -d $HOME/bin ] ; then
-  export PATH=$PATH:$HOME/.local/bin
+  export PATH=$HOME/.local/bin:$PATH
 fi
 
 # autoenv for automatic environment variable loading
