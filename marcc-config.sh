@@ -40,10 +40,11 @@ echo "# $ import sys"
 echo "# $ sys.path.insert(0,'$HOME/.local/lib/python3.6/site-packages/')"
 echo "# $ sys.path.insert(0,'/cm/shared/apps/tensorflow/cuda-8.0/r1.0/lib/python3.6/site-packages/')"
 echo "# $ import tensorflow as tf"
-echo ""
-echo "LOADING MODULES:"
-echo ""
-echo "module load zsh/5.3.1 gcc/4.9.2 slurm sed git tmux byobu cmake/3.8.2 autoconf/gcc automake/gcc boost cuda/8.0 cudnn/5.1 python/3.6.6 parallel_studio_xe_2015 intel-mpi readline ruby/2.4.1 ffmpeg tensorflow/cuda-8.0/r1.0"
+echo "#"
+echo "# LOADING MODULES:"
+echo "#"
+echo "# module load zsh/5.3.1 gcc/4.9.2 slurm sed git tmux byobu cmake/3.8.2 autoconf/gcc automake/gcc boost cuda/8.0 cudnn/5.1 python/3.6.6 parallel_studio_xe_2015 intel-mpi readline ruby/2.4.1 ffmpeg tensorflow/cuda-8.0/r1.0"
+echo "#"
 
 module load zsh/5.3.1 gcc/4.9.2 slurm sed git tmux byobu cmake/3.8.2 autoconf/gcc automake/gcc boost cuda/8.0 cudnn/5.1 python/3.6.6 parallel_studio_xe_2015 intel-mpi readline ruby/2.4.1 ffmpeg tensorflow/cuda-8.0/r1.0
 # see marcc-install.sh for the list of saved modules
