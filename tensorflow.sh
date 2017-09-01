@@ -62,7 +62,7 @@ echo "##########################################################################
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
 echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, NO OPENCL and for GTX 1080 set compute capability to 5.2,6.1:"
 echo ""
-echo ""
+echo " To determine the compute capability for your gpu see https://developer.nvidia.com/cuda-gpus "
 echo "###########################################################################################################"
 export TF_NEED_CUDA=1
 export TF_CUDA_VERSION=8.0
