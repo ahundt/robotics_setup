@@ -89,7 +89,7 @@ if [ -x "$(command -v pip2)" ] ; then
 	bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 	cd ~/
-	python2 -m pip2 install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
+	python2 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
 	python2 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
 fi
 
