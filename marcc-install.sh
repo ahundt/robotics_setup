@@ -73,9 +73,15 @@ source $DIR/marcc-config.sh
 # save the set of modules to enable reloading in the future
 module save robotics_setup_modules
 
+# for local source code, libraries, and binaries
 mkdir -p $HOME/src
 mkdir -p $HOME/bin
 mkdir -p $HOME/lib
+# for python user installs
+mkdir -p $HOME/.local
+
+mkdir -p $HOME/.keras
+
 
 cd ~/src/
 if [ ! -d ~/src/robotics_setup ]; then
@@ -87,10 +93,28 @@ cd robotics_setup
 # ./autoenv.sh
 # ./textmate.sh
 
+# datasets folders
+
 mkdir -p $HOME/work/datasets
 
 if [ ! -d $HOME/datasets ]; then
   ln -s $HOME/work/datasets $HOME/datasets
+fi
+
+if [ ! -d $HOME/.keras/datasets ]; then
+  ln -s $HOME/work/datasets $HOME/.keras/datasets
+fi
+
+# models folders
+
+mkdir -p $HOME/work/models
+
+if [ ! -d $HOME/.keras/models ]; then
+  ln -s $HOME/work/models $HOME/.keras/models
+fi
+
+if [ ! -d $HOME/models ]; then
+  ln -s $HOME/work/models $HOME/models
 fi
 
 # if [ ! -f $HOME/src/.env ]; then
