@@ -14,6 +14,7 @@ echo ""
 echo "https://cmake-basis.github.io/index.html"
 echo ""
 
+mkdir -p ~/src
 cd ~/src
 
 if [ ! -d ~/src/cmake-basis ]

@@ -26,6 +26,8 @@ cd CMake
 git pull
 
 ./bootstrap
-make -j install
+# make -j will build faster, but may run out of memory
+# make -j install
+make install
 
 cd $DIR
