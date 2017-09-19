@@ -100,8 +100,12 @@ then
 	# TODO(ahundt) consider if user install is appropriate on all platforms
     pip install -r requirements.txt --upgrade --user
     pip install . --upgrade --user
-    pip3 install -r requirements.txt --upgrade --user
-    pip3 install . --upgrade --user
+
+	# only install via pip3 if it exists
+	if [ -x "$(command -v pip3)" ] ; then
+		pip3 install -r requirements.txt --upgrade --user
+		pip3 install . --upgrade --user
+	fi
 fi
 
 
