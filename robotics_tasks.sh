@@ -65,7 +65,7 @@ case $OS in
 			sh python.sh
 		fi
 		sudo apt-get update
-		sudo apt-get install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config
+		sudo apt-get install -y libtool pkg-config build-essential autoconf automake cmake cmake-curses-gui pkg-config gfortran
 		sudo apt-get install -y libboost-all-dev libeigen3-dev doxygen
 		# last dependency is for mc_rbdyn_urdf urdf robot definition format reading only
 		sudo apt-get install -y libtinyxml2-dev
@@ -78,8 +78,8 @@ case $OS in
 esac
 
 
+mkdir -p ~/src/jrl-umi3218
 cd ~/src
-mkdir -p jrl-umi3218
 
 # install https://github.com/jrl-umi3218/Eigen3ToPython
 # note: still putting it in jrl-umi3218 for consistency
@@ -104,8 +104,12 @@ then
 	# TODO(ahundt) consider if user install is appropriate on all platforms
     pip install -r requirements.txt --upgrade --user
     pip install . --upgrade --user
-    pip3 install -r requirements.txt --upgrade --user
-    pip3 install . --upgrade --user
+
+	# only install via pip3 if it exists
+	if [ -x "$(command -v pip3)" ] ; then
+		pip3 install -r requirements.txt --upgrade --user
+		pip3 install . --upgrade --user
+	fi
 fi
 
 

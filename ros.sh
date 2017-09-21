@@ -54,7 +54,10 @@ if [ "$DISTRIB_RELEASE" = "14.04" ]; then
     sudo apt-get update
     sudo apt-get install ros-indigo-desktop-full
     sudo apt-get install python-rosinstall
-    sudo rosdep init
+    if [ ! -d /etc/ros/rosdep/ ]
+    then
+        sudo rosdep init
+    fi
     rosdep update
     sudo apt-get install python-catkin-tools libgflags-dev
 
