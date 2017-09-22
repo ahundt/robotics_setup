@@ -7,8 +7,10 @@
 #
 
 # Source Prezto.
+if [ -n "$ZSH_VERSION" ]; then
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 fi
 
 # Customize to your needs...
