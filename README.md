@@ -35,6 +35,8 @@ To make your shell utilize the tools you've installed via `robotics_setup`:
 How to find the versions of drivers you need:
 
     sudo ubuntu-drivers devices
+    
+How to [get the display working with multiple nvidia GPUs](https://adler-j.github.io/2017/07/19/Dual-GPU-configuration-in-Ubuntu-1604-and-CUDA-80.html).
 
 There are also useful config files named `.*` that may not be immediately visible such as `.byobu/.tmux.conf`.
 
