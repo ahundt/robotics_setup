@@ -126,7 +126,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING} -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j && sudo make install
 
 
@@ -144,7 +144,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING} -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j && sudo make install
 
 
@@ -170,7 +170,7 @@ git checkout ${branch}
 mkdir -p build
 cd build
 # no python bindings for this library
-cmake ..
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j && sudo make install
 
 
@@ -213,7 +213,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING} -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j && sudo make install
 
 
@@ -231,7 +231,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake .. -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake .. -DPYTHON_BINDING=${PYTHON_BINDING} -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j && sudo make install
 
 
@@ -249,7 +249,7 @@ git pull
 git checkout ${branch}
 mkdir -p build
 cd build
-cmake ..  -DPYTHON_BINDING=${PYTHON_BINDING}
+cmake ..  -DPYTHON_BINDING=${PYTHON_BINDING} -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j && sudo make install
 
 
