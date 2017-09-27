@@ -16,6 +16,22 @@ echo ""
 echo "https://github.com/Kitware/CMake/"
 
 
+# os specific setup
+OS=`uname`
+case $OS in
+	'Linux')
+
+		sudo apt-get update
+		sudo apt-get install -y libtool pkg-config build-essential autoconf automake pkg-config libncurses5-dev
+		OS='Linux'
+	;;
+	*) ;;
+	'Darwin')
+		OS='Mac'
+	;;
+esac
+
+
 cd ~/src/
 if [ ! -d ~/src/CMake ]
 then
