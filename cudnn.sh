@@ -7,11 +7,10 @@ set -u
 set -x
 
 echo "############################"
-echo "# CUDNN"
+echo "# CUDNN - see cuda.sh for instructions"
 echo "############################"
-
-echo "ASSUMES THE FOLLOWING ARE DOWNLOADED FROM THE NVIDIA CUDA WEBSITE:"
-echo "~/Downloads/cudnn-8.0-linux-x64-v5.1.tgz"
+echo "# ASSUMES THE FOLLOWING ARE DOWNLOADED FROM THE NVIDIA CUDA WEBSITE:"
+echo "# ~/Downloads/cudnn-8.0-linux-x64-v6.0.tgz"
 
 # currently just in the cuda install script
 

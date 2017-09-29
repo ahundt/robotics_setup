@@ -43,7 +43,7 @@ sudo apt-get install -y tmux
 
 
 echo "###############"
-echo "# byobu        "
+echo "# byobu - http://byobu.co/"
 echo "###############"
 echo ""
 echo "tool that makes life with tmux better"
