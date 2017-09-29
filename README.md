@@ -2,24 +2,25 @@
 
 ![Robotics Automated Setup](https://upload.wikimedia.org/wikipedia/commons/5/5d/Advanced_Automation_for_Space_Missions_figure_5-29.gif)
 
-This contains a set of linux setup scripts which I've consolidated from across the web so setting up a new computer for robotics and deep learning becomes easier to do. I strive to keep them simple and minimal so it doesn't look tricky. For something more advanced than this repository, though not always easier, I suggest https://brew.sh and https://linuxbrew.sh.
+This contains a set of linux setup scripts consolidated from across the web to make it easy to set up a new computer for robotics and deep learning, with links to the original sources and brief descriptions in the comments of each script. Install scripts are kept simple and minimal so you can easily change them for your needs.
 
-Some manual steps are still involved in these scripts, but many are automated.
+Manual steps are necessary for some scripts, so be sure to check the comments!
 
 These scripts are written for:
 - x86_64 Ubuntu Linux 14.04 and 16.04
-- GeForce GTX 1080 GPU.
+- NVIDIA GPUs such as GeForce GTX 1080, and Titan X.
 
 There is also some support for:
 - [slurm compute clusters](https://slurm.schedmd.com/)
 - MacOS when used in combination with the [homebrew-robotics](https://github.com/ahundt/homebrew-robotics) homebrew install script repository.
 
-Typically the source code for libraries will be put in `~/src`, and binaries in `/usr/local`, but this rule is not hard and fast because some tools like nvidia's cuda must go elsewhere.
 
 There are also useful config files in this repository named `.*` that may not be immediately visible, such as `.byobu/.tmux.conf`.
 
 ## Getting started
 
+
+Typically the source code for libraries will be put in `~/src/`, and binaries in `/usr/local`, but this rule is not hard and fast because some tools like nvidia's cuda must go elsewhere.
 
 ```
 mkdir -p ~/src
@@ -32,9 +33,39 @@ vim <scriptname>.sh
 # if the above line doesn't work you can also do sh <scriptname>.sh
 ```
 
-## Open the shell scripts
+### Open the shell scripts
 
 Be sure to open the install scripts before you run them. There are often manual steps, more details, and links to the reference documentation and blogs used to write these scripts.
+
+### Command line, terminal, zsh
+
+Recommended command line utils include htop, vim, [tmux](https://github.com/tmux/tmux/wiki), [byobu](http://byobu.co/). To install them run:
+
+```
+./commandline_utils.sh
+```
+
+The recommended terminal environment and shell is zsh with [prezto](https://github.com/sorin-ionescu/prezto) utilities, to install and configure it to run with tmux and byobu so you can have multiple terminal windows and connect via ssh without losing your place or closing your running terminal applications:
+
+```
+./zsh.sh
+```
+
+This will automatically set up `.robotics_setup`, a configuration automatically loads other tools you can install via this repository including ROS, cuda, google go, locally installed binaries, linuxbrew, etc.
+
+### Xonsh shell
+
+[xon.sh](https://xon.sh) is a terminal shell like bash and zsh that is like a superset of python and bash. It is very useful for robotics and machine learning if you want to do some math on robot data in your shell and run applications in a single terminal, plus retain the history of your commands so you can reproduce your work. You can install xonsh with the `xonsh.sh` instructions and then [enable it as the default shell](http://xon.sh/customization.html#set-xonsh-as-my-default-shell).
+
+[byobu](http://byobu.co), lets you have multiple terminals running over a single connection that are persistent across dropped connections. If you want to use it with xonsh, make sure to update your `~/.byobu/.tmux.conf` to specify xonsh instead of zsh:
+
+```
+# set -g default-shell /usr/bin/zsh
+# set -g default-command /usr/bin/zsh
+set -g default-shell ~/.local/bin/xonsh
+set -g default-command ~/.local/bin/xonsh
+```
+
 
 ## Additional helpful tips
 
@@ -48,7 +79,7 @@ To make your shell utilize the tools you've installed via `robotics_setup`:
 For a pile of info snippets to troubleshoot a variety of problems you might encounter see:
 
 https://github.com/ahundt/awesome-stuff
- 
+
 For great instructions for some of the best tools to use for development (much applies to non-mac too) see:
 
 http://sourabhbajaj.com/mac-setup/
@@ -57,15 +88,6 @@ For other information on a huge range of topics see:
 
 https://github.com/sindresorhus/awesome
 
-**Xonsh shell**
+# Alternatives
 
-[xon.sh](https://xon.sh) is a terminal shell like bash and zsh that is like a superset of python and bash. It is very useful for robotics if you want to do some math on robot data in your shell and run applications in a single terminal. You can install it with the `xonsh.sh` instructions and then [enable it as the default shell](http://xon.sh/customization.html#set-xonsh-as-my-default-shell).
-
-[byobu](http://byobu.co), lets you have multiple terminals running over a single connection that are persistent across dropped connections. If you want to use it with xonsh, make sure to update your `~/.byobu/.tmux.conf` to specify xonsh instead of zsh:
-
-```
-# set -g default-shell /usr/bin/zsh
-# set -g default-command /usr/bin/zsh
-set -g default-shell ~/.local/bin/xonsh
-set -g default-command ~/.local/bin/xonsh
-```
+For something with more advanced capabilities than this repository, though not always easier, I suggest https://brew.sh and https://linuxbrew.sh.
