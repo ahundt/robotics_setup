@@ -2,8 +2,9 @@
 
 ![Robotics Automated Setup](https://upload.wikimedia.org/wikipedia/commons/5/5d/Advanced_Automation_for_Space_Missions_figure_5-29.gif)
 
-This contains a set of linux setup scripts.
-Some manual steps are still involved but many are automated.
+This contains a set of linux setup scripts which I've consolidated from across the web so setting up a new computer for robotics and deep learning becomes easier to do. I strive to keep them simple and minimal so it doesn't look tricky. For something more advanced than this repository, though not always easier, I suggest https://brew.sh and https://linuxbrew.sh.
+
+Some manual steps are still involved in these scripts, but many are automated.
 
 These scripts are written for:
 - x86_64 Ubuntu Linux 14.04 and 16.04
@@ -15,43 +16,44 @@ There is also some support for:
 
 Typically the source code for libraries will be put in `~/src`, and binaries in `/usr/local`, but this rule is not hard and fast because some tools like nvidia's cuda must go elsewhere.
 
+## Getting started
+
+
+```
+mkdir -p ~/src
+cd ~/src
+git clone git@github.com:ahundt/robotics_setup.git
+cd ~/src/robotics_setup
+# be sure to look at the script for special instructions!
+vim <scriptname>.sh
+./<scriptname>.sh
+# if the above line doesn't work you can also do sh <scriptname>.sh
+```
+
 ## Open the shell scripts
 
 Be sure to open the install scripts before you run them. There are often manual steps, more details, and links to the reference documentation and blogs used to write these scripts.
 
 ## Additional helpful tips
 
-We recommend putting this repository in `~/src` as well, but that's not required.
+We highly recommend putting this repository in `~/src`, but that's not required.
 To make your shell utilize the tools you've installed via `robotics_setup`:
 
     # Add this to your ~/.bashrc or your ~/.zshrc
     # From github.com/ahundt/robotics_setup
     source ~/src/robotics_setup/.robotics_setup
 
-[How to find libraries if you have linking trouble](https://askubuntu.com/questions/32507/how-do-i-get-a-list-of-installed-files-from-a-package)
+For a pile of info snippets to troubleshoot a variety of problems you might encounter see:
 
-    dpkg-query -L ros-kinetic-opencv3
+https://github.com/ahundt/awesome-stuff
+ 
+For great instructions for some of the best tools to use for development (much applies to non-mac too) see:
 
-How to find the versions of drivers you need:
+http://sourabhbajaj.com/mac-setup/
 
-    sudo ubuntu-drivers devices
-    
-How to [get the display working with multiple nvidia GPUs](https://adler-j.github.io/2017/07/19/Dual-GPU-configuration-in-Ubuntu-1604-and-CUDA-80.html).
+For other information on a huge range of topics see:
 
-There are also useful config files named `.*` that may not be immediately visible such as `.byobu/.tmux.conf`.
-
-
-If you have [python permission errors](http://stackoverflow.com/questions/21093002/error-could-not-create-usr-local-lib-python2-7-dist-packages-virtualenv-suppo):
-
-    sudo chown -R $USER /usr/local/lib/python2.7
-
-[Making zsh your shell without root access](http://unix.stackexchange.com/questions/136423/making-zsh-default-shell-without-root-access):
-
-```
-export SHELL=`which zsh`
-[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
-```
-
+https://github.com/sindresorhus/awesome
 
 **Xonsh shell**
 
