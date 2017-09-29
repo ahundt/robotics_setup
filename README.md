@@ -16,6 +16,8 @@ There is also some support for:
 
 Typically the source code for libraries will be put in `~/src`, and binaries in `/usr/local`, but this rule is not hard and fast because some tools like nvidia's cuda must go elsewhere.
 
+There are also useful config files in this repository named `.*` that may not be immediately visible, such as `.byobu/.tmux.conf`.
+
 ## Getting started
 
 
