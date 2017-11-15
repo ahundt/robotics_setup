@@ -25,6 +25,10 @@ echo "#"
 echo "# TO CHECK WITH ROS KINETIC RUN:"
 echo "# dpkg -L ros-kinetic-opencv3"
 echo "#"
+echo "# To check if the ubuntu ppa libopencv-nonfree-dev installed by this script is present run:"
+echo "#"
+echo "# dpkg -L libopencv-nonfree-dev"
+echo "# dpkg -L libopencv-dev"
 
 # TODO(ahundt) finish 2.x & 3.x compilation script!
 #branch="3.2.0"  # install opencv 3.x from source
@@ -37,7 +41,7 @@ sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev l
 
 
 
-if [ $branch = "ppa"]; then
+if [ "$branch" = "ppa" ]; then
 
 	sudo add-apt-repository --yes ppa:xqms/opencv-nonfree
 	sudo apt-get update
