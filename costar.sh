@@ -57,7 +57,7 @@ sudo apt-get install -y libopenni2-0 libopenni2-dev openni2-doc openni2-utils ro
 sudo apt-get install -y qt4-designer qt4-dev-tools python-qt4 python-qt4-dev python-wxversion wx-common python-wxgtk3.0
 
 # many of these are required, ${ROSVERSION} will be indigo, kinetic as appropriate
-sudo apt-get install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller
+sudo apt-get install -y python-catkin-tools liburdfdom-headers-dev ros-${ROSVERSION}-control-msgs ros-${ROSVERSION}-gazebo-ros-control ros-${ROSVERSION}-python-orocos-kdl xdot libccd-dev ros-${ROSVERSION}-ros-control ros-${ROSVERSION}-octomap-msgs ros-${ROSVERSION}-gazebo-plugins ros-${ROSVERSION}-pcl-ros ros-${ROSVERSION}-socketcan-interface ros-${ROSVERSION}-rqt-gui ros-${ROSVERSION}-object-recognition-msgs ros-${ROSVERSION}-realtime-tools ros-${ROSVERSION}-position-controllers ros-${ROSVERSION}-robot-state-publisher ros-${ROSVERSION}-joint-state-controller python-bloom
 
 # ceres solver is needed for handeye_calib_camodocal
 # which performs hand eye calibration
@@ -76,31 +76,63 @@ cd src
 # TODO(ahundt) add better recovery and update utilities, and use specific release versions
 if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	git clone https://github.com/${location}/costar_stack.git
-	git clone https://github.com/SalvoVirga/iiwa_stack.git
+fi
+
+if [ ! -d ~/src/costar_ws/src/iiwa_stack ]; then
+	git clone https://github.com/cpaxton/iiwa_stack.git
+	# git clone https://github.com/SalvoVirga/iiwa_stack.git # This is the upstream location
+fi
+
+if [ ! -d ~/src/costar_ws/src/robotiq ]; then
 	#git clone https://github.com/ros-industrial/robotiq.git # This is the upstream location
 	git clone https://github.com/jhu-lcsr/robotiq.git -b ${ROSVERSION}-devel
+fi
+
+if [ ! -d ~/src/costar_ws/src/rqt_dot ]; then
 	git clone https://github.com/jbohren/rqt_dot.git
-	git clone https://github.com/sniekum/ar_track_alvar.git -b ${ROSVERSION}-devel
+fi
+
+if [ ! -d ~/src/costar_ws/src/ar_track_alvar ]; then
+	git clone https://github.com/ros-perception/ar_track_alvar.git -b ${ROSVERSION}-devel
 	# ar_track_alvar_msgs is directly in ar_track_alvar, but is here for reference
 	# git clone https://github.com/sniekum/ar_track_alvar_msgs.git
+fi
+
+if [ ! -d ~/src/costar_ws/src/hrl-kdl ]; then
 	git clone https://github.com/gt-ros-pkg/hrl-kdl.git
+fi
+
 	# xdot has been moved directly into costar_stack, but is here for reference
 	#git clone https://github.com/cpaxton/xdot.git
 	#git clone https://github.com/ThomasTimm/ur_modern_driver.git # This is the upstream location
+if [ ! -d ~/src/costar_ws/src/ur_modern_driver ]; then
 	git clone https://github.com/ahundt/ur_modern_driver.git -b ${ROSVERSION}-devel
+fi
+
 	# note: there are also binary versions on 14.04
+if [ ! -d ~/src/costar_ws/src/universal_robot ]; then
 	git clone https://github.com/ros-industrial/universal_robot.git -b ${ROSVERSION}-devel
+fi
 
-	if [ "$DISTRIB_RELEASE" = "16.04" ]; then
-		git clone https://github.com/UTNuclearRoboticsPublic/soem.git
+if [ "$DISTRIB_RELEASE" = "16.04" ]; then
+    if [ ! -d ~/src/costar_ws/src/soem ]; then
+	    git clone https://github.com/UTNuclearRoboticsPublic/soem.git
 	fi
+fi
 
+if [ ! -d ~/src/costar_ws/src/objrecransac ]; then
 	# Optional for vision utilities
-	git clone https://github.com/ahundt/ObjRecRANSAC.git objrecransac
+	git clone https://github.com/jhu-lcsr/ObjRecRANSAC.git objrecransac
+	# git clone https://github.com/ahundt/ObjRecRANSAC.git objrecransac
 	# git clone https://github.com/tum-mvp/ObjRecRANSAC.git objrecransac # This is the upstream location
+fi
 
+if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	# https://github.com/jhu-lcsr/handeye_calib_camodocal
 	git clone git@github.com:jhu-lcsr/handeye_calib_camodocal.git
+fi
+
+if [ ! -d ~/src/costar_ws/src/costar_stack ]; then
 	# works on both indigo and kinetic
 	git clone https://github.com/cpaxton/dmp.git -b indigo
 fi
