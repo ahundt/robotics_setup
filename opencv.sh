@@ -41,6 +41,43 @@ sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev l
 
 
 
+
+OS=`uname`
+case $OS in
+  'Linux')
+    OS='Linux'
+        . /etc/lsb-release # get ubuntu version number
+
+		# only install
+		if [ "$DISTRIB_RELEASE" = "14.04" ]; then
+		     # TODO(ahundt) add ROS indigo specific opencv3 install
+	         # http://wiki.ros.org/opencv3
+			 # https://github.com/ros-gbp/opencv3-release
+		    if [ -f "/opt/ros/indigo/setup.zsh" ]; then
+			    sudo apt-get install python-bloom
+			fi
+
+
+		fi
+    ;;
+  'FreeBSD')
+    OS='FreeBSD'
+    alias ls='ls -G'
+    ;;
+  'WindowsNT')
+    OS='Windows'
+    ;;
+  'Darwin')
+    OS='Mac'
+    ;;
+  'SunOS')
+    OS='Solaris'
+    ;;
+  'AIX') ;;
+  *) ;;
+esac
+
+
 if [ "$branch" = "ppa" ]; then
 
 	sudo add-apt-repository --yes ppa:xqms/opencv-nonfree
