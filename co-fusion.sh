@@ -20,6 +20,24 @@ echo ""
 # data visualization
 ./pangolin.sh
 
+
+
+cd ~/src/
+
+
+if [ ! -d ~/src/densecrf ]
+then
+	git clone https://github.com/martinruenz/densecrf.git
+fi
+cd densecrf
+git pull
+mkdir -p build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_MODULE_PATH=/usr/share/OpenCV/
+cmake --build .
+
+git pull
+
 cd ~/src/
 if [ ! -d ~/src/co-fusion ]
 then
@@ -32,6 +50,7 @@ git pull
 #co-fusion expects gSLICr to be in the deps folder, let's use a symlink for that
 mkdir -p deps
 ln -sf ~/src/gSLICr deps/gSLICr
+ln -sf ~/src/densecrf deps/densecrf
 
 # compile
 mkdir -p build
