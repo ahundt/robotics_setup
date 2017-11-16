@@ -56,7 +56,7 @@ fi
 
 cd ~/src/tensorflow
 git fetch --all
-git checkout r1.3
+git checkout r1.4
 
 echo "###########################################################################################################"
 echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
