@@ -39,12 +39,13 @@ fi
 
 # check for homebrew https://brew.sh
 which -s brew > /dev/null
-if [[ $? != 0 ]] ; then
+if [[ $? == 0 ]] ; then
   # check for brewed python https://docs.brew.sh/Homebrew-and-Python.html
-  brew ls --versions python
+  brew ls --versions python > /dev/null
   if [[ $? == 0 ]] ; then
-    # add brewed python to the path
-    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+    # add homebrew python to the path
+    brew_path=`brew --prefix`
+    export PATH=""${brew_path}"/opt/python/libexec/bin:$PATH"
   fi
 fi
 
