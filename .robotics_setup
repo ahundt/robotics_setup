@@ -21,16 +21,31 @@ if [ -d $HOME/byobu/bin ] ; then
   export PATH=$HOME/byobu/bin:$PATH
 fi
 
-# costar_ws github.com/cpaxton/costar_stack
+# costar_ws https://github.com/cpaxton/costar_stack
+# see costar.sh
 if [ -d ~/src/costar_ws ] ; then
-  source ~/src/costar_ws/devel/setup.zsh
+  if [ -d /opt/ros ] ; then
+    source ~/src/costar_ws/devel/setup.zsh
+  fi
 fi
 
-# linuxbrew.sh
-if [ -d $HOME/.linuxbrew ] ; then
-  export PATH="$PATH:$HOME/.linuxbrew/bin"
-  export MANPATH="$MANPATH:$HOME/.linuxbrew/share/man"
-  export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"
+# linuxbrew http://linuxbrew.sh/
+if [ -d $HOME/.linuxbrew ]; then
+  export PATH="$HOME/.linuxbrew/bin:$PATH"
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  export PATH="$HOME/.linuxbrew/sbin:$PATH"
+fi
+
+# check for homebrew https://brew.sh
+which -s brew > /dev/null
+if [[ $? != 0 ]] ; then
+  # check for brewed python https://docs.brew.sh/Homebrew-and-Python.html
+  brew ls --versions python
+  if [[ $? == 0 ]] ; then
+    # add brewed python to the path
+    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+  fi
 fi
 
 # nvidia cuda gpu compiler
@@ -103,12 +118,4 @@ fi
 # Add env.sh
 if [ -f ~/Projects/config/env.sh ] ; then
     source ~/Projects/config/env.sh
-fi
-
-# load linuxbrew http://linuxbrew.sh/
-if [ -d $HOME/.linuxbrew ]; then
-  export PATH="$HOME/.linuxbrew/bin:$PATH"
-  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-  export PATH="$HOME/.linuxbrew/sbin:$PATH"
 fi
