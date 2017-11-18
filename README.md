@@ -88,6 +88,18 @@ For other information on a huge range of topics see:
 
 https://github.com/sindresorhus/awesome
 
+# Troubleshooting
+
+All scripts are set to exit immediately on any error so it will give you a chance to fix the problem without making a mess on your computer.
+
+## Ubuntu
+
+### Script exited without installing the software
+
+If you run a script and the software was not installed, the most likely culprit is the repositories you have configured on ubuntu. If any repository returns an error these scripts will exit, to fix it look at which repositories are in the command line error message, and follow these instructions to remove them:
+
+- [how to remove a repository](https://askubuntu.com/questions/43345/how-to-remove-a-repository)
+
 # Alternatives
 
 For something with more advanced capabilities than this repository, though not always easier, I suggest https://brew.sh and https://linuxbrew.sh.
