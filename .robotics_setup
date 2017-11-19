@@ -1,6 +1,7 @@
-# Loads configuration installed via
 # for bash and zsh
 # https://github.com/ahundt/robotics_setup
+# Loads configuration of installed utilities
+# while skipping things that aren't set up
 
 # ROS.org Robot Operating System
 # version: kinetic
@@ -127,4 +128,11 @@ if [ -f ~/.iterm2_shel_integration.zsh ] ; then
    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 elif [ -f ~/.iterm2_shell_integration.bash ] ; then
    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+fi
+
+
+# https://www.iterm2.com/documentation-shell-integration.html
+# add access to iterm2 imgcat and other utilities
+if [ -d ~/.iterm2 ] ; then
+  export PATH="$PATH:$HOME/.iterm2"
 fi
