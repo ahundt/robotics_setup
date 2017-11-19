@@ -114,9 +114,17 @@ if [ -d ~/src/hub ] ; then
   autoload -U compinit && compinit
 fi
 
-# from
+
 # http://sourabhbajaj.com/mac-setup/iTerm/zsh.html
 # Add env.sh
 if [ -f ~/Projects/config/env.sh ] ; then
     source ~/Projects/config/env.sh
+fi
+
+
+# https://www.iterm2.com/documentation-shell-integration.html
+if [ -f ~/.iterm2_shel_integration.zsh ] ; then
+   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+elif [ -f ~/.iterm2_shell_integration.bash ] ; then
+   test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 fi
