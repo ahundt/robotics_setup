@@ -39,14 +39,18 @@ if [ -d $HOME/.linuxbrew ]; then
 fi
 
 # check for homebrew https://brew.sh
+# and make its binaries first on PATH
 which -s brew > /dev/null
 if [[ $? == 0 ]] ; then
-  # check for brewed python https://docs.brew.sh/Homebrew-and-Python.html
+  brew_path=`brew --prefix`
+  export PATH="${brew_path}/bin:$PATH"
+
+  # Check for brewed python https://docs.brew.sh/Homebrew-and-Python.html,
+  # and if it is found make it the first python on the PATH
   brew ls --versions python > /dev/null
   if [[ $? == 0 ]] ; then
     # add homebrew python to the path
-    brew_path=`brew --prefix`
-    export PATH=""${brew_path}"/opt/python/libexec/bin:$PATH"
+    export PATH="${brew_path}/opt/python/libexec/bin:$PATH"
   fi
 fi
 
@@ -133,6 +137,6 @@ fi
 
 # https://www.iterm2.com/documentation-shell-integration.html
 # add access to iterm2 imgcat and other utilities
-if [ -d ~/.iterm2 ] ; then
+if [ -d $HOME/.iterm2 ] ; then
   export PATH="$PATH:$HOME/.iterm2"
 fi
