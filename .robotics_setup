@@ -128,7 +128,7 @@ fi
 
 
 # https://www.iterm2.com/documentation-shell-integration.html
-if [ -f ~/.iterm2_shel_integration.zsh ] ; then
+if [ -f ~/.iterm2_shell_integration.zsh ] ; then
    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 elif [ -f ~/.iterm2_shell_integration.bash ] ; then
    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
