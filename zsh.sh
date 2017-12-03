@@ -6,8 +6,22 @@
 
 echo ""
 echo "###############################################################################################"
-echo "# ZSH setup/config scripts"
+echo "# ZSH https://en.wikipedia.org/wiki/Z_shell setup and config"
+echo "# using Prezto https://github.com/sorin-ionescu/prezto"
 echo "###############################################################################################"
+echo "#"
+echo "# Installs zsh if necessary, sets it as the default shell,"
+echo "# and enables a reasonable default configuration using Prezto"
+echo "#"
+echo "# Prezto — Instantly Awesome Zsh configuration framework"
+echo "# https://github.com/sorin-ionescu/prezto"
+echo "# Updating zsh's prezto configuration"
+echo "# Pull the latest changes and update submodules."
+echo "# "
+echo "# cd ~/.zprezto && git pull && git submodule update --init --recursive"
+echo "# "
+echo "# This also enables the use of robotics_setup/.robotics_setup to configure your system"
+echo "# to work with the other robotics_setup *.sh package install scripts you run."
 echo ""
 
 # source: https://gist.github.com/phatblat/1713458
@@ -33,11 +47,17 @@ if [ -d `pwd`/.linuxbrew ] ; then
 fi
 
 if [ ! -d `pwd`/.linuxbrew ] ; then
-  if [ -x "$(command -v apt)" ]; then
+  if [ -x "$(command -v apt-get)" ]; then
     sudo apt-get install -y zsh
   fi
 fi
 
+# check if homebrew is installed
+# in that case use it to install zsh
+# if needed
+if  ! [ -x "$(command -v brew)" ] ; then
+  brew install zsh
+fi
 
 
 if [ ! -f `pwd`/.zshrc ] ; then
@@ -51,6 +71,7 @@ if [ ! -f `pwd`/.zshrc ] ; then
   fi
 fi
 
+# create prezto symlinks to configure zsh
 if [ ! -f $HOME/.zpreztorc ] ; then
   ln -s $DIR/.zpreztorc ~/.zpreztorc
 fi
@@ -63,12 +84,6 @@ fi
 if [ ! -f $HOME/.robotics_setup ] ; then
   ln -s $DIR/.robotics_setup $HOME/.robotics_setup
 fi
-
-echo "https://github.com/sorin-ionescu/prezto"
-echo "Updating zsh's prezto configuration"
-echo "Pull the latest changes and update submodules."
-echo ""
-echo "cd ~/.zprezto && git pull && git submodule update --init --recursive"
 
 # only run zsh commands if zsh exists
 if [ -x "$(command -v zsh)" ] ; then
