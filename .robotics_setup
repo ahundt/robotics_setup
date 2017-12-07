@@ -26,7 +26,7 @@ fi
 # see costar.sh
 if [ -d ~/src/costar_ws ] ; then
   if [ -d /opt/ros ] ; then
-    source ~/src/costar_ws/devel/setup.zsh
+    test -e "$HOME/src/costar_ws/devel/setup.zsh" && source "$HOME/src/costar_ws/devel/setup.zsh"
   fi
 fi
 
