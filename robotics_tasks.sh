@@ -202,9 +202,10 @@ then
 		pip2 install . --upgrade --user
 	fi
 
-	# only install via pip3 if it exists
-	if [ -x "$(command -v pip3)" ] ; then
-		pip3 install . --upgrade --user
+    # TODO(ahundt) uncomment when https://github.com/jrl-umi3218/jrl-cmakemodules/pull/124 is merged and all libraries are updated with a proper python + lib find script.
+	# # only install via pip3 if it exists
+	# if [ -x "$(command -v pip3)" ] ; then
+	# 	pip3 install . --upgrade --user
 	fi
 fi
 
