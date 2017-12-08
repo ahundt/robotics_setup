@@ -102,8 +102,18 @@ then
     # nose
     # numpy
 	# TODO(ahundt) consider if user install is appropriate on all platforms
-    pip install -r requirements.txt --upgrade --user
-    pip install . --upgrade --user
+
+	# only install via pip if it exists
+	if [ -x "$(command -v pip)" ] ; then
+		pip install -r requirements.txt --upgrade --user
+		pip install . --upgrade --user
+	fi
+
+	# only install via pip2 if it exists
+	if [ -x "$(command -v pip2)" ] ; then
+		pip2 install -r requirements.txt --upgrade --user
+		pip2 install . --upgrade --user
+	fi
 
 	# only install via pip3 if it exists
 	if [ -x "$(command -v pip3)" ] ; then
@@ -195,7 +205,21 @@ then
     cd sch-core-python
     git pull
     git checkout ${branch}
-    pip install .
+
+	# only install via pip2 if it exists
+	if [ -x "$(command -v pip)" ] ; then
+		pip install . --upgrade --user
+	fi
+
+	# only install via pip2 if it exists
+	if [ -x "$(command -v pip2)" ] ; then
+		pip2 install . --upgrade --user
+	fi
+
+	# only install via pip3 if it exists
+	if [ -x "$(command -v pip3)" ] ; then
+		pip3 install . --upgrade --user
+	fi
 fi
 
 
