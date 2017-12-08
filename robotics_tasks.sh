@@ -206,7 +206,7 @@ then
 	# # only install via pip3 if it exists
 	# if [ -x "$(command -v pip3)" ] ; then
 	# 	pip3 install . --upgrade --user
-	fi
+	# fi
 fi
 
 
