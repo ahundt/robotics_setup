@@ -9,6 +9,8 @@ $PROJECT_DIRS = ['~/src']
 $PATH.append($HOME + '/bin')
 $PATH.append($HOME + '.local/bin')
 
+$XONSH_SHOW_TRACEBACK = True
+
 #$LD_LIBRARY_PATH = ['/home/scopatz/.local/lib', '/home/scopatz/miniconda3/lib', '']
 #
 ## alias to quit AwesomeWM from the terminal
@@ -29,3 +31,37 @@ $PATH.append($HOME + '.local/bin')
 #def add_to_file(olddir, newdir, **kw):
 #    with open(g`~/.dirhist`[0], 'a') as dh:
 #        print(newdir, file=dh)
+
+
+# fix for zsh config overriding xonsh
+# https://github.com/xonsh/xonsh/issues/2486
+
+aliases.pop('ack', None)
+# aliases.pop('cd', None)
+# aliases.pop('cp', None)
+aliases.pop('ebuild', None)
+aliases.pop('gcc', None)
+aliases.pop('gist', None)
+aliases.pop('grep', None)
+aliases.pop('heroku', None)
+aliases.pop('ln', None)
+aliases.pop('man', None)
+aliases.pop('mkdir', None)
+aliases.pop('mv', None)
+aliases.pop('mysql', None)
+aliases.pop('rm', None)
+
+# from xonsh.xoreutils.cat import cat
+# from xonsh.xoreutils.echo import echo
+# from xonsh.xoreutils.pwd import pwd
+# from xonsh.xoreutils.tee import tee
+# from xonsh.xoreutils.tty import tty
+# from xonsh.xoreutils.yes import yes
+#
+# aliases['cat'] = cat
+# aliases['echo'] = echo
+# aliases['pwd'] = pwd
+# aliases['tee'] = tee
+# aliases['tty'] = tty
+# aliases['yes'] = yes
+
