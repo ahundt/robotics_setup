@@ -20,7 +20,9 @@ if [ -f $HOME/.robotics_setup ] ; then
 fi
 
 
-# Enable timing.app to track what directories are in use and make terminal titles more useful
+# Change terminal title so it is easier to tell
+# the current directory and make terminal titles more useful
+# This title can also be read by timing.app https://timingapp.com/
 function update_terminal_title() {
     print -Pn "\e]0;%n :: %~/ \a"
 }

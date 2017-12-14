@@ -86,8 +86,6 @@ cd ~/src
 cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/Eigen3ToPython ]
 then
-    # TODO(ahundt) speak with people at https://github.com/jorisv/ and github.com/jrl-umi3218 to figure out where future development will really be.
-    # TODO(ahundt) see above todo, https://github.com/jrl-umi3218/Eigen3ToPython.git does not exist
 	git clone --recursive https://github.com/${location}/Eigen3ToPython.git
 fi
 
@@ -102,8 +100,18 @@ then
     # nose
     # numpy
 	# TODO(ahundt) consider if user install is appropriate on all platforms
-    pip install -r requirements.txt --upgrade --user
-    pip install . --upgrade --user
+
+	# only install via pip if it exists
+	if [ -x "$(command -v pip)" ] ; then
+		pip install -r requirements.txt --upgrade --user
+		pip install . --upgrade --user
+	fi
+
+	# only install via pip2 if it exists
+	if [ -x "$(command -v pip2)" ] ; then
+		pip2 install -r requirements.txt --upgrade --user
+		pip2 install . --upgrade --user
+	fi
 
 	# only install via pip3 if it exists
 	if [ -x "$(command -v pip3)" ] ; then
@@ -156,12 +164,6 @@ cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/sch-core ]
 then
 	git clone --recursive https://github.com/${location}/sch-core.git
-	# TODO(ahundt) Remove this hack to get the right submodule version once cmake package config is merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
-	# cd sch-core/cmake
-	# git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
-	# git fetch ${location}
-	# git checkout ${branch}
-	# cd ../..
 fi
 
 cd sch-core
@@ -182,12 +184,6 @@ cd ~/src/jrl-umi3218
 if [ ! -d ~/src/jrl-umi3218/sch-core-python ]
 then
 	git clone --recursive https://github.com/${location}/sch-core-python.git
-	# TODO(ahundt) Remove this hack to get the right submodule version once cmake package config is merged, see https://github.com/jrl-umi3218/jrl-cmakemodules/pull/103
-	# cd sch-core/cmake
-	# git remote add ${location} https://github.com/${location}/jrl-cmakemodules.git
-	# git fetch ${location}
-	# git checkout ${branch}
-	# cd ../..
 fi
 
 if [ "${PYTHON_BINDING}" = "ON" ]
@@ -195,7 +191,22 @@ then
     cd sch-core-python
     git pull
     git checkout ${branch}
-    pip install .
+
+	# only install via pip2 if it exists
+	if [ -x "$(command -v pip)" ] ; then
+		pip install . --upgrade --user
+	fi
+
+	# only install via pip2 if it exists
+	if [ -x "$(command -v pip2)" ] ; then
+		pip2 install . --upgrade --user
+	fi
+
+    # TODO(ahundt) uncomment when https://github.com/jrl-umi3218/jrl-cmakemodules/pull/124 is merged and all libraries are updated with a proper python + lib find script.
+	# # only install via pip3 if it exists
+	# if [ -x "$(command -v pip3)" ] ; then
+	# 	pip3 install . --upgrade --user
+	# fi
 fi
 
 
