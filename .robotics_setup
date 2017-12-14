@@ -69,8 +69,15 @@ fi
 
 # pip installs user packages here, for example:
 # pip3 install numpy --upgrade --user
-if [ -d $HOME/bin ] ; then
+# https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE
+if [ -d $HOME/.local/bin ] ; then
   export PATH=$HOME/.local/bin:$PATH
+fi
+
+# pip installs user packages here, for example:
+# pip3 install numpy --upgrade --user
+if [ -d $HOME/.local ] ; then
+  export PYTHONUSERBASE=$HOME/.local/
 fi
 
 # autoenv for automatic environment variable loading
