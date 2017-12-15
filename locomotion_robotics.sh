@@ -34,12 +34,12 @@ case $OS in
 	'Linux')
 		OS='Linux'
         ./bazel.sh
-		./pip.sh
+    # ./pip.sh
 		sudo apt-get install build-essential cmake libglib2.0-dev libqt4-dev \
   							 libx11-dev libxext-dev libxt-dev python-dev
 		# left out of apt-get in favor of pip
 		# python-numpy  python-lxml python-scipy python-yaml
-		pip2 install --user --upgrade numpy lxml scipy yaml
+		pip2 install --user --upgrade numpy lxml scipy pyyaml
 
 	;;
 	*) ;;
