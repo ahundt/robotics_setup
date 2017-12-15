@@ -55,8 +55,7 @@ mkdir -p ~/src/RobotLocomotion
 cd ~/src/RobotLocomotion
 
 # https://github.com/RobotLocomotion/drake
-if [ ! -d ~/src/RobotLocomotion/drake-distro ]
-then
+if [ ! -d ~/src/RobotLocomotion/drake-distro ] ; then
 	git clone git@github.com:RobotLocomotion/drake.git drake-distro
 fi
 
@@ -76,10 +75,10 @@ bazel build //...
 
 # https://github.com/RobotLocomotion/director
 cd ~/src/RobotLocomotion
-if [ ! -d ~/src/RobotLocomotion/director ]
+if [ ! -d ~/src/RobotLocomotion/director ] ; then
     # TODO(ahundt) Consider usin gtheir ros catkin build
 	git clone git@github.com:RobotLocomotion/director.git
-then
+fi
 
 cd director
 git pull
@@ -108,12 +107,16 @@ fi
 
 # https://github.com/RobotLocomotion/spartan
 cd ~/src/RobotLocomotion
-if [ ! -f ~/src/RobotLocomotion/spartan ]
+if [ ! -d ~/src/RobotLocomotion/spartan ] ; then
 	git clone git@github.com:RobotLocomotion/spartan.git
-then
+fi
+
+cd spartan
+git pull
 
 if [ "${OS}" = "Mac"] ; then
   # not yet available
+  echo "spartan install script not available yet for macOS, do this manually!"
   # ./setup/mac/install_prereqs.sh
 fi
 
