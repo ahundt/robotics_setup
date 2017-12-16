@@ -126,7 +126,7 @@ fi
 if [ "${OS}" = "Linux" ] ; then
   sudo ./setup/ubuntu/16.04/install_prereqs.sh
 
-  bazel build //...
+  echo "MANNUAL STEPS REQUIRED: SEE https://github.com/RobotLocomotion/spartan"
 fi
 
 cd $DIR
