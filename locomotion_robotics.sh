@@ -93,7 +93,7 @@ git pull
 # https://github.com/RobotLocomotion/drake-iiwa-driver
 cd ~/src/RobotLocomotion
 if [ ! -d ~/src/RobotLocomotion/drake-iiwa-driver ] ; then
-	git clone git@github.com:RobotLocomotion/director.git
+	git clone git@github.com:RobotLocomotion/drake-iiwa-driver.git
 fi
 
 cd drake-iiwa-driver
