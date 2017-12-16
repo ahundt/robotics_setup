@@ -98,7 +98,9 @@ fi
 cd drake-iiwa-driver
 git pull
 if [ -f ~/src/RobotLocomotion/drake-iiwa-driver/README.md ] ; then
-	bazel build //...
+    # TODO: disabled until cmake issues are resolved
+	echo "drake-iiwa-driver build step disabled until https://github.com/RobotLocomotion/director/issues/576 is resolved"
+	# bazel build //...
 else
 	echo "MANUAL STEPS are required to install and run on the kuka iiwa robot, see https://github.com/RobotLocomotion/drake-iiwa-driver"
 fi
