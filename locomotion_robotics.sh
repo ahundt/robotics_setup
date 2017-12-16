@@ -80,12 +80,13 @@ if [ ! -d ~/src/RobotLocomotion/director ] ; then
 	git clone git@github.com:RobotLocomotion/director.git
 fi
 
+echo "director build step disabled until https://github.com/RobotLocomotion/director/issues/576 is resolved"
 cd director
 git pull
-mkdir -p build
-cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
-make -j && sudo make install
+# mkdir -p build
+# cd build
+# cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
+# make -j && sudo make install
 
 
 
