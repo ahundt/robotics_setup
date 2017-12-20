@@ -82,7 +82,8 @@ sudo apt-get install -y cuda
 
 
 # install the CUDA profiler for cuda 8.0
-# see https://github.com/tensorflow/tensorflow/issues/9341#issuecomment-324041125
+# Here is how to profile tensorflow: https://towardsdatascience.com/howto-profile-tensorflow-1a49fb18073d
+# also see https://github.com/tensorflow/tensorflow/issues/9341#issuecomment-324041125
 if [ ! -f ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb ] ; then
   curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti8.0_8.0.44-3_amd64.deb --output ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
 fi
