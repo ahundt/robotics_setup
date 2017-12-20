@@ -59,15 +59,13 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # NVIDIA CUDA
 sudo apt-get install -y linux-headers-$(uname -r)
 
-if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb ]
-then
+if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb ] ; then
   curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb
 fi
 
 # Note that if you are having problems with these steps, manually
 # check the repository in the ubuntu software center:
 # https://askubuntu.com/questions/650692/installing-cuda-7-0-on-ubuntu-14-04
-
 
 # You will have to add the file to your software list. After running:
 
@@ -83,6 +81,21 @@ sudo apt-get update
 sudo apt-get install -y cuda
 
 
+# install the CUDA profiler for cuda 8.0
+# see https://github.com/tensorflow/tensorflow/issues/9341#issuecomment-324041125
+if [ ! -f ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb ] ; then
+  curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti8.0_8.0.44-3_amd64.deb --output ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
+fi
+
+sudo dpkg -i  ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
+
+if [ ! -f ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb ] ; then
+  curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti-dev_8.0.44-3_amd64.deb --output ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb
+fi
+
+sudo dpkg -i ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb
+
+# install CUDNN for deep learning
 sh cudnn.sh
 
 cd $DIR
