@@ -80,6 +80,10 @@ For a pile of info snippets to troubleshoot a variety of problems you might enco
 
 https://github.com/ahundt/awesome-stuff
 
+For robotics resources see:
+
+https://github.com/ahundt/awesome-robotics
+
 For great instructions for some of the best tools to use for development (much applies to non-mac too) see:
 
 http://sourabhbajaj.com/mac-setup/
