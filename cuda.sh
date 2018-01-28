@@ -59,8 +59,9 @@ echo "GTX1080 instructions that may help: https://github.com/fchollet/keras/issu
 # NVIDIA CUDA
 sudo apt-get install -y linux-headers-$(uname -r)
 
-if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb ] ; then
-  curl https://developer.nvidia.com/compute/cuda/8.0/rc/local_installers/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb --output ~/Downloads/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb
+
+if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb ] ; then
+  curl https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64 --output ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
 fi
 
 # Note that if you are having problems with these steps, manually
@@ -76,25 +77,34 @@ fi
 
 # file:///var/cuda...
 
-sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb
+sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
 sudo apt-get update
 sudo apt-get install -y cuda
 
-
-# install the CUDA profiler for cuda 8.0
-# Here is how to profile tensorflow: https://towardsdatascience.com/howto-profile-tensorflow-1a49fb18073d
-# also see https://github.com/tensorflow/tensorflow/issues/9341#issuecomment-324041125
-if [ ! -f ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb ] ; then
-  curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti8.0_8.0.44-3_amd64.deb --output ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
+# nccl which is useful for horovod support http://github.com/uber/horovod/
+if [ ! -f ~/Downloads/nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1_1-1_amd64.deb ] ; then
+  curl  https://developer.nvidia.com/compute/machine-learning/nccl/secure/v2.1/prod/nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1_1-1_amd64 --output nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1_1-1_amd64.deb
 fi
 
-sudo dpkg -i  ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
+sudo dpkg -i ~/Downloads/nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1_1-1_amd64.deb
+sudo apt-get update
+sudo apt-get install -y nccl
 
-if [ ! -f ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb ] ; then
-  curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti-dev_8.0.44-3_amd64.deb --output ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb
-fi
+# The steps below are outdated, remove if there have been no problems
+# # install the CUDA profiler for cuda 8.0
+# # Here is how to profile tensorflow: https://towardsdatascience.com/howto-profile-tensorflow-1a49fb18073d
+# # also see https://github.com/tensorflow/tensorflow/issues/9341#issuecomment-324041125
+# if [ ! -f ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb ] ; then
+#   curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti8.0_8.0.44-3_amd64.deb --output ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
+# fi
 
-sudo dpkg -i ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb
+# sudo dpkg -i  ~/Downloads/libcupti8.0_8.0.44-3_amd64.deb
+
+# if [ ! -f ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb ] ; then
+#   curl http://cz.archive.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-cuda-toolkit/libcupti-dev_8.0.44-3_amd64.deb --output ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb
+# fi
+
+# sudo dpkg -i ~/Downloads/libcupti-dev_8.0.44-3_amd64.deb
 
 # install CUDNN for deep learning
 sh cudnn.sh

@@ -27,6 +27,9 @@ echo ""
 echo "# find your driver"
 echo "# http://www.nvidia.com/Download/index.aspx"
 echo ""
+echo "# latest nvidia driver versions"
+echo "# http://www.nvidia.com/object/unix.html"
+echo ""
 echo "# ubuntu's instructions"
 echo "# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia"
 
@@ -44,7 +47,7 @@ echo "# https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia"
 
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt-get -y update
-sudo apt-get install -y nvidia-367 mesa-common-dev freeglut3-dev
+sudo apt-get install -y nvidia-384 mesa-common-dev freeglut3-dev
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
