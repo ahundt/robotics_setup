@@ -140,12 +140,17 @@ else
     export TF_NEED_OPENCL=0
     export TF_NEED_JEMALLOC=1
     export TF_ENABLE_XLA=1
-    export TF_NEED_MPI=1
     export TF_CUDA_CLANG=0
     # TensorRT is only for super high end GPUs with fp16 and int8:
     # https://developer.nvidia.com/tensorrt
     export TF_NEED_TENSORRT=0
     export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
+    # Open MPI settings
+    export TF_NEED_MPI=1
+    export MPI_HOME=/usr/lib/openmpi/
+    # CC_OPT_FLAGS hack to remove when possible
+    # https://github.com/tensorflow/tensorflow/issues/11903#issuecomment-332718012
+    export CC_OPT_FLAGS="-DOMPI_SKIP_MPICXX=1 -march=native"
 
 
     # Note python3, python2, pip3 and pip2 are used explicily
