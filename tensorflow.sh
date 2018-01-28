@@ -82,28 +82,28 @@ done
 # os specific setup
 OS=`uname`
 case $OS in
-	'Linux')
+    'Linux')
 
-		if [ "${PIP_INSTALL}" = "ON" ]
-		then
-			sh python.sh
-		fi
-		sudo apt-get update
+        if [ "${PIP_INSTALL}" = "ON" ]
+        then
+            sh python.sh
+        fi
+        sudo apt-get update
 
-		sudo apt-get install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev libcupti-dev
+        sudo apt-get install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev libcupti-dev
 
-	;;
-	*) ;;
-	'Darwin')
-		OS='Mac'
-		brew install python python3 numpy
-	;;
+    ;;
+    *) ;;
+    'Darwin')
+        OS='Mac'
+        brew install python python3 numpy
+    ;;
 esac
 
 
 if [ "${PIP_INSTALL}" = "ON" ] ; then
     pip2 install tensorflow-gpu
-	pip3 install tensorflow-gpu
+    pip3 install tensorflow-gpu
 else
     # install the bazel build system
     ./bazel.sh
@@ -111,7 +111,7 @@ else
     cd ~/src/
     if [ ! -d ~/src/tensorflow ]
     then
-    	git clone https://github.com/${location}/tensorflow
+        git clone https://github.com/${location}/tensorflow
     fi
 
     cd ~/src/tensorflow
@@ -123,13 +123,13 @@ else
     echo "Configuring, please use all defaults, except CUDA 8.0, cudnn 5, NO OPENCL and for GTX 1080 set compute capability to 5.2,6.1:"
     echo ""
     echo " To determine the compute capability for your gpu see https://developer.nvidia.com/cuda-gpus "
-	echo ""
-	echo "To see all the possible flags with the current master see:"
-	echo "https://github.com/tensorflow/tensorflow/blob/master/configure.py"
-	echo "be sure to switch to the appropriate branch if the options aren't working"
-	echo ""
-	echo "To find the CUDA_TOOLKIT_PATH try the following where 9-1 is the version (8-0 is another example):"
-	echo "    dpkg-query -L cuda-cublas-9-1"
+    echo ""
+    echo "To see all the possible flags with the current master see:"
+    echo "https://github.com/tensorflow/tensorflow/blob/master/configure.py"
+    echo "be sure to switch to the appropriate branch if the options aren't working"
+    echo ""
+    echo "To find the CUDA_TOOLKIT_PATH try the following where 9-1 is the version (8-0 is another example):"
+    echo "    dpkg-query -L cuda-cublas-9-1"
     echo "###########################################################################################################"
     export TF_NEED_CUDA=1
     export TF_CUDA_VERSION="9.1"
@@ -138,13 +138,13 @@ else
     export TF_NEED_GCP=1
     export TF_NEED_HDFS=1
     export TF_NEED_OPENCL=0
-	export TF_NEED_JEMALLOC=1
+    export TF_NEED_JEMALLOC=1
     export TF_ENABLE_XLA=1
-	export TF_NEED_MPI=1
-	export TF_CUDA_CLANG=1
-	# TensorRT is only for super high end GPUs with fp16 and int8:
-	# https://developer.nvidia.com/tensorrt
-	export TF_NEED_TENSORRT=0
+    export TF_NEED_MPI=1
+    export TF_CUDA_CLANG=1
+    # TensorRT is only for super high end GPUs with fp16 and int8:
+    # https://developer.nvidia.com/tensorrt
+    export TF_NEED_TENSORRT=0
     export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 
 
@@ -154,35 +154,35 @@ else
 
     # Python2 install, requires pip2
     if [ -x "$(command -v pip2)" ] ; then
-    	echo "python 2 install:"
+        echo "python 2 install:"
         export PYTHON_BIN_PATH=`which python2`
 
-    	# answer yes to any config questions not covered by the above exports, run the configuration
-    	yes "" | ./configure
+        # answer yes to any config questions not covered by the above exports, run the configuration
+        yes "" | ./configure
 
-    	# To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
-    	bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
-    	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-    	cd ~/
-    	python2 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
-    	python2 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
+        # To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
+        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+        bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+        cd ~/
+        python2 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
+        python2 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
     fi
 
     # Python 3 install, requires pip3
     if [ -x "$(command -v pip3)" ] ; then
 
-    	echo "python3 install:"
-    	cd ~/src/tensorflow
-    	export PYTHON_BIN_PATH=`which python3`
+        echo "python3 install:"
+        cd ~/src/tensorflow
+        export PYTHON_BIN_PATH=`which python3`
 
-    	# answer yes to any config questions not covered by the above exports, run the configuration
-    	yes "" | ./configure
+        # answer yes to any config questions not covered by the above exports, run the configuration
+        yes "" | ./configure
 
         bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
         bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-    	cd ~/
-    	python3 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p3*
-    	python3 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
+        cd ~/
+        python3 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p3*
+        python3 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
     fi
 fi
 
