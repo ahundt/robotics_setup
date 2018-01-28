@@ -23,6 +23,8 @@ fi
 cd ~/src/robot-grasp-detection
 git pull
 
+
+pip2 install shapely --user --upgrade
 # mkdir -p ~/src/flatbuffers/build
 # cd ~/src/flatbuffers/build
 # cmake ..
