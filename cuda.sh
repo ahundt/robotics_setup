@@ -49,11 +49,11 @@ if [ ! -f ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb ] ; then
 fi
 
 sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
+sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-9-1-local-cublas-performance-update-1_1.0-1_amd64.deb
 sudo apt-key add /var/cuda-repo-9-1-local/7fa2af80.pub
 sudo apt-get update
-sudo apt-get install -y cuda-libraries-9-1
+sudo apt-get install -y cuda-libraries-9-1 cuda-repo-ubuntu1604-9-1-local-cublas-performance-update-1
 
-sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-9-1-local-cublas-performance-update-1_1.0-1_amd64.deb
 # Note that if you are having problems with these steps, manually
 # check the repository in the ubuntu software center:
 # https://askubuntu.com/questions/650692/installing-cuda-7-0-on-ubuntu-14-04
