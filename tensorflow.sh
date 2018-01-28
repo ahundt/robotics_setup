@@ -141,6 +141,10 @@ else
 	export TF_NEED_JEMALLOC=1
     export TF_ENABLE_XLA=1
 	export TF_NEED_MPI=1
+	export TF_CUDA_CLANG=1
+	# TensorRT is only for super high end GPUs with fp16 and int8:
+	# https://developer.nvidia.com/tensorrt
+	export TF_NEED_TENSORRT=0
     export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
 
 
