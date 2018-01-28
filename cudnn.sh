@@ -17,7 +17,7 @@ echo "# https://developer.nvidia.com/cudnn"
 
 # Manual setup:
 cd ~/Downloads
-if [ ! -f ~/Downloads/nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1_1-1_amd64.deb ] ; then
+if [ ! -f ~/Downloads/libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64.deb ] ; then
     curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/Ubuntu16_04-x64/libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64 --output libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64.deb
     curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/Ubuntu16_04-x64/libcudnn7_7.0.5.15-1+cuda9.1_amd64 --output libcudnn7_7.0.5.15-1+cuda9.1_amd64.deb
     curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/cudnn-9.1-linux-x64-v7 --output cudnn-9.1-linux-x64-v7.tgz
