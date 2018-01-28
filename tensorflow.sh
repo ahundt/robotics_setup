@@ -141,7 +141,7 @@ else
     export TF_NEED_JEMALLOC=1
     export TF_ENABLE_XLA=1
     export TF_NEED_MPI=1
-    export TF_CUDA_CLANG=1
+    export TF_CUDA_CLANG=0
     # TensorRT is only for super high end GPUs with fp16 and int8:
     # https://developer.nvidia.com/tensorrt
     export TF_NEED_TENSORRT=0
@@ -158,7 +158,7 @@ else
         export PYTHON_BIN_PATH=`which python2`
 
         # answer yes to any config questions not covered by the above exports, run the configuration
-        yes "" | ./configure
+        yes "" | $PYTHON_BIN_PATH configure.py
 
         # To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
         bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
@@ -176,7 +176,7 @@ else
         export PYTHON_BIN_PATH=`which python3`
 
         # answer yes to any config questions not covered by the above exports, run the configuration
-        yes "" | ./configure
+        yes "" | $PYTHON_BIN_PATH configure.py
 
         bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
         bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
