@@ -91,7 +91,7 @@ case $OS in
         sudo apt-get update
 
         sudo apt-get install -y openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy build-essential python-pip python3-pip python-virtualenv swig python-wheel libcurl3-dev libcupti-dev
-
+        sudo apt-get install -y openmpi-bin openmpi-common
     ;;
     *) ;;
     'Darwin')
@@ -187,6 +187,8 @@ else
 fi
 
 # TODO: BEGIN OLD NOTES TO REMOVE IF NO LONGER NEEDED
+# At one point I had to make a symlink for mkl to be found properly:
+# /home/ahundt/src/tensorflow/third_party/eigen3/mkl_include -> /home/ahundt/src/tensorflow/third_party/mkl/mklml_lnx_2018.0.20170425/include
 # echo "# "
 # echo "# Plus add the following to your .bashrc or .zshcrc:"
 # echo "# export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64\""
