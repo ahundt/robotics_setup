@@ -159,12 +159,12 @@ else
     # https://developer.nvidia.com/tensorrt
     export TF_NEED_TENSORRT=0
     export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
-    # Open MPI settings
-    export TF_NEED_MPI=1
-    export MPI_HOME=/usr/
-    # CC_OPT_FLAGS hack to remove when possible
+    # Open MPI settings, not working yet, see
     # https://github.com/tensorflow/tensorflow/issues/11903#issuecomment-332718012
-    export CC_OPT_FLAGS="-DOMPI_SKIP_MPICXX=1 -march=native"
+    export TF_NEED_MPI=0
+    # export MPI_HOME=/usr/
+    # CC_OPT_FLAGS hack to remove when possible
+    # export CC_OPT_FLAGS="-DOMPI_SKIP_MPICXX=1 -march=native"
 
 
     # Note python3, python2, pip3 and pip2 are used explicily
