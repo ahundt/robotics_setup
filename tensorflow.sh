@@ -132,7 +132,7 @@ else
 	echo "    dpkg-query -L cuda-cublas-9-1"
     echo "###########################################################################################################"
     export TF_NEED_CUDA=1
-    export TF_CUDA_VERSION=9.1
+    export TF_CUDA_VERSION="9.1"
     export TF_CUDNN_VERSION=7
     export CUDA_TOOLKIT_PATH=/usr/local/cuda-9.1/targets/x86_64-linux/lib/
     export TF_NEED_GCP=1
