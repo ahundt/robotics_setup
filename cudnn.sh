@@ -18,14 +18,17 @@ echo "# https://developer.nvidia.com/cudnn"
 # Manual setup:
 cd ~/Downloads
 if [ ! -f ~/Downloads/libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64.deb ] ; then
-    curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/Ubuntu16_04-x64/libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64 --output libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64.deb
+    # runtime library
     curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/Ubuntu16_04-x64/libcudnn7_7.0.5.15-1+cuda9.1_amd64 --output libcudnn7_7.0.5.15-1+cuda9.1_amd64.deb
+    # developer library which requires runtime library
+    curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/Ubuntu16_04-x64/libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64 --output libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64.deb
+    # tarball version
     curl https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.1_20171129/cudnn-9.1-linux-x64-v7 --output cudnn-9.1-linux-x64-v7.tgz
 fi
 
-
+sudo dpkg -i ~/Downloads/libcudnn7_7.0.5.15-1+cuda9.1_amd64.deb
 sudo dpkg -i ~/Downloads/libcudnn7-dev_7.0.5.15-1+cuda9.1_amd64.deb
-sudo apt-get install -y cudnn
+sudo apt-get install -y libcudnn7 libcudnn7-dev
 # sudo tar -xzvf cudnn-9.1-linux-x64-v7.0.tgz
 # sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 # sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
