@@ -127,11 +127,14 @@ else
 	echo "To see all the possible flags with the current master see:"
 	echo "https://github.com/tensorflow/tensorflow/blob/master/configure.py"
 	echo "be sure to switch to the appropriate branch if the options aren't working"
+	echo ""
+	echo "To find the CUDA_TOOLKIT_PATH try the following where 9-1 is the version (8-0 is another example):"
+	echo "    dpkg-query -L cuda-cublas-9-1"
     echo "###########################################################################################################"
     export TF_NEED_CUDA=1
     export TF_CUDA_VERSION=9.1
     export TF_CUDNN_VERSION=7
-    export CUDA_TOOLKIT_PATH=/usr/lib/x86_64-linux-gnu/
+    export CUDA_TOOLKIT_PATH=/usr/local/cuda-9.1/targets/x86_64-linux/lib/
     export TF_NEED_GCP=1
     export TF_NEED_HDFS=1
     export TF_NEED_OPENCL=0
