@@ -161,7 +161,7 @@ else
     export TF_CUDA_COMPUTE_CAPABILITIES="5.2,6.1"
     # Open MPI settings
     export TF_NEED_MPI=1
-    export MPI_HOME=/usr/include/openmpi/
+    export MPI_HOME=/usr/
     # CC_OPT_FLAGS hack to remove when possible
     # https://github.com/tensorflow/tensorflow/issues/11903#issuecomment-332718012
     export CC_OPT_FLAGS="-DOMPI_SKIP_MPICXX=1 -march=native"
