@@ -88,7 +88,7 @@ fi
 
 sudo dpkg -i ~/Downloads/nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1_1-1_amd64.deb
 sudo apt-get update
-sudo apt-get install -y nccl
+sudo apt-get install -y libnccl2 libnccl-dev libnccl-dev nccl-repo-ubuntu1604-2.1.4-ga-cuda9.1
 
 # The steps below are outdated, remove if there have been no problems
 # # install the CUDA profiler for cuda 8.0
