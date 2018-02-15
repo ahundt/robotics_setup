@@ -126,7 +126,7 @@ fi
 if [ "${OS}" = "Linux" ] ; then
   sudo ./setup/ubuntu/16.04/install_prereqs.sh
 
-  echo "MANNUAL STEPS REQUIRED: SEE https://github.com/RobotLocomotion/spartan"
+  echo "MANUAL STEPS REQUIRED: SEE https://github.com/RobotLocomotion/spartan"
 fi
 
 cd $DIR
