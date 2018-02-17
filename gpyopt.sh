@@ -28,7 +28,7 @@ echo "#     https://github.com/SheffieldML/GPyOpt/issues/85"
 # pip2 install gpy gpyopt --user --upgrade
 # pip3 install gpy gpyopt --user --upgrade
 
-
+# GPy
 cd ~/src
 if [ ! -d ~/src/gpy ] ; then
 	git clone https://github.com/SheffieldML/GPy gpy
@@ -36,14 +36,17 @@ fi
 cd gpy
 git pull
 pip install -e . --user --upgrade
+pip2 install -e . --user --upgrade
 
+# GPyOpt
 cd ~/src
 if [ ! -d ~/src/gpyopt ] ; then
 	git clone https://github.com/SheffieldML/GPyOpt gpyopt -b devel
 fi
-
+cd gpyopt
 git pull
 pip install -e . --user --upgrade
+pip2 install -e . --user --upgrade
 
 
 cd $DIR
