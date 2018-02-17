@@ -20,9 +20,30 @@ echo "# the parameters of Machine Learning algorithms."
 echo "#"
 echo "# https://github.com/SheffieldML/GPyOpt "
 echo "# https://github.com/SheffieldML/GPy "
+echo "#"
+echo "# WARNING: local install on devel branch until the following issue fix is released:"
+echo "#"
+echo "#     https://github.com/SheffieldML/GPyOpt/issues/85"
 
-pip2 install gpy gpyopt --user --upgrade
+# pip2 install gpy gpyopt --user --upgrade
 # pip3 install gpy gpyopt --user --upgrade
+
+
+cd ~/src
+if [ ! -d ~/src/gpy ] ; then
+	git clone https://github.com/SheffieldML/GPy gpy
+fi
+cd gpy
+git pull
+pip install -e . --user --upgrade
+
+cd ~/src
+if [ ! -d ~/src/gpyopt ] ; then
+	git clone https://github.com/SheffieldML/GPyOpt gpyopt -b devel
+fi
+
+git pull
+pip install -e . --user --upgrade
 
 
 cd $DIR
