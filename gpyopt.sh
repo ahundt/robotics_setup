@@ -45,7 +45,10 @@ if [ ! -d ~/src/gpyopt ] ; then
 fi
 cd gpyopt
 git pull
-pip install -e . --user --upgrade
+
+# pip could be python3, disabled until
+# https://github.com/SheffieldML/GPyOpt/issues/163 is resolved
+# pip install -e . --user --upgrade
 pip2 install -e . --user --upgrade
 
 
