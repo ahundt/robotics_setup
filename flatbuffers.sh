@@ -25,7 +25,7 @@ fi
 cd ~/src/flatbuffers
 git pull
 cd ~/src/flatbuffers/build
-cmake ..
+cmake .. -DCMAKE_CXX_FLAGS=-fPIC
 sudo make -j install
 cd ../..
 
