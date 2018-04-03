@@ -23,7 +23,8 @@ then
 	mkdir build
 fi
 cd ~/src/flatbuffers
-git pull
+# don't pull because flatbuffers does release tags, not release branches
+# git pull
 cd ~/src/flatbuffers/build
 cmake .. -DCMAKE_CXX_FLAGS=-fPIC -DCMAKE_BUILD_TYPE=Release
 make -j
