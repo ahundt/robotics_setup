@@ -18,15 +18,16 @@ set -x
 cd ~/src
 if [ ! -d ~/src/flatbuffers ]
 then
-	git clone https://github.com/google/flatbuffers.git
+	git clone https://github.com/google/flatbuffers.git -b v1.8.0
 	cd flatbuffers
 	mkdir build
 fi
 cd ~/src/flatbuffers
 git pull
 cd ~/src/flatbuffers/build
-cmake .. -DCMAKE_CXX_FLAGS=-fPIC
-sudo make -j install
+cmake .. -DCMAKE_CXX_FLAGS=-fPIC -DCMAKE_BUILD_TYPE=Release
+make -j
+sudo make install
 cd ../..
 
 cd $DIR
