@@ -43,7 +43,7 @@ git pull
 
 ./bootstrap
 # make -j will build faster, but may run out of memory
-# make -j install
-make install
+# sudo make -j install
+sudo make install
 
 cd $DIR
