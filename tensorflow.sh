@@ -15,7 +15,7 @@ echo "# MANUAL STEPS REQUIRED"
 echo "# - first run cuda.sh, and ensure cuda and cudnn are on the LD_LIBRARY_PATH"
 echo "# "
 echo "# "
-echo "# TF 1.5 special steps with CUDA 9.1!"
+echo "# TF 1.7 special steps with CUDA 9.1!"
 echo "# see https://github.com/tensorflow/tensorflow/issues/16526"
 echo "# "
 echo "# After tensorflow is cloned and the first failure, browse to the repository"
@@ -130,7 +130,7 @@ else
 
     cd ~/src/tensorflow
     git fetch --all
-    git checkout r1.5
+    git checkout r1.7
 
     echo "###########################################################################################################"
     echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"

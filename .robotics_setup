@@ -75,6 +75,12 @@ if [ -d ~/src/gps ] ; then
   export PYTHONPATH=$PYTHONPATH:$HOME/src/gps/build/lib
 fi
 
+# github.com/tensorflow/models
+if [ -d ~/src/tf_models ] ; then
+  # load libraries for tensorflow object detection api
+  export PYTHONPATH=$PYTHONPATH:$HOME/src/tf_models/research/:$HOME/src/tf_models/research/slim
+fi
+
 # locally installed libraries
 if [ -d $HOME/lib ] ; then
   # load libraries and programs installed locally
