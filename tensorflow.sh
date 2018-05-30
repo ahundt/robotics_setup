@@ -12,11 +12,11 @@ echo "# TensorFlow with GPU Support"
 echo "############################"
 echo "# "
 echo "# MANUAL STEPS REQUIRED"
-echo "# - first run cuda.sh, and ensure cuda and cudnn are on the LD_LIBRARY_PATH"
+echo "# - make sure you source ~/.robotics_setup and ensure cuda and cudnn are on the LD_LIBRARY_PATH"
 echo "# "
-echo "# "
-echo "# TF 1.7 special steps with CUDA 9.1!"
+echo "# TF 1.8 special steps with CUDA 9.1!"
 echo "# see https://github.com/tensorflow/tensorflow/issues/16526"
+echo "# and https://github.com/tensorflow/tensorflow/issues/14573"
 echo "# "
 echo "# After tensorflow is cloned and the first failure, browse to the repository"
 echo "# ~/src/tensorflow/configure.py"
@@ -130,7 +130,7 @@ else
 
     cd ~/src/tensorflow
     git fetch --all
-    git checkout r1.7
+    git checkout r1.8
 
     echo "###########################################################################################################"
     echo "MANUAL STEPS YOU MAY NEED TO EDIT FOR YOUR SYSTEM"
@@ -165,7 +165,12 @@ else
     # export MPI_HOME=/usr/
     # CC_OPT_FLAGS hack to remove when possible
     # export CC_OPT_FLAGS="-DOMPI_SKIP_MPICXX=1 -march=native"
-
+	
+	# workaround for https://github.com/tensorflow/tensorflow/issues/14573
+	if [ ! -f /usr/local/cuda/lib64/stubs/libcuda.so.1 ] ; then
+		sudo ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
+		sudo ln -s /usr/local/cuda/targets/x86_64-linux/lib/lib64 /usr/local/cuda/targets/x86_64-linux/lib
+	fi
 
     # Note python3, python2, pip3 and pip2 are used explicily
     # because that ensures tensorflow is installed for both versions
@@ -180,7 +185,9 @@ else
         yes "" | $PYTHON_BIN_PATH configure.py
 
         # To be compatible with as wide a range of machines as possible, TensorFlow defaults to only using SSE4.1 SIMD instructions on x86 machines. Most modern PCs and Macs support more advanced instructions, so if you're building a binary that you'll only be running on your own machine, you can enable these by using --copt=-march=native in your bazel build command.
-        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+		#
+        # For details on LD_LIBRARY_PATH see https://github.com/tensorflow/tensorflow/issues/15142#issuecomment-352773470
+        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
         bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
         cd ~/
         python2 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
@@ -197,7 +204,8 @@ else
         # answer yes to any config questions not covered by the above exports, run the configuration
         yes "" | $PYTHON_BIN_PATH configure.py
 
-        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+        # For details on LD_LIBRARY_PATH see https://github.com/tensorflow/tensorflow/issues/15142#issuecomment-352773470
+        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
         bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
         cd ~/
         python3 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p3*
