@@ -72,7 +72,7 @@ echo "#"
 # Enable python bindings via cython by default
 # set to "ON" to build python bindings and "OFF" to disable them
 # Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
-PIP_INSTALL="OFF"
+PIP_INSTALL="ON"
 location="tensorflow" # github.com/jrl-umi3218/Tasks # ongoing development happens here
 #location="ahundt" # github.com/ahundt/Tasks # I have some patches here
 #location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
@@ -116,8 +116,11 @@ esac
 
 
 if [ "${PIP_INSTALL}" = "ON" ] ; then
-    pip2 install tensorflow-gpu
-    pip3 install tensorflow-gpu
+	echo "# PIP INSTALL MANUAL STEPS: YOU MAY NEED TO RUN:"
+	echo "# ./cuda_9.0_cudnn_7.0.sh"
+	echo "# ./cudnn.sh"
+    pip2 install tensorflow-gpu --user --upgrade
+    pip3 install tensorflow-gpu --user --upgrade
 else
     # install the bazel build system
     ./bazel.sh
@@ -148,7 +151,7 @@ else
     export TF_NEED_CUDA=1
     export TF_CUDA_VERSION="9.1"
     export TF_CUDNN_VERSION=7
-    export CUDA_TOOLKIT_PATH=/usr/local/cuda-9.1/targets/x86_64-linux/lib/
+    export CUDA_TOOLKIT_PATH=/usr/local/cuda
     export TF_NEED_GCP=1
     export TF_NEED_HDFS=1
     export TF_NEED_OPENCL=0
@@ -188,7 +191,7 @@ else
 		#
         # For details on LD_LIBRARY_PATH see https://github.com/tensorflow/tensorflow/issues/15142#issuecomment-352773470
         bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
-        bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+        bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg --verbose_failures
         cd ~/
         python2 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p27*
         python2 -c 'import tensorflow as tf; print(tf.__version__); sess = tf.InteractiveSession(); sess.close();'
@@ -205,7 +208,7 @@ else
         yes "" | $PYTHON_BIN_PATH configure.py
 
         # For details on LD_LIBRARY_PATH see https://github.com/tensorflow/tensorflow/issues/15142#issuecomment-352773470
-        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
+        bazel build --copt=-march=native -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" --verbose_failures
         bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
         cd ~/
         python3 -m pip install --upgrade --user /tmp/tensorflow_pkg/tensorflow-*p3*

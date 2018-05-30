@@ -78,7 +78,7 @@ fi
 if [ -d /usr/local/cuda ] ; then
    # for tensorflow.sh build
    # see https://github.com/tensorflow/tensorflow/issues/15142#issuecomment-352773470
-   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/:/usr/local/cuda/lib64/
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs
 fi
 
 # github.com/tensorflow/models
