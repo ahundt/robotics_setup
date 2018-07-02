@@ -37,7 +37,7 @@ ln -sf ~/src/gSLICr deps/gSLICr
 mkdir -p build
 cd build
 # TODO(ahundt) should CMAKE_MODULE_PATH always be set like this or should we make a pull request to fix it?
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_MODULE_PATH=/usr/share/OpenCV/
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_MODULE_PATH=/home/cpaxton/catkin_ws/devel/share/OpenCV/
 cmake --build .
 
 

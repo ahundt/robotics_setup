@@ -43,5 +43,4 @@ echo ""
 
 umake ide visual-studio-code
 
-
 cd $DIR
