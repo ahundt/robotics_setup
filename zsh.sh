@@ -41,22 +41,18 @@ cd ~
 # found via os x setup guide
 # http://sourabhbajaj.com/mac-setup/iTerm/zsh.html
 
-if [ -d `pwd`/.linuxbrew ] ; then
-  export PATH="$PATH:$HOME/.linuxbrew/bin"
-  brew install zsh zsh-completions
-fi
-
-if [ ! -d `pwd`/.linuxbrew ] ; then
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install -y zsh
-  fi
-fi
-
 # check if homebrew is installed
 # in that case use it to install zsh
 # if needed
-if  ! [ -x "$(command -v brew)" ] ; then
-  brew install zsh
+if [ -x "$(command -v zsh)" ] ; then
+  # we don't have zsh, try to install it...
+  if [ -x "$(command -v brew)" ] ; then
+    # if homebrew/linuxbrew is installed use that to install zsh
+    brew install zsh zsh-completions
+  elif [ -x "$(command -v apt-get)" ] ; then
+    # if apt-get exists use that to install zsh
+    sudo apt-get install -y zsh
+  fi
 fi
 
 
