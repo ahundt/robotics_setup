@@ -113,6 +113,19 @@ if [ -d $HOME/.local ] ; then
   export PYTHONUSERBASE=$HOME/.local/
 fi
 
+# locally installed python libraries
+if [ -d $HOME/.local/lib ] ; then
+  # load python libraries and programs installed locally
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
+  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.local/lib
+  export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib
+fi
+
+# locally installed python binaries
+if [ -d $HOME/.local/bin ] ; then
+  export PATH=$PATH:$HOME/.local/bin
+fi
+
 # autoenv for automatic environment variable loading
 # on a per project basis (overrides cd)
 #
