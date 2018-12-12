@@ -16,7 +16,7 @@ echo "OpenAI  https://github.com/openai."
 sudo apt-get update
 pip install numpy
 sudo apt-get install -y golang libjpeg-turbo8-dev make
-sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+sudo apt-get install -y python-numpy python-dev python3-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
 
 cd ~/src
 mkdir -p openai

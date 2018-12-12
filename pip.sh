@@ -6,6 +6,11 @@ echo "# pip python package manager"
 echo "################################"
 echo "#"
 echo "# Install pip from source"
+echo '#'
+echo '# If you run into a "permissions" problem here try the following:'
+echo '#     sudo chown -R $USER ~/.local/'
+echo '#     sudo chmod g+wr -R ~/.local/'
+
 
 mkdir -p $HOME/Downloads
 mkdir -p $HOME/.local

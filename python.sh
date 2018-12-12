@@ -19,7 +19,7 @@ case $OS in
         # only install
         if [ "${DISTRIB_ID}" = "Ubuntu" ]; then
             # install ubuntu python package
-            sudo apt-get install -y python-setuptools python-dev build-essential
+            sudo apt-get install -y python-setuptools python-dev python3-dev build-essential
 
             # workaround for pip 8.1.2 failing to upgrade on Ubuntu 16.04
             # see https://github.com/pypa/pip/issues/3776
