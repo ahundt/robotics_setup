@@ -10,6 +10,8 @@ echo '#'
 echo '# If you run into a "permissions" problem here try the following:'
 echo '#     sudo chown -R $USER ~/.local/'
 echo '#     sudo chmod g+wr -R ~/.local/'
+echo '#     sudo chown -R $USER ~/.cache/'
+echo '#     sudo chmod g+wr -R ~/.cache/'
 
 
 mkdir -p $HOME/Downloads
