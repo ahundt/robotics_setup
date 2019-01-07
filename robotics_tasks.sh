@@ -34,13 +34,15 @@ echo "#      while ahundt means github.com/ahundt/Tasks"
 # Enable python bindings via cython by default
 # set to "ON" to build python bindings and "OFF" to disable them
 # Note: "ON" generates tons of warnings and the log size might prevent CI from succeeding.
-PYTHON_BINDING="ON"
-location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
-#location="ahundt" # github.com/ahundt/Tasks # I have some patches here
+PYTHON_BINDING="OFF"
+# location="jrl-umi3218" # github.com/jrl-umi3218/Tasks # ongoing development happens here
+location="ahundt" # github.com/ahundt/Tasks # I have some patches here
 #location="jorisv" # github.com/jorisv/Tasks # outdated original repository location
 
 # modify if using a different branch
-branch="master"
+# branch="master"
+branch="grl"
+# grl branch is named for github.com/ahundt/grl, which is integrated with Tasks.
 
 # Check if the user specified any command line options
 # other than teh default and set the variable appropriately.
@@ -77,6 +79,23 @@ case $OS in
 	;;
 esac
 
+mkdir -p ~/src
+cd ~/src
+
+
+# Clone the super-repository from
+# https://github.com/ahundt/jrl-umi3218
+# This version is more stable and reliable.
+if [ "${location}" = "ahundt" ]
+then
+	if [ ! -d ~/src/jrl-umi3218 ]
+	then
+		git clone --recursive https://github.com/${location}/jrl-umi3218.git
+	fi
+
+	cd ~/src/jrl-umi3218
+	git checkout ${branch}
+fi
 
 mkdir -p ~/src/jrl-umi3218
 cd ~/src
@@ -114,10 +133,10 @@ then
 	fi
 
 	# only install via pip3 if it exists
-	if [ -x "$(command -v pip3)" ] ; then
-		pip3 install -r requirements.txt --upgrade --user
-		pip3 install . --upgrade --user
-	fi
+	# if [ -x "$(command -v pip3)" ] ; then
+	# 	pip3 install -r requirements.txt --upgrade --user
+	# 	pip3 install . --upgrade --user
+	# fi
 fi
 
 
