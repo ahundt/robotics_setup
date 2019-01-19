@@ -21,10 +21,11 @@ case $OS in
             # install ubuntu python package
             sudo apt-get install -y python-setuptools python-dev python3-dev build-essential
 
+            ./pip.sh
             # workaround for pip 8.1.2 failing to upgrade on Ubuntu 16.04
             # see https://github.com/pypa/pip/issues/3776
-            curl -o $HOME/Downloads/get-pip.py https://bootstrap.pypa.io/get-pip.py
-            sudo python3 $HOME/Downloads/get-pip.py --user
+            # curl -o $HOME/Downloads/get-pip.py https://bootstrap.pypa.io/get-pip.py
+            # sudo python3 $HOME/Downloads/get-pip.py --user
 
             # commented below until workaround is no longer needed
             # python 2
