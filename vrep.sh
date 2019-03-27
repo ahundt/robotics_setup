@@ -22,24 +22,43 @@ echo ""
 echo "@author Andrew Hundt <ATHundt@gmail.com>"
 echo ""
 
-VREP_VERSION=V3_4_0
+# VREP_VERSION=V3_4_0
+# V-REP_PRO_EDU_V3_4_0_Linux
+VREP_FILE="V-REP_PRO_EDU_V3_6_1_Ubuntu18_04"
 
-if [ ! -d ~/src ]
+. /etc/lsb-release # get ubuntu version number
+
+if [ "$DISTRIB_RELEASE" = "16.04" ]
 then
-    mkdir -p ~/src
+    # http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_6_1_Ubuntu16_04.tar.xz
+    VREP_FILE="V-REP_PRO_EDU_V3_6_1_Ubuntu16_04"
 fi
 
-if [ ! -f ~/src/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz ]
+if [ "$DISTRIB_RELEASE" = "18.04" ]
 then
+    # http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_6_1_Ubuntu16_04.tar.xz
+    VREP_FILE="V-REP_PRO_EDU_V3_6_1_Ubuntu18_04"
+fi
+# V-REP_PRO_EDU_V3_4_0_Linux
+
+mkdir -p ~/src
+FILE_PATH=~/src/${VREP_FILE}.tar.xz
+
+if [ ! -f ${FILE_PATH} ]
+then
+    echo "downloading"
     cd ~/src
-    wget http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz
+    # wget http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz
+    wget http://coppeliarobotics.com/files/${VREP_FILE}.tar.xz
 fi
 
-if [ ! -d ~/src/V-REP_PRO_EDU_V3_4_0_Linux ]
+if [ ! -d ~/src/${VREP_FILE} ]
 then
     cd ~/src
-    tar -xvzf ~/src/V-REP_PRO_EDU_V3_4_0_Linux.tar.gz
+    tar -xvf $FILE_PATH
+    # tar -xvzf $FILE_PATH
 fi
 
 
 cd $DIR
+
