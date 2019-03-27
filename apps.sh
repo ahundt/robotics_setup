@@ -31,6 +31,8 @@ echo ""
 echo "# http://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/install-google-chrome-on-ubuntu-16-04.html"
 echo ""
 
+# curl is necessary for downloading chrome
+sudo apt-get install -y curl
 if [ ! -f ~/Downloads/google-chrome-stable_current_amd64.deb ]
 then
   curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb --output ~/Downloads/google-chrome-stable_current_amd64.deb
