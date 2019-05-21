@@ -13,7 +13,7 @@ set -x
 
 
 ###############
-# spdlog - Super fast C++ logging library. 
+# spdlog - Super fast C++ logging library.
 
 cd ~/src
 if [ ! -d ~/src/spdlog ]
@@ -25,7 +25,7 @@ fi
 cd ~/src/spdlog
 git pull
 cd ~/src/spdlog/build
-cmake ..
+cmake .. -D SPDLOG_BUILD_BENCH=OFF
 sudo make -j install
 cd ../..
 
