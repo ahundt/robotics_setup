@@ -15,7 +15,7 @@ echo "https://github.com/RWTHmediTEC/TRTK"
 ./eigen3.sh
 cmakeversion=`cmake --version`
 if [[ $cmakeversion == *"cmake version 3.5.1"* ]]; then
-    echo "Detected incompatible cmake version 3.5.1, updating from source, see cmake_source.sh for details"
+    echo "Detected incompatible cmake version 3.5.1, updating CMake from source, see cmake_source.sh for details"
     ./cmake_source.sh
 fi
 sudo apt-get install -y libflann-dev
