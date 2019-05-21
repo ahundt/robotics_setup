@@ -5,14 +5,30 @@
 
 # ROS.org Robot Operating System
 # version: kinetic
-if [ -d /opt/ros/kinetic ] ; then
-  source /opt/ros/kinetic/setup.zsh
-fi
+if [ -n "$ZSH_VERSION" ]; then
+   # assume Zsh
+  if [ -d /opt/ros/kinetic ] ; then
+    source /opt/ros/kinetic/setup.zsh
+  fi
 
-# ROS.org Robot Operating System
-# version: indigo
-if [ -d /opt/ros/indigo ] ; then
-  source /opt/ros/indigo/setup.zsh
+  # ROS.org Robot Operating System
+  # version: indigo
+  if [ -d /opt/ros/indigo ] ; then
+    source /opt/ros/indigo/setup.zsh
+  fi
+elif [ -n "$BASH_VERSION" ]; then
+   # assume Bash
+  if [ -d /opt/ros/kinetic ] ; then
+    source /opt/ros/kinetic/setup.bash
+  fi
+
+  # ROS.org Robot Operating System
+  # version: indigo
+  if [ -d /opt/ros/indigo ] ; then
+    source /opt/ros/indigo/setup.bash
+  fi
+else
+   # assume something else
 fi
 
 
@@ -26,7 +42,15 @@ fi
 # see costar.sh
 if [ -d ~/src/costar_ws ] ; then
   if [ -d /opt/ros ] ; then
-    test -e "$HOME/src/costar_ws/devel/setup.zsh" && source "$HOME/src/costar_ws/devel/setup.zsh"
+    if [ -n "$ZSH_VERSION" ]; then
+      # assume Zsh
+      test -e "$HOME/src/costar_ws/devel/setup.zsh" && source "$HOME/src/costar_ws/devel/setup.zsh"
+    elif [ -n "$BASH_VERSION" ]; then
+      # assume Bash
+      test -e "$HOME/src/costar_ws/devel/setup.bash" && source "$HOME/src/costar_ws/devel/setup.bash"
+    else
+      # asume something else
+fi
   fi
 fi
 
@@ -161,9 +185,11 @@ fi
 
 # https://www.iterm2.com/documentation-shell-integration.html
 if [ -f ~/.iterm2_shell_integration.zsh ] ; then
-   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+  if [ -n "$ZSH_VERSION" ]; then
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+  fi
 elif [ -f ~/.iterm2_shell_integration.bash ] ; then
-   test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 fi
 
 
