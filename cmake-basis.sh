@@ -17,6 +17,13 @@ echo ""
 mkdir -p ~/src
 cd ~/src
 
+# We prefer cmake be a version later than the default on 16.04, so check for that and install an update.
+cmakeversion=`cmake --version`
+if [[ $cmakeversion == *"cmake version 3.5.1"* ]]; then
+    echo "Detected incompatible cmake version 3.5.1, updating CMake from source, see cmake_source.sh for details"
+    ./cmake_source.sh
+fi
+
 if [ ! -d ~/src/cmake-basis ]
 then
     mkdir -p ~/src/cmake-basis
