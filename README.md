@@ -7,7 +7,7 @@ This contains a set of linux setup scripts consolidated from across the web to m
 Manual steps are necessary for some scripts, so be sure to check the comments!
 
 These scripts are written for:
-- x86_64 Ubuntu Linux 14.04 and 16.04
+- x86_64 Ubuntu Linux 14.04, 16.04, 18.04
 - NVIDIA GPUs such as GeForce GTX 1080, and Titan X.
 
 There is also some support for:
