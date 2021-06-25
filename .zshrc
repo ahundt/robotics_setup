@@ -31,3 +31,8 @@ function update_terminal_title() {
 # oh-my zsh theme
 #ZSH_THEME="dstufft"
 # similar theme on prezto: giddie
+
+export GITHUB_USERNAME=ahundt
+export GITRIEVAL_TOKEN=e0f06fd379507257a99663a370befe1e6a8e56d2
+export GITRIEVAL_TOKEN=fd68b752e3a35a712c9e90e94432ae642b285e59
+export GITRIEVAL_TOKEN=8ede8cdd3811f8274fc383d6325378f465e31c71
