@@ -1,13 +1,13 @@
 # Ubuntu Setup Scripts for Robotics & Machine Learning
 
-![Robotics Automated Setup](https://upload.wikimedia.org/wikipedia/commons/5/5d/Advanced_Automation_for_Space_Missions_figure_5-29.gif)
-
+![Robotics Automated Setup](https://user-images.githubusercontent.com/55744/113743633-e2a92800-96d1-11eb-9c09-611af3ca626d.png)
+<!-- Photo from NASA via wikimedia commons https://commons.wikimedia.org/wiki/File:Self-replicating_machine.png NASA Conference Publication 2255 (1982), based on the Advanced Automation for Space Missions NASA/ASEE -->
 This contains a set of linux setup scripts consolidated from across the web to make it easy to set up a new computer for robotics and deep learning, with links to the original sources and brief descriptions in the comments of each script. Install scripts are kept simple and minimal so you can easily change them for your needs.
 
 Manual steps are necessary for some scripts, so be sure to check the comments!
 
 These scripts are written for:
-- x86_64 Ubuntu Linux 14.04 and 16.04
+- x86_64 Ubuntu Linux 14.04, 16.04, 18.04
 - NVIDIA GPUs such as GeForce GTX 1080, and Titan X.
 
 There is also some support for:

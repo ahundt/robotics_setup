@@ -100,11 +100,11 @@ fi
 
 
 ############################
-# config.json
-if [ ! -f $HOME/.config/xonsh/config.json ] ; then
-  mkdir -p $HOME/.config/xonsh/
-  ln -s $DIR/.config/xonsh/config.json $HOME/.config/xonsh/config.json
-fi
+# xonsh config.json. Disabled because it is no longer supported in Xonsh 0.9.x
+# if [ ! -f $HOME/.config/xonsh/config.json ] ; then
+#   mkdir -p $HOME/.config/xonsh/
+#   ln -s $DIR/.config/xonsh/config.json $HOME/.config/xonsh/config.json
+# fi
 
 
 ############################
