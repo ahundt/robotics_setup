@@ -87,6 +87,13 @@ fi
 # end Homebrew Setup in.zshrc file
 #######################################
 
+# Source Prezto.
+if [ -n "$ZSH_VERSION" ]; then
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+fi
+
 # ROS.org Robot Operating System
 # version: kinetic
 if [ -z "$ZSH_VERSION" ]; then
