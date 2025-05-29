@@ -3,6 +3,90 @@
 # Loads configuration of installed utilities
 # while skipping things that aren't set up
 
+
+########################################
+# Homebrew Setup in.zshrc file
+
+# Explanation:
+# - This script sets up the necessary environment variables for Homebrew.
+# - It prioritizes the Homebrew version matching the currently running architecture
+#   and ensures its directory is at the beginning of the PATH.
+# - It uses 'command -v brew' to find a Homebrew installation, checks if it matches the
+#   current architecture, and falls back to checking common locations if needed.
+# - It then runs 'brew shellenv' to set up the environment and checks if it succeeded.
+# - If any issues are detected, it prints informative warning messages.
+#
+# Variables set by 'brew shellenv':
+# - HOMEBREW_PREFIX: The directory where Homebrew is installed.
+# - HOMEBREW_REPOSITORY: The directory where Homebrew stores its core files.
+# - HOMEBREW_CELLAR: The directory where Homebrew installs packages.
+# - PATH: The variable that determines where your shell looks for executable files.
+#   'brew shellenv' adds the Homebrew bin directory to your PATH.
+
+# echo "Setting up Homebrew in your .zshrc file..."
+
+# Determine the architecture
+machine_arch=$(uname -m)
+if [ $? -ne 0 ] || [ -z "$machine_arch" ]; then
+  echo "Warning: Failed to determine architecture using 'uname -m' in your .zshrc file."
+  echo "  Homebrew setup might not work correctly. Please check your system configuration."
+  # Exit to prevent further execution with an unknown architecture
+  return 1
+fi
+
+# Get the initial PATH
+initial_path="$PATH"
+
+# Determine the architecture-specific Homebrew location
+if [ "$machine_arch" = "arm64" ]; then
+  arch_brew_path="/opt/homebrew/bin/brew"
+elif [ "$machine_arch" = "x86_64" ]; then
+  arch_brew_path="/usr/local/bin/brew"
+else
+  # Fallback for unknown architectures, use which brew
+  arch_brew_path=$(which brew)
+fi
+
+# Check if the architecture-specific Homebrew exists
+if [ -f "$arch_brew_path" ]; then
+  # Prioritize the architecture-specific Homebrew by adding it to the beginning of PATH
+  export PATH="$arch_brew_path:$PATH"
+  eval "$($arch_brew_path shellenv)"
+  if [ $? -ne 0 ]; then
+    echo "Warning: 'brew shellenv' failed in your .zshrc file."
+  fi
+else
+  # If the architecture-specific Homebrew is not found, check common locations
+  if [ -f /opt/homebrew/bin/brew ]; then
+    brew_path="/opt/homebrew/bin/brew"
+  elif [ -f /usr/local/bin/brew ]; then
+    brew_path="/usr/local/bin/brew"
+  fi
+  if [ -n "$brew_path" ]; then
+    eval "$($brew_path shellenv)"
+    if [ $? -ne 0 ]; then
+      echo "Warning: 'brew shellenv' failed in your .zshrc file."
+    fi
+  fi
+fi
+
+# Check if 'brew shellenv' successfully set up the environment
+if [ "$PATH" = "$initial_path" ]; then
+  echo "Warning: 'brew shellenv' did not modify PATH as expected in your .zshrc file."
+  echo "  Your architecture is $machine_arch."
+  echo "Please make sure Homebrew is installed and configured correctly. You might need to"
+  echo "update your PATH manually or reinstall Homebrew."
+fi
+
+# Check if necessary variables are set
+if ! [ -v HOMEBREW_PREFIX ] || ! [ -v HOMEBREW_REPOSITORY ] || ! [ -v HOMEBREW_CELLAR ]; then
+  echo "Warning: Some Homebrew environment variables are not set in your .zshrc file."
+  echo "  Please check your Homebrew installation and configuration."
+fi
+
+# end Homebrew Setup in.zshrc file
+#######################################
+
 # ROS.org Robot Operating System
 # version: kinetic
 if [ -z "$ZSH_VERSION" ]; then
