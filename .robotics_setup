@@ -285,3 +285,12 @@ fi
 if [ -d $HOME/.iterm2 ] ; then
   export PATH="$PATH:$HOME/.iterm2"
 fi
+
+# Ensure the 'trash' command is available for safely deleting files:
+# - The 'trash' command (from Homebrew, macOS) moves files to ~/.Trash instead of permanently deleting them,
+#   providing a safer alternative to 'rm'.
+# - This block only runs on macOS (OSTYPE=darwin*), and only adds Homebrew's trash to PATH if not already available.
+# - This avoids overriding a system or user-installed version and ensures consistent behavior in scripts and interactive shells.
+if [[ "$OSTYPE" == "darwin"* ]] && ! command -v trash &> /dev/null && [ -f /opt/homebrew/opt/trash/bin/trash ]; then
+    export PATH="/opt/homebrew/opt/trash/bin:$PATH"
+fi
