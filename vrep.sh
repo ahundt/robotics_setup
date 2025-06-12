@@ -31,13 +31,13 @@ VREP_FILE="V-REP_PRO_EDU_V3_6_1_Ubuntu18_04"
 if [ "$DISTRIB_RELEASE" = "16.04" ]
 then
     # http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_6_1_Ubuntu16_04.tar.xz
-    VREP_FILE="V-REP_PRO_EDU_V3_6_1_Ubuntu16_04"
+    VREP_FILE="V-REP_PRO_EDU_V3_6_2_Ubuntu16_04"
 fi
 
 if [ "$DISTRIB_RELEASE" = "18.04" ]
 then
     # http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_6_1_Ubuntu16_04.tar.xz
-    VREP_FILE="V-REP_PRO_EDU_V3_6_1_Ubuntu18_04"
+    VREP_FILE="V-REP_PRO_EDU_V3_6_2_Ubuntu18_04"
 fi
 # V-REP_PRO_EDU_V3_4_0_Linux
 
